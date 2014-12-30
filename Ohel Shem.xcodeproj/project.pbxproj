@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D41A7DB1A53341800168254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7DA1A53341800168254 /* AppDelegate.swift */; };
+		8D41A7DD1A53341800168254 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7DC1A53341800168254 /* ViewController.swift */; };
+		8D41A7E01A53341800168254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D41A7DE1A53341800168254 /* Main.storyboard */; };
+		8D41A7E21A53341800168254 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D41A7E11A53341800168254 /* Images.xcassets */; };
+		8D41A7E51A53341800168254 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D41A7E31A53341800168254 /* LaunchScreen.xib */; };
+		8D41A7F11A53341800168254 /* Ohel_ShemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7F01A53341800168254 /* Ohel_ShemTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8D41A7EB1A53341800168254 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D41A7CD1A53341800168254 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D41A7D41A53341800168254;
+			remoteInfo = "Ohel Shem";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8D41A7D51A53341800168254 /* Ohel Shem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ohel Shem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D41A7D91A53341800168254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D41A7DA1A53341800168254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D41A7DC1A53341800168254 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D41A7DF1A53341800168254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D41A7E11A53341800168254 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8D41A7E41A53341800168254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8D41A7EA1A53341800168254 /* Ohel ShemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ohel ShemTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D41A7EF1A53341800168254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D41A7F01A53341800168254 /* Ohel_ShemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ohel_ShemTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D41A7D21A53341800168254 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D41A7E71A53341800168254 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8D41A7CC1A53341800168254 = {
+			isa = PBXGroup;
+			children = (
+				8D41A7D71A53341800168254 /* Ohel Shem */,
+				8D41A7ED1A53341800168254 /* Ohel ShemTests */,
+				8D41A7D61A53341800168254 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8D41A7D61A53341800168254 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D41A7D51A53341800168254 /* Ohel Shem.app */,
+				8D41A7EA1A53341800168254 /* Ohel ShemTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D41A7D71A53341800168254 /* Ohel Shem */ = {
+			isa = PBXGroup;
+			children = (
+				8D41A7DA1A53341800168254 /* AppDelegate.swift */,
+				8D41A7DC1A53341800168254 /* ViewController.swift */,
+				8D41A7DE1A53341800168254 /* Main.storyboard */,
+				8D41A7E11A53341800168254 /* Images.xcassets */,
+				8D41A7E31A53341800168254 /* LaunchScreen.xib */,
+				8D41A7D81A53341800168254 /* Supporting Files */,
+			);
+			path = "Ohel Shem";
+			sourceTree = "<group>";
+		};
+		8D41A7D81A53341800168254 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8D41A7D91A53341800168254 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8D41A7ED1A53341800168254 /* Ohel ShemTests */ = {
+			isa = PBXGroup;
+			children = (
+				8D41A7F01A53341800168254 /* Ohel_ShemTests.swift */,
+				8D41A7EE1A53341800168254 /* Supporting Files */,
+			);
+			path = "Ohel ShemTests";
+			sourceTree = "<group>";
+		};
+		8D41A7EE1A53341800168254 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8D41A7EF1A53341800168254 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D41A7D41A53341800168254 /* Ohel Shem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D41A7F41A53341800168254 /* Build configuration list for PBXNativeTarget "Ohel Shem" */;
+			buildPhases = (
+				8D41A7D11A53341800168254 /* Sources */,
+				8D41A7D21A53341800168254 /* Frameworks */,
+				8D41A7D31A53341800168254 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ohel Shem";
+			productName = "Ohel Shem";
+			productReference = 8D41A7D51A53341800168254 /* Ohel Shem.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8D41A7E91A53341800168254 /* Ohel ShemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D41A7F71A53341800168254 /* Build configuration list for PBXNativeTarget "Ohel ShemTests" */;
+			buildPhases = (
+				8D41A7E61A53341800168254 /* Sources */,
+				8D41A7E71A53341800168254 /* Frameworks */,
+				8D41A7E81A53341800168254 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D41A7EC1A53341800168254 /* PBXTargetDependency */,
+			);
+			name = "Ohel ShemTests";
+			productName = "Ohel ShemTests";
+			productReference = 8D41A7EA1A53341800168254 /* Ohel ShemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8D41A7CD1A53341800168254 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Lior Pollak";
+				TargetAttributes = {
+					8D41A7D41A53341800168254 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					8D41A7E91A53341800168254 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 8D41A7D41A53341800168254;
+					};
+				};
+			};
+			buildConfigurationList = 8D41A7D01A53341800168254 /* Build configuration list for PBXProject "Ohel Shem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8D41A7CC1A53341800168254;
+			productRefGroup = 8D41A7D61A53341800168254 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D41A7D41A53341800168254 /* Ohel Shem */,
+				8D41A7E91A53341800168254 /* Ohel ShemTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D41A7D31A53341800168254 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D41A7E01A53341800168254 /* Main.storyboard in Resources */,
+				8D41A7E51A53341800168254 /* LaunchScreen.xib in Resources */,
+				8D41A7E21A53341800168254 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D41A7E81A53341800168254 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D41A7D11A53341800168254 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D41A7DD1A53341800168254 /* ViewController.swift in Sources */,
+				8D41A7DB1A53341800168254 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D41A7E61A53341800168254 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D41A7F11A53341800168254 /* Ohel_ShemTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8D41A7EC1A53341800168254 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D41A7D41A53341800168254 /* Ohel Shem */;
+			targetProxy = 8D41A7EB1A53341800168254 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8D41A7DE1A53341800168254 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D41A7DF1A53341800168254 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8D41A7E31A53341800168254 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D41A7E41A53341800168254 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8D41A7F21A53341800168254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8D41A7F31A53341800168254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8D41A7F51A53341800168254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Ohel Shem/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8D41A7F61A53341800168254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Ohel Shem/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8D41A7F81A53341800168254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Ohel ShemTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ohel Shem.app/Ohel Shem";
+			};
+			name = Debug;
+		};
+		8D41A7F91A53341800168254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Ohel ShemTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ohel Shem.app/Ohel Shem";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8D41A7D01A53341800168254 /* Build configuration list for PBXProject "Ohel Shem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D41A7F21A53341800168254 /* Debug */,
+				8D41A7F31A53341800168254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D41A7F41A53341800168254 /* Build configuration list for PBXNativeTarget "Ohel Shem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D41A7F51A53341800168254 /* Debug */,
+				8D41A7F61A53341800168254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8D41A7F71A53341800168254 /* Build configuration list for PBXNativeTarget "Ohel ShemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D41A7F81A53341800168254 /* Debug */,
+				8D41A7F91A53341800168254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8D41A7CD1A53341800168254 /* Project object */;
+}
