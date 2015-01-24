@@ -12,10 +12,85 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var j = 0
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+            application.registerForRemoteNotifications()
+        /*for family in UIFont.familyNames()
+        {
+            println(family)
+
+            for name in UIFont.fontNamesForFamilyName((family as NSString))
+            {
+                println(name)
+            }
+        }*/
+
         // Override point for customization after application launch.
+
+        if (application.applicationIconBadgeNumber > 0) {
+            application.applicationIconBadgeNumber = 0
+        }
+
+        if (!application.isRegisteredForRemoteNotifications()) {
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+            var localNotification = UILocalNotification()
+
+            let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
+
+            localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.applicationIconBadgeNumber = 1
+            localNotification.soundName = UILocalNotificationDefaultSoundName;
+            localNotification.alertAction = "כן!"
+            localNotification.repeatInterval = NSCalendarUnit.DayCalendarUnit
+            localNotification.fireDate = date
+
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
+
+        let font : UIFont? = UIFont(name: "Alef-Bold", size: 22)
+
+        UILabel.appearance().font = UIFont(name: "Alef-Regular", size: 18)
+        UITextView.appearance().font = UIFont(name: "Alef-Regular", size: 18)
+        UITextField.appearance().font = UIFont(name: "Alef-Regular", size: 16)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : font!]
+
+        if let name: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("studentName") {
+
+        } else {
+            NSUserDefaults.standardUserDefaults().setValue("ליאור", forKey: "studentName")
+        }
+        if let classNum: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("classNum") {
+
+        } else {
+            NSUserDefaults.standardUserDefaults().setValue("4", forKey: "classNum")
+        }
+        if let layerNum: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("layerNum"){
+
+        } else {
+            NSUserDefaults.standardUserDefaults().setValue("11", forKey: "layerNum")
+        }
+        /* Siren code should go below window?.makeKeyAndVisible()
+
+        // Siren is a singleton
+        let siren = Siren.sharedInstance
+
+        // Required: Your app's iTunes App Store ID
+        siren.appID = "956866498"
+
+        // Required on iOS 8: The controller to present the alert from (usually the UIWindow's rootViewController)
+        siren.presentingViewController = window?.rootViewController
+
+        // Optional: Defaults to .Option
+        siren.alertType = SirenAlertType.Skip
+
+        /*
+        Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
+        checks.
+        */
+        siren.checkVersion(.Weekly)*/
+        
         return true
     }
 
@@ -40,7 +115,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
