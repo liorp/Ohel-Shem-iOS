@@ -1,4 +1,4 @@
 # Ohel-Shem-iOS
-Ohel Shem's iOS application
-Built by Lior Pollak
-Mad to inspire
+**Ohel Shem's iOS application**
+<br>Built by Lior Pollak
+<br>Made to inspire
