@@ -86,7 +86,7 @@ class FirstTimeHereViewControllerManager: UIViewController, UIPageViewController
             pageItemController.currentText = currentText[itemIndex]
             return pageItemController
         }
-        
+
         return nil
     }
     

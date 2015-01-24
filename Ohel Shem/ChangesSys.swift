@@ -57,9 +57,10 @@ class ChangesSys: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) as UITableViewCell
-        if (indexPath.row != changes.count+1) {
+        if (indexPath.row != changes.count) {
             if (changes.count > 1) {
                 cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": " + (changes[indexPath.row] == "-" ? "אין שינויים!" : changes[indexPath.row])
+                cell.textLabel?.textColor = (changes[indexPath.row] == "-" ? UIColor.blackColor() : UIColor.redColor())
             } else {
                 cell.textLabel!.text = "לא ניתן היה למצוא שינויים"
             }

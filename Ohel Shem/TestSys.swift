@@ -66,42 +66,30 @@ class TestSys: UITableViewController {
         let titleSpaceSeperated = ((selectedCell! as CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         let subtitleSpaceSeperated = ((selectedCell! as CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
+        var saveAlert: UIAlertController
+
         //If it's a moed b we display moed b
         if (String(titleSpaceSeperated[1] as NSString) == "במועד") {
-            let saveAlert = UIAlertController(title: "רוצה שאזכיר לך יומיים לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction = UIAlertAction(title: "לא", style: .Cancel) { (action) in
-                selectedCell!.setSelected(false, animated: false)
-            }
-            saveAlert.addAction(cancelAction)
+            saveAlert = UIAlertController(title: "רוצה שאזכיר לך יומיים לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
 
-            let OKAction = UIAlertAction(title: "כן", style: .Default) { (action) in
-                self.haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String])
-                let i = 0
-                selectedCell?.setSelected(false, animated: false)
-            }
-            saveAlert.addAction(OKAction)
-
-            self.presentViewController(saveAlert, animated: true) {
-                // ...
-            }
         } else {
-            let saveAlert = UIAlertController(title: "רוצה שאזכיר לך יומיים לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction = UIAlertAction(title: "לא", style: .Cancel) { (action) in
-                let i = 0
-                selectedCell?.setSelected(false, animated: false)
-            }
-            saveAlert.addAction(cancelAction)
+            saveAlert = UIAlertController(title: "רוצה שאזכיר לך יומיים לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
+        }
 
-            let OKAction = UIAlertAction(title: "כן", style: .Default) { (action) in
-                self.haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String])
-                let i = 0
-                selectedCell?.setSelected(false, animated: false)
-            }
-            saveAlert.addAction(OKAction)
+        let cancelAction = UIAlertAction(title: "לא", style: .Cancel) { (action) in
+            selectedCell!.setSelected(false, animated: false)
+        }
+        saveAlert.addAction(cancelAction)
 
-            self.presentViewController(saveAlert, animated: true) {
-                // ...
-            }
+        let OKAction = UIAlertAction(title: "כן", style: .Default) { (action) in
+            self.haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String])
+            let i = 0
+            selectedCell?.setSelected(false, animated: false)
+        }
+        saveAlert.addAction(OKAction)
+
+        self.presentViewController(saveAlert, animated: true) {
+            // ...
         }
     }
 

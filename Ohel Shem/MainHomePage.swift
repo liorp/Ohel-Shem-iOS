@@ -18,6 +18,7 @@ class MainHomePage: UIViewController {
     let fontHead: UIFont? = UIFont(name: "Alef-Bold", size: 24.0)
     let fontSubHead: UIFont? = UIFont(name: "Alef-Bold", size: 22.0)
     let fontBody: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
+    let hebrewMonthToNumber = ["בינואר":1, "בפברואר":2, "במרץ":3, "באפריל":4, "במאי":5, "ביוני":6, "ביולי":7, "באוגוסט":8, "בספטמבר":9, "באוקטובר":10, "בנובמבר":11, "בדצמבר":12]
 
     @IBOutlet weak var theTextView: UITextView?
 
@@ -83,6 +84,23 @@ class MainHomePage: UIViewController {
         //Getting the changes
         var changes = NSMutableAttributedString(string: "")
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
+        func AppendRegularHour(i : Int) {
+            if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
+                //If we don't, we show the corresponding hour
+                var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
+                theHourWith.insert("עם", atIndex: 1)
+                var display = join(" ", theHourWith) as String
+                changes.appendAttributedString(NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(display)\n", attributes: attrBody))
+            } else {
+                if hours[i-1] == "שעה חופשית!" {
+                    let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(hours[i-1])\n", attributes: attrBody)
+                    changes.appendAttributedString(attrEmptyHour)
+                } else {
+                    let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
+                    changes.appendAttributedString(attrEmptyHour)
+                }
+            }
+        }
         for (var i = 1; i < 12; i++) {
             if i - 1 < changesString.count {
                 if (changesString[i - 1] != "-"){
@@ -90,7 +108,7 @@ class MainHomePage: UIViewController {
                     let attrChange = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)): " + changesString[i - 1] + "\n", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()])
                     changes.appendAttributedString(attrChange)
                 } else {
-                    if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
+                    /*if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
                         //If we don't, we show the corresponding hour
                         var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
                         theHourWith.insert("עם", atIndex: 1)
@@ -104,10 +122,12 @@ class MainHomePage: UIViewController {
                             let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
                             changes.appendAttributedString(attrEmptyHour)
                         }
-                    }
+                    }*/
+                    AppendRegularHour(i)
                 }
             } else {
-                if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
+                AppendRegularHour(i)
+                /*if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
                     var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
                     //Check if it's special classes that don't let me put in the regular עם
                     //if hours[i-1] == "jbd"{}
@@ -122,10 +142,37 @@ class MainHomePage: UIViewController {
                         let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
                         changes.appendAttributedString(attrEmptyHour)
                     }
-                }
+                }*/
             }
         }
         return changes
+    }
+
+    func GetTop(numberOfTests num : Int) -> NSAttributedString{
+        var returnString = NSMutableAttributedString(string: "")
+        let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
+        let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
+        let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
+
+        for (var i = 0, j = 0; i < tests.count && j < num; i++) {
+            let currentTest = tests[i].componentsSeparatedByString(" ")
+            var dateComponenta = NSDateComponents()
+            var k = (currentTest[1] != "במועד" ? 0 : 1)
+
+            let year = currentTest[6 + k] as NSString
+            let month = self.hebrewMonthToNumber[(currentTest[5 + k].stripCharactersInSet([","]) as NSString)]
+            let day = currentTest[4 + k].stripCharactersInSet(["ה", "-"]) as NSString
+            dateComponenta.day = day.integerValue
+            dateComponenta.month = month!
+            dateComponenta.year = year.integerValue
+
+            let dateOfReminder = NSCalendar.currentCalendar().dateFromComponents(dateComponenta)
+            if (dateOfReminder?.compare(NSDate(timeIntervalSinceNow: 0)) == NSComparisonResult.OrderedDescending) {
+                returnString.appendAttributedString(NSAttributedString(string: "\(tests[i])\n", attributes: attrBody))
+                j++
+            }
+        }
+        return returnString
     }
 
     func SetHomeString() {
@@ -175,8 +222,8 @@ class MainHomePage: UIViewController {
 
         let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
         let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
-        var attrTests = NSMutableAttributedString(string: "\(tests[0]) \n\(tests[1]) \n\(tests[2]) \n", attributes: attrBody)
-        final.appendAttributedString(attrTests)
+        //var attrTests = NSMutableAttributedString(string: "\(tests[0]) \n\(tests[1]) \n\(tests[2]) \n", attributes: attrBody)
+        final.appendAttributedString(GetTop(numberOfTests: 3))
 
         //Append the date of validity of system
         final.appendAttributedString(NSAttributedString(string: "\n" + SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges() + ", וגם מערכת השעות", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
@@ -208,6 +255,7 @@ class MainHomePage: UIViewController {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        //self.theTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
         /*let seen: Bool = NSUserDefaults.standardUserDefaults().boolForKey("seenTutorial")
         if seen {
 

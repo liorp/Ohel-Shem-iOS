@@ -3,6 +3,12 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Alef-Regular.ttf">
+            <string>Alef-Regular</string>
+            <string>Alef-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -10,21 +16,15 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 Lior Pollak. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="Z0S-wc-DAY"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  זכויות יוצרים 2014 © ליאור פולק. כל הזכויות שמורות." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="20" y="436" width="441" height="24"/>
+                    <fontDescription key="fontDescription" name="Alef-Regular" family="Alef" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ohel Shem" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-jv-OyR">
-                    <rect key="frame" x="20" y="114" width="441" height="43"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="43" id="BoY-YB-Bw6"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="36"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אהל שם" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-jv-OyR">
+                    <rect key="frame" x="20" y="107" width="441" height="50"/>
+                    <fontDescription key="fontDescription" name="Alef-Regular" family="Alef" pointSize="36"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -32,16 +32,16 @@
                     <rect key="frame" x="131" y="183" width="219" height="114"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="0.75" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="0.5490196078431373" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="HPq-Pb-l4u"/>
-                <constraint firstItem="dQl-qK-2cc" firstAttribute="top" secondItem="Afb-jv-OyR" secondAttribute="bottom" constant="26" id="TU0-7j-6mP"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XW4-ql-bZr"/>
-                <constraint firstItem="Afb-jv-OyR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="bMG-55-W4s"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="bZS-ht-QQN"/>
-                <constraint firstItem="Afb-jv-OyR" firstAttribute="leading" secondItem="8ie-xW-0ye" secondAttribute="leading" id="iBi-Yx-rPa"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="trailing" secondItem="Afb-jv-OyR" secondAttribute="trailing" id="qNH-Ba-8mh"/>
-                <constraint firstItem="Afb-jv-OyR" firstAttribute="centerX" secondItem="dQl-qK-2cc" secondAttribute="centerX" id="zGG-AS-H6l"/>
+                <constraint firstItem="dQl-qK-2cc" firstAttribute="top" secondItem="Afb-jv-OyR" secondAttribute="bottom" constant="26" id="2YZ-4T-xCX"/>
+                <constraint firstItem="Afb-jv-OyR" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="3QB-i6-BEM"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="L0O-2Q-X3u"/>
+                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerX" secondItem="Afb-jv-OyR" secondAttribute="centerX" id="Yvt-FL-aE1"/>
+                <constraint firstItem="Afb-jv-OyR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="kRt-ck-9Cb"/>
+                <constraint firstItem="Afb-jv-OyR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lch-bN-RqV"/>
+                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uVa-9F-0VW"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="Afb-jv-OyR" secondAttribute="leading" id="zvq-ie-UZe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
