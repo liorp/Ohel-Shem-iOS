@@ -15,7 +15,8 @@ class SchoolTerms: UIViewController {
 
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         println("yes")
-        if (motion == UIEventSubtype.MotionShake || event.subtype == UIEventSubtype.MotionShake){
+        //It seems that you've discovered an easter egg!
+        /*if (motion == UIEventSubtype.MotionShake || event.subtype == UIEventSubtype.MotionShake){
             println("go")
             let saveAlert = UIAlertController(title: "שמואל קינן הוא המלך שלי", message: "אני מאשר את קבלת עול מלכותו של מלך המשיח שמואל קינן", preferredStyle: UIAlertControllerStyle.Alert)
             let cancelAction = UIAlertAction(title: "כן", style: .Cancel) { (action) in
@@ -29,7 +30,7 @@ class SchoolTerms: UIViewController {
             self.presentViewController(saveAlert, animated: true) {
                 // ...
             }
-        }
+        }*/
     }
 
     override func viewDidLoad() {

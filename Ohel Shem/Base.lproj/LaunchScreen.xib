@@ -44,8 +44,9 @@
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="Afb-jv-OyR" secondAttribute="leading" id="zvq-ie-UZe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="468" y="432"/>
         </view>
     </objects>
     <resources>

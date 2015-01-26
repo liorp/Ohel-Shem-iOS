@@ -186,7 +186,7 @@ class MainHomePage: UIViewController {
         final.appendAttributedString(attributedTitle)
 
         //Show news
-        let attrNews = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)*/]
+        let attrNews = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()]
         let attributedNews: NSAttributedString = NSAttributedString(string: "החדשות החמות ביותר: \n", attributes: attrNews)
         final.appendAttributedString(attributedNews)
 
@@ -197,7 +197,7 @@ class MainHomePage: UIViewController {
         final.appendAttributedString(attributedNewsBody)
 
         //Show changes
-        let attrBegadol = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)*/]
+        let attrBegadol = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()]
         let attributedBegadol: NSAttributedString = NSAttributedString(string: "בגדול, ככה היום שלך נראה: \n", attributes: attrBegadol)
         final.appendAttributedString(attributedBegadol)
 

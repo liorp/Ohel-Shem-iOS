@@ -11,9 +11,17 @@
 		8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */; };
 		8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFD61A6458FC0098A608 /* MainHomePage.swift */; };
 		8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D00BFD81A6469A10098A608 /* 0slidecell.png */; };
+		8D1157211A7679C00073CB5F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157201A7679C00073CB5F /* Settings.bundle */; };
+		8D1157281A767BDE0073CB5F /* iRate.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157271A767BDE0073CB5F /* iRate.license */; };
+		8D11572A1A767C0E0073CB5F /* Siren.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157291A767C0E0073CB5F /* Siren.license */; };
+		8D11572C1A767C460073CB5F /* AMSlideMenu.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D11572B1A767C460073CB5F /* AMSlideMenu.license */; };
+		8D11572E1A767C870073CB5F /* FBShimmering.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D11572D1A767C870073CB5F /* FBShimmering.license */; };
+		8D1157301A767CC30073CB5F /* WSCoachMarksView.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D11572F1A767CC30073CB5F /* WSCoachMarksView.license */; };
+		8D1157321A767D4A0073CB5F /* Alef.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157311A767D4A0073CB5F /* Alef.license */; };
+		8D1157341A7680AD0073CB5F /* Acknowledgements.py in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157331A7680AD0073CB5F /* Acknowledgements.py */; };
+		8D1157371A76813D0073CB5F /* CFSSpringTableView.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157361A76813D0073CB5F /* CFSSpringTableView.license */; };
 		8D1169CA1A72EE0400B59241 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C41A72EE0400B59241 /* .gitignore */; };
 		8D1169CB1A72EE0400B59241 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C51A72EE0400B59241 /* LICENSE */; };
-		8D1169CC1A72EE0400B59241 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8D1169C61A72EE0400B59241 /* README.md */; };
 		8D1169CD1A72EE0400B59241 /* WSCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1169C81A72EE0400B59241 /* WSCoachMarksView.m */; };
 		8D1169CE1A72EE0400B59241 /* WSCoachMarksView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C91A72EE0400B59241 /* WSCoachMarksView.podspec */; };
 		8D1DD7E11A613B3D000B9C9A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D1DD7E01A613B3D000B9C9A /* EventKit.framework */; };
@@ -174,6 +182,15 @@
 		8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		8D00BFD61A6458FC0098A608 /* MainHomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomePage.swift; sourceTree = "<group>"; };
 		8D00BFD81A6469A10098A608 /* 0slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0slidecell.png; sourceTree = "<group>"; };
+		8D1157201A7679C00073CB5F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8D1157271A767BDE0073CB5F /* iRate.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iRate.license; sourceTree = "<group>"; };
+		8D1157291A767C0E0073CB5F /* Siren.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Siren.license; sourceTree = "<group>"; };
+		8D11572B1A767C460073CB5F /* AMSlideMenu.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AMSlideMenu.license; sourceTree = "<group>"; };
+		8D11572D1A767C870073CB5F /* FBShimmering.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FBShimmering.license; sourceTree = "<group>"; };
+		8D11572F1A767CC30073CB5F /* WSCoachMarksView.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WSCoachMarksView.license; sourceTree = "<group>"; };
+		8D1157311A767D4A0073CB5F /* Alef.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Alef.license; sourceTree = "<group>"; };
+		8D1157331A7680AD0073CB5F /* Acknowledgements.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Acknowledgements.py; sourceTree = "<group>"; };
+		8D1157361A76813D0073CB5F /* CFSSpringTableView.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CFSSpringTableView.license; sourceTree = "<group>"; };
 		8D1169C41A72EE0400B59241 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8D1169C51A72EE0400B59241 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8D1169C61A72EE0400B59241 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -349,6 +366,21 @@
 			path = FBShimmering;
 			sourceTree = "<group>";
 		};
+		8D1157251A767BC70073CB5F /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				8D1157311A767D4A0073CB5F /* Alef.license */,
+				8D11572B1A767C460073CB5F /* AMSlideMenu.license */,
+				8D11572D1A767C870073CB5F /* FBShimmering.license */,
+				8D1157271A767BDE0073CB5F /* iRate.license */,
+				8D1157291A767C0E0073CB5F /* Siren.license */,
+				8D11572F1A767CC30073CB5F /* WSCoachMarksView.license */,
+				8D1157331A7680AD0073CB5F /* Acknowledgements.py */,
+				8D1157361A76813D0073CB5F /* CFSSpringTableView.license */,
+			);
+			path = Licenses;
+			sourceTree = "<group>";
+		};
 		8D1169C31A72EE0400B59241 /* WSCoachMarksView-master */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +458,7 @@
 		8D41A7D71A53341800168254 /* Ohel Shem */ = {
 			isa = PBXGroup;
 			children = (
+				8D1157201A7679C00073CB5F /* Settings.bundle */,
 				8D3FAF581A5472980008EB99 /* Ohel Shem.entitlements */,
 				8DE7C9391A55780D00190B79 /* logo.gif */,
 				8D41A8111A53349900168254 /* Ohel-Shem-Bridging-Header.h */,
@@ -453,6 +486,7 @@
 				8D00BFBF1A6166AB0098A608 /* FBShimmering */,
 				8D861FEB1A6F895F005EEA7A /* Fonts */,
 				8DE7C95F1A58566C00190B79 /* iphone */,
+				8D1157251A767BC70073CB5F /* Licenses */,
 				8DE7C9281A549AC200190B79 /* iRate */,
 				8D41A7E31A53341800168254 /* LaunchScreen.xib */,
 				8D41A7DE1A53341800168254 /* Main.storyboard */,
@@ -662,9 +696,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D41A7F41A53341800168254 /* Build configuration list for PBXNativeTarget "Ohel Shem" */;
 			buildPhases = (
+				8D41A7D31A53341800168254 /* Resources */,
+				8D1157351A7680D70073CB5F /* ShellScript */,
 				8D41A7D11A53341800168254 /* Sources */,
 				8D41A7D21A53341800168254 /* Frameworks */,
-				8D41A7D31A53341800168254 /* Resources */,
 				8D3FAF441A53BDF60008EB99 /* Embed App Extensions */,
 				8D3FAF551A542DCF0008EB99 /* CopyFiles */,
 				8DE7C93E1A55F91D00190B79 /* ShellScript */,
@@ -795,6 +830,9 @@
 				8DE7C95E1A58142200190B79 /* 6slidecell.png in Resources */,
 				8DE7C9761A58566C00190B79 /* appicon-72@2x.png in Resources */,
 				8DE7C9771A58566C00190B79 /* appicon-76.png in Resources */,
+				8D11572C1A767C460073CB5F /* AMSlideMenu.license in Resources */,
+				8D1157211A7679C00073CB5F /* Settings.bundle in Resources */,
+				8D1157281A767BDE0073CB5F /* iRate.license in Resources */,
 				8DE7C9581A58136100190B79 /* 2slidecell.png in Resources */,
 				8D41A7E51A53341800168254 /* LaunchScreen.xib in Resources */,
 				8DE7C9271A549AA600190B79 /* timetable.json in Resources */,
@@ -810,8 +848,11 @@
 				8D3FAF491A542D490008EB99 /* list23.png in Resources */,
 				8DE7C9751A58566C00190B79 /* appicon-72.png in Resources */,
 				8DE7C9821A58566C00190B79 /* iTunesArtwork in Resources */,
+				8D11572E1A767C870073CB5F /* FBShimmering.license in Resources */,
+				8D1157341A7680AD0073CB5F /* Acknowledgements.py in Resources */,
 				8D861FEF1A6F8976005EEA7A /* Alef-Bold.ttf in Resources */,
 				8DE7C93A1A55780D00190B79 /* logo.gif in Resources */,
+				8D1157371A76813D0073CB5F /* CFSSpringTableView.license in Resources */,
 				8DE7C9791A58566C00190B79 /* appicon-Small-40.png in Resources */,
 				8DE7C97C1A58566C00190B79 /* appicon-Small-50@2x.png in Resources */,
 				8DE7C9571A58136100190B79 /* 4slidecell.png in Resources */,
@@ -823,11 +864,14 @@
 				8DE7C9731A58566C00190B79 /* appicon-60@2x.png in Resources */,
 				8DE7C9561A58136100190B79 /* 3slidecell.png in Resources */,
 				8D1169CA1A72EE0400B59241 /* .gitignore in Resources */,
+				8D11572A1A767C0E0073CB5F /* Siren.license in Resources */,
+				8D1157321A767D4A0073CB5F /* Alef.license in Resources */,
 				8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */,
 				8DE7C9721A58566C00190B79 /* appicon-60.png in Resources */,
 				8DE7C97A1A58566C00190B79 /* appicon-Small-40@2x.png in Resources */,
 				8DE7C9831A58566C00190B79 /* iTunesArtwork@2x in Resources */,
 				8DE7C9781A58566C00190B79 /* appicon-76@2x.png in Resources */,
+				8D1157301A767CC30073CB5F /* WSCoachMarksView.license in Resources */,
 				8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */,
 				8DE7C9591A58136100190B79 /* 7slidecell.png in Resources */,
 			);
@@ -843,6 +887,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8D1157351A7680D70073CB5F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/python /Users/liorpollak/Documents/Development/Experimental/Ohel\\ Shem/Ohel\\ Shem/Licenses/Acknowledgements.py";
+		};
 		8D3FAF451A54289F0008EB99 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -890,7 +947,6 @@
 				8DE507AA1A6007D80015C96D /* HTMLTreeEnumerator.m in Sources */,
 				8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */,
 				8DE507A21A6007D80015C96D /* HTMLOrderedDictionary.m in Sources */,
-				8D1169CC1A72EE0400B59241 /* README.md in Sources */,
 				8D861FE81A685543005EEA7A /* Siren.swift in Sources */,
 				8D41A80C1A53348200168254 /* AMSlideMenuLeftTableViewController.m in Sources */,
 				8DE507A51A6007D80015C96D /* HTMLSelector.m in Sources */,

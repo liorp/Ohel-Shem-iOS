@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
 
+
         if (application.applicationIconBadgeNumber > 0) {
             application.applicationIconBadgeNumber = 0
         }
