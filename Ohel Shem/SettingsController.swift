@@ -125,6 +125,8 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         self.tableView.rowHeight = UITableViewAutomaticDimension
 
         self.tableView.estimatedRowHeight = 44
+
+        self.setPreselectedPicker(UITextField())
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -203,7 +205,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func setPreselectedPicker(sender: UITextField){
-        self.classAndLayerInput?.selectRow(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue, inComponent: 0, animated: true)
+        self.classAndLayerInput?.selectRow(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue - 1, inComponent: 0, animated: true)
         self.classAndLayerInput?.selectRow(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue - 9, inComponent: 1, animated: true)
     }
 
