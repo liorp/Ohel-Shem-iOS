@@ -19,6 +19,7 @@ class MainHomePage: UIViewController {
     let fontSubHead: UIFont? = UIFont(name: "Alef-Bold", size: 22.0)
     let fontBody: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
     let hebrewMonthToNumber = ["בינואר":1, "בפברואר":2, "במרץ":3, "באפריל":4, "במאי":5, "ביוני":6, "ביולי":7, "באוגוסט":8, "בספטמבר":9, "באוקטובר":10, "בנובמבר":11, "בדצמבר":12]
+    var timer: NSTimer?
 
     @IBOutlet weak var theTextView: UITextView?
 
@@ -250,19 +251,21 @@ class MainHomePage: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.addLeftMenuButton()
-        self.theTextView?.attributedText = NSAttributedString(string: "מעדכן...", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+        self.theTextView?.attributedText = NSAttributedString(string: "מעדכן.", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
         self.theTextView?.textAlignment = NSTextAlignment.Center
     }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // do some task
             let textToDisplay = self.GetHomeString()
             dispatch_async(dispatch_get_main_queue()) {
                 // update some UI
-                let i = 0
+                self.timer?.invalidate()
                 self.theTextView?.attributedText = textToDisplay
                 self.theTextView?.textAlignment = NSTextAlignment.Right
             }
@@ -299,5 +302,27 @@ class MainHomePage: UIViewController {
         }
         //}
 */
+    }
+
+    func animateLoading(timer: NSTimer) {
+        /*var animation = CATransition()
+        animation.duration = 0.5
+        animation.type = kCATransitionPush
+        animation.subtype = kCATransitionFromRight
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        self.theTextView?.layer.addAnimation(animation, forKey: "changeTextTransition")*/
+        if (self.theTextView?.text == "מעדכן...") {
+            self.theTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+            self.theTextView?.textAlignment = NSTextAlignment.Center
+        } else if (self.theTextView?.text == "מעדכן..") {
+            self.theTextView?.attributedText = NSAttributedString(string: "מעדכן...", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+            self.theTextView?.textAlignment = NSTextAlignment.Center
+        } else if (self.theTextView?.text == "מעדכן."){
+            self.theTextView?.attributedText = NSAttributedString(string: "מעדכן..", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+            self.theTextView?.textAlignment = NSTextAlignment.Center
+        } else if (self.theTextView?.text == "מעדכן"){
+            self.theTextView?.attributedText = NSAttributedString(string: "מעדכן.", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+            self.theTextView?.textAlignment = NSTextAlignment.Center
+        }
     }
 }

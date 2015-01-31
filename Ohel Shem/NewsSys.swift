@@ -36,14 +36,26 @@ class NewsSys: UIViewController, UIWebViewDelegate {
         return true
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let stringToShow = "<html> <head> <style>@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css); a{text-decoration : none;} body{ direction: rtl; font-family: \"Alef Hebrew\",\"Helvetica Neue\",Helvetica,Arial,sans-serif; background-color: #FFFFFF;} .LBnews{font-size : 24px;} .LBnews_more{text-decoration : none; font-size : 80%;} </style> </head> " + "<body> <div style=\"text-align:right; text-decoration : none;\">" + SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: true) + "</div> </body> </html>"
+            // do some task
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+                let i = 0
+                self.theWebView?.loadHTMLString(stringToShow, baseURL: NSURL(string: "http://ohel-shem.com/portal4/"))
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let stringToShow = "<html> <head> <style>@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css); a{text-decoration : none;} body{ direction: rtl; font-family: \"Alef Hebrew\",\"Helvetica Neue\",Helvetica,Arial,sans-serif; background-color: #FFFFFF;} .LBnews{font-size : 24px;} .LBnews_more{text-decoration : none; font-size : 80%;} </style> </head> " + "<body> <div style=\"text-align:right; text-decoration : none;\">" + SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: true) + "</div> </body> </html>"
-        self.theWebView?.loadHTMLString(stringToShow, baseURL: NSURL(string: "http://ohel-shem.com/portal4/"))
         self.theWebView?.delegate = self
 
-        //self.theTextView?.text = SchoolWebsiteDataManager.sharedInstance.GetNews()
+        //self.theTextView?.text = SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: true)
         //self.theTextView?.font = UIFont(name: "Alef-Regular", size: 18)
     }
     override func didReceiveMemoryWarning() {
