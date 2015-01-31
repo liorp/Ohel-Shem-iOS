@@ -65,6 +65,7 @@ class ChangesSys: UITableViewController {
                 if (changes.count > 1) {
                     cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": " + (changes[indexPath.row] == "-" ? "אין שינויים!" : changes[indexPath.row])
                     cell.textLabel?.textColor = (changes[indexPath.row] == "-" ? UIColor.blackColor() : UIColor.redColor())
+                    cell.textLabel?.font = (changes[indexPath.row] == "-" ? UIFont(name:"Alef-Regular", size: 16) : UIFont(name:"Alef-Bold", size: 18))
                 } else {
                     cell.textLabel!.text = "לא ניתן היה למצוא שינויים"
                     cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 16)

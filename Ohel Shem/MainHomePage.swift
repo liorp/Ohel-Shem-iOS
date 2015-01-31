@@ -212,13 +212,19 @@ class MainHomePage: UIViewController {
         var weekDay: Int
         weekDay = myComponents.weekday
 
-        let changes: NSAttributedString = (weekDay == 7 ? NSAttributedString(string: "אין לימודים בשבת!", attributes: attrBody) : GetTodaysFormattedChanges(SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: GetTodaysHours()))
+        var stillSabbath = true
+
+        if SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
+            stillSabbath = false
+        }
+
+        let changes: NSAttributedString = ((weekDay == 7 || stillSabbath) ? NSAttributedString(string: "אין לימודים בשבת!", attributes: attrBody) : GetTodaysFormattedChanges(SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: GetTodaysHours()))
 
         final.appendAttributedString(changes)
 
         //Show tests
         let attrTest = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)*/]
-        let attributedTestHead: NSAttributedString = NSAttributedString(string: "\n\nיש לך מבחנים בקרוב: \n", attributes: attrTest)
+        let attributedTestHead: NSAttributedString = NSAttributedString(string: "\nיש לך מבחנים בקרוב: \n", attributes: attrTest)
         final.appendAttributedString(attributedTestHead)
 
         let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
