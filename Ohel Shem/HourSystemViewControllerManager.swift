@@ -37,7 +37,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
         let weekDay = myComponents.weekday
 
-        let firstController = getItemController((weekDay == 7 ? 0 : weekDay - 1))!
+        let firstController = getItemController(weekDay % 7)!
         let startingViewControllers: NSArray = [firstController]
         pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 
@@ -49,9 +49,17 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
 
     private func setupPageControl() {
         let appearance = UIPageControl.appearance()
-        appearance.pageIndicatorTintColor = UIColor.blackColor()
-        appearance.currentPageIndicatorTintColor = UIColor.whiteColor()
-        //appearance.backgroundColor = UIColor(red: 102, green: 255, blue: 204, alpha: 1)
+        appearance.pageIndicatorTintColor = UIColor.lightGrayColor()
+        appearance.currentPageIndicatorTintColor = UIColor.blackColor()
+        appearance.backgroundColor = UIColor.whiteColor()
+        appearance.numberOfPages = numberOfPages
+        let formatter  = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = NSDate(timeIntervalSinceNow: 0)
+        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let weekDay = myComponents.weekday
+        appearance.currentPage = (weekDay - 1) % 7
     }
 
     // MARK: - UIPageViewControllerDataSource
@@ -103,7 +111,8 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
         let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
         let weekDay = myComponents.weekday
-        return weekDay == 7 ? 6 : 6 - weekDay
+        println("weekday " + String(weekDay))
+        return (weekDay - 1) % 7
     }
 }
 

@@ -39,7 +39,7 @@ class NewsSys: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let stringToShow = "<html> <head> <style>@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css); a{text-decoration : none;} body{ direction: rtl; font-family: \"Alef Hebrew\",\"Helvetica Neue\",Helvetica,Arial,sans-serif; background-color: #FF6FCF;} .LBnews{font-size : 24px;} .LBnews_more{text-decoration : none; font-size : 80%;} </style> </head> " + "<body> <div style=\"text-align:right; text-decoration : none;\">" + SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: true) + "</div> </body> </html>"
+        let stringToShow = "<html> <head> <style>@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css); a{text-decoration : none;} body{ direction: rtl; font-family: \"Alef Hebrew\",\"Helvetica Neue\",Helvetica,Arial,sans-serif; background-color: #FFFFFF;} .LBnews{font-size : 24px;} .LBnews_more{text-decoration : none; font-size : 80%;} </style> </head> " + "<body> <div style=\"text-align:right; text-decoration : none;\">" + SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: true) + "</div> </body> </html>"
         self.theWebView?.loadHTMLString(stringToShow, baseURL: NSURL(string: "http://ohel-shem.com/portal4/"))
         self.theWebView?.delegate = self
 

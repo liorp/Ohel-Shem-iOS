@@ -175,7 +175,7 @@ class MainHomePage: UIViewController {
         return returnString
     }
 
-    func SetHomeString() {
+    func GetHomeString() -> NSAttributedString {
 
         var homeString = ""
 
@@ -193,7 +193,7 @@ class MainHomePage: UIViewController {
         let news = SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: false).componentsSeparatedByString(newLine)
 
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
-        let attributedNewsBody = NSMutableAttributedString(string: "\(news[0]), \(news[2]), \(news[4])) \n \n", attributes: attrBody)
+        let attributedNewsBody = NSMutableAttributedString(string: "\(news[0]), \(news[2]), \(news[4]) \n \n", attributes: attrBody)
         final.appendAttributedString(attributedNewsBody)
 
         //Show changes
@@ -228,22 +228,20 @@ class MainHomePage: UIViewController {
         //Append the date of validity of system
         final.appendAttributedString(NSAttributedString(string: "\n" + SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges() + ", וגם מערכת השעות", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
 
-        self.theTextView?.attributedText = final
-        self.theTextView?.textAlignment = NSTextAlignment.Right
-
         let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
 
-        let changesToTodayExt = changes.string + "\n" + SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges() + ", וגם מערכת השעות"
+        let changesToTodayExt = changes.string + " " + SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges() + ", וגם מערכת השעות"
 
         sharedDefaults?.setValue(changesToTodayExt, forKey: "todayViewText")
         sharedDefaults?.synchronize()
+
+        return final
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.theTextView?.font = UIFont(name: "Alef-Regular", size: 18)
-        SetHomeString()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -252,9 +250,24 @@ class MainHomePage: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.addLeftMenuButton()
+        self.theTextView?.attributedText = NSAttributedString(string: "מעדכן...", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+        self.theTextView?.textAlignment = NSTextAlignment.Center
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            let textToDisplay = self.GetHomeString()
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+                let i = 0
+                self.theTextView?.attributedText = textToDisplay
+                self.theTextView?.textAlignment = NSTextAlignment.Right
+            }
+        }
+/*
         //self.theTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
         /*let seen: Bool = NSUserDefaults.standardUserDefaults().boolForKey("seenTutorial")
         if seen {
@@ -269,21 +282,22 @@ class MainHomePage: UIViewController {
                 let i = 1
                 let seenCoachingMarks = NSUserDefaults.standardUserDefaults().boolForKey("seenCoachingMarks")
                 if seenCoachingMarks == false {
-                //NSUserDefaults.standardUserDefaults().setBool(true, forKey: "seenCoachingMarks")
-                //NSUserDefaults.standardUserDefaults().synchronize()
-                // Setup coach marks
-                let coachMarks = [
-                [
-                "rect": NSValue(CGRect: CGRectMake(0, 0, 45, 45)),//self.navigationItem.leftBarButtonItem!.customView!.frame),
-                "caption": "תפריט"
-                ]
-                ]
-                let coachMarksView = WSCoachMarksView(frame: self.view.frame, coachMarks: coachMarks)
-                //self.view.addSubview(coachMarksView)
-                //coachMarksView.start()
+                    //NSUserDefaults.standardUserDefaults().setBool(true, forKey: "seenCoachingMarks")
+                    //NSUserDefaults.standardUserDefaults().synchronize()
+                    // Setup coach marks
+                    let coachMarks = [
+                        [
+                            "rect": NSValue(CGRect: CGRectMake(0, 0, 45, 45)),//self.navigationItem.leftBarButtonItem!.customView!.frame),
+                            "caption": "תפריט"
+                        ]
+                    ]
+                    let coachMarksView = WSCoachMarksView(frame: self.view.frame, coachMarks: coachMarks)
+                    //self.view.addSubview(coachMarksView)
+                    //coachMarksView.start()
                 }
             })
         }
         //}
+*/
     }
 }

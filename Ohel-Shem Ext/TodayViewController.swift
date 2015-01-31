@@ -46,7 +46,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
     func userDefaultsDidChange(notification: NSNotification) {
-        self.updateLabel()
+        self.widgetPerformUpdateWithCompletionHandler{
+            (result: NCUpdateResult) in
+            println("got back: \(result)")
+        }
     }
 
     func updateLabel(){
@@ -66,7 +69,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     func gotoMainApp() {
         self.extensionContext?.openURL(NSURL(string: "OhelShem://")!, completionHandler:{(success: Bool) -> Void in
-            println("task done!")
         })
     }
 }

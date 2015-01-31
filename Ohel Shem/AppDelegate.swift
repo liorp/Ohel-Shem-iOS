@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.applicationIconBadgeNumber = 0
         }
 
-        if (!application.isRegisteredForRemoteNotifications()) {
+        //if (!application.isRegisteredForRemoteNotifications()) {
+            application.cancelAllLocalNotifications()
             application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
             var localNotification = UILocalNotification()
 
@@ -48,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             localNotification.fireDate = date
 
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        }
+        //}
 
         let font : UIFont? = UIFont(name: "Alef-Bold", size: 22)
 
@@ -93,6 +94,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.checkVersion(.Weekly)*/
         
         return true
+    }
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+
     }
 
     func applicationWillResignActive(application: UIApplication) {

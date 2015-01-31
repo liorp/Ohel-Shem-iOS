@@ -64,7 +64,6 @@ class HourSys: UITableViewController {
         cell.textLabel!.textAlignment = NSTextAlignment.Right
         cell.textLabel!.backgroundColor = UIColor.clearColor()
         cell.backgroundColor = UIColor.clearColor()
-        println("ran")
         return cell
     }
 

@@ -30,13 +30,17 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>863</string>
+	<string>907</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Alef-Bold.ttf</string>
 		<string>Alef-Regular.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
