@@ -257,21 +257,23 @@ class MainHomePage: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.addLeftMenuButton()
-        self.theTextView?.attributedText = NSAttributedString(string: "מעדכן.", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+        self.theTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
         self.theTextView?.textAlignment = NSTextAlignment.Center
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
+        //timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
+        self.animateLoading(NSTimer())
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // do some task
             let textToDisplay = self.GetHomeString()
             dispatch_async(dispatch_get_main_queue()) {
                 // update some UI
-                self.timer?.invalidate()
+                //self.timer?.invalidate()
+                self.theTextView?.layer.removeAllAnimations()
                 self.theTextView?.attributedText = textToDisplay
                 self.theTextView?.textAlignment = NSTextAlignment.Right
             }
@@ -317,7 +319,22 @@ class MainHomePage: UIViewController {
         animation.subtype = kCATransitionFromRight
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         self.theTextView?.layer.addAnimation(animation, forKey: "changeTextTransition")*/
-        if (self.theTextView?.text == "מעדכן...") {
+        var animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+
+        let times = [0.0, 0.25, 0.45, 0.90, 1.0]
+        let angles = [0, (-M_PI * 20.0/180.0), (-M_PI * 20.0/180.0), (M_PI * 2.0), (M_PI * 2.0)]
+        let functions = [CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)]
+        animation.keyTimes = times
+        animation.values = angles
+        animation.timingFunctions = functions
+        animation.duration = 1.7
+        animation.repeatCount = Float.infinity
+        let oldFrame = self.theTextView?.frame
+        self.theTextView?.layer.anchorPoint = CGPointMake(0.5, 0)
+        self.theTextView?.frame = oldFrame!
+        self.theTextView?.layer.addAnimation(animation, forKey: "loading.animation.key")
+
+        /*if (self.theTextView?.text == "מעדכן...") {
             self.theTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
             self.theTextView?.textAlignment = NSTextAlignment.Center
         } else if (self.theTextView?.text == "מעדכן..") {
@@ -329,6 +346,6 @@ class MainHomePage: UIViewController {
         } else if (self.theTextView?.text == "מעדכן"){
             self.theTextView?.attributedText = NSAttributedString(string: "מעדכן.", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
             self.theTextView?.textAlignment = NSTextAlignment.Center
-        }
+        }*/
     }
 }

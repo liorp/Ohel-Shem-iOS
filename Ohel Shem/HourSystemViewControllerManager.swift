@@ -37,7 +37,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
         let weekDay = myComponents.weekday
 
-        let firstController = getItemController(weekDay % 7)!
+        let firstController = getItemController((weekDay - 1) % 7)!
         let startingViewControllers: NSArray = [firstController]
         pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 
@@ -53,13 +53,14 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         appearance.currentPageIndicatorTintColor = UIColor.blackColor()
         appearance.backgroundColor = UIColor.whiteColor()
         appearance.numberOfPages = numberOfPages
+
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 0)
         let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
         let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
         let weekDay = myComponents.weekday
-        appearance.currentPage = (weekDay - 1) % 7
+        appearance.currentPage = (6 - weekDay) % 7
     }
 
     // MARK: - UIPageViewControllerDataSource
@@ -112,7 +113,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
         let weekDay = myComponents.weekday
         println("weekday " + String(weekDay))
-        return (weekDay - 1) % 7
+        return (6 - weekDay) % 7
     }
 }
 

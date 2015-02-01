@@ -122,7 +122,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         gestureRecognizer.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(gestureRecognizer)
 
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = 44
 
         self.tableView.estimatedRowHeight = 44
 

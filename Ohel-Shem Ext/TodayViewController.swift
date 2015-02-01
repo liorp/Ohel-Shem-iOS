@@ -55,7 +55,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func updateLabel(){
         var sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
         if let text = sharedDefaults?.valueForKey("todayViewText") as? String {
-            widgetLabel?.text = "בגדול, היום שלך נראה ככה: " + text.stringByReplacingOccurrencesOfString("\n", withString: ", ", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)//.substringToIndex(advance(text.endIndex, -2))
+            widgetLabel?.text = "בגדול, היום שלך נראה ככה: " + text//.stringByReplacingOccurrencesOfString("\n", withString: ", ", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)//.substringToIndex(advance(text.endIndex, -2))
         } else {
             widgetLabel?.text = "גע לעדכון"
         }
