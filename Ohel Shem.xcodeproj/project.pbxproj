@@ -58,6 +58,14 @@
 		8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */; };
 		8D861FEF1A6F8976005EEA7A /* Alef-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEE1A6F8976005EEA7A /* Alef-Bold.ttf */; };
 		8D861FF21A724A8D005EEA7A /* CustomTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FF11A724A8C005EEA7A /* CustomTestCell.swift */; };
+		8DB35B3C1A87B64A00F028EA /* 3slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3B1A87B64A00F028EA /* 3slidecell.png */; };
+		8DB35B3E1A87B6AA00F028EA /* MBProgressHUD.license in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */; };
+		8DB35B691A89415000F028EA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B401A89415000F028EA /* .gitignore */; };
+		8DB35B6A1A89415000F028EA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B411A89415000F028EA /* .travis.yml */; };
+		8DB35B7D1A89415000F028EA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B5F1A89415000F028EA /* LICENSE */; };
+		8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB35B621A89415000F028EA /* MBProgressHUD.m */; };
+		8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B631A89415000F028EA /* MBProgressHUD.podspec */; };
+		8DB35B801A89415000F028EA /* MBProgressHUD.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */; };
 		8DE5079C1A6007D80015C96D /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE507781A6007D80015C96D /* HTMLComment.m */; };
 		8DE5079D1A6007D80015C96D /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5077A1A6007D80015C96D /* HTMLDocument.m */; };
 		8DE5079E1A6007D80015C96D /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5077C1A6007D80015C96D /* HTMLDocumentType.m */; };
@@ -81,13 +89,13 @@
 		8DE7C9401A55FE0000190B79 /* CustomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C93F1A55FE0000190B79 /* CustomMenuCell.swift */; };
 		8DE7C9421A56CBDF00190B79 /* FirstTimeHere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C9411A56CBDF00190B79 /* FirstTimeHere.swift */; };
 		8DE7C94F1A56D54000190B79 /* NewsSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C94E1A56D54000190B79 /* NewsSys.swift */; };
-		8DE7C9561A58136100190B79 /* 3slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9511A58136100190B79 /* 3slidecell.png */; };
-		8DE7C9571A58136100190B79 /* 4slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9521A58136100190B79 /* 4slidecell.png */; };
+		8DE7C9561A58136100190B79 /* 4slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9511A58136100190B79 /* 4slidecell.png */; };
+		8DE7C9571A58136100190B79 /* 5slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9521A58136100190B79 /* 5slidecell.png */; };
 		8DE7C9581A58136100190B79 /* 2slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9531A58136100190B79 /* 2slidecell.png */; };
-		8DE7C9591A58136100190B79 /* 7slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9541A58136100190B79 /* 7slidecell.png */; };
+		8DE7C9591A58136100190B79 /* 8slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9541A58136100190B79 /* 8slidecell.png */; };
 		8DE7C95A1A58136100190B79 /* 1slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9551A58136100190B79 /* 1slidecell.png */; };
-		8DE7C95C1A5813F300190B79 /* 5slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95B1A5813F300190B79 /* 5slidecell.png */; };
-		8DE7C95E1A58142200190B79 /* 6slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95D1A58142200190B79 /* 6slidecell.png */; };
+		8DE7C95C1A5813F300190B79 /* 6slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95B1A5813F300190B79 /* 6slidecell.png */; };
+		8DE7C95E1A58142200190B79 /* 7slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95D1A58142200190B79 /* 7slidecell.png */; };
 		8DE7C9721A58566C00190B79 /* appicon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9601A58566C00190B79 /* appicon-60.png */; };
 		8DE7C9731A58566C00190B79 /* appicon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9611A58566C00190B79 /* appicon-60@2x.png */; };
 		8DE7C9741A58566C00190B79 /* appicon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9621A58566C00190B79 /* appicon-60@3x.png */; };
@@ -139,6 +147,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8D41A7D41A53341800168254;
 			remoteInfo = "Ohel Shem";
+		};
+		8DB35B861A89415000F028EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DB35B641A89415000F028EA /* MBProgressHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D286A7491518C70F00E13FB8;
+			remoteInfo = MBProgressHUD;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -231,6 +246,18 @@
 		8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Regular.ttf"; sourceTree = "<group>"; };
 		8D861FEE1A6F8976005EEA7A /* Alef-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Bold.ttf"; sourceTree = "<group>"; };
 		8D861FF11A724A8C005EEA7A /* CustomTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTestCell.swift; sourceTree = "<group>"; };
+		8DB35B3B1A87B64A00F028EA /* 3slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3slidecell.png; sourceTree = "<group>"; };
+		8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBProgressHUD.license; sourceTree = "<group>"; };
+		8DB35B401A89415000F028EA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8DB35B411A89415000F028EA /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		8DB35B5F1A89415000F028EA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8DB35B601A89415000F028EA /* MBProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		8DB35B611A89415000F028EA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8DB35B621A89415000F028EA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8DB35B631A89415000F028EA /* MBProgressHUD.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBProgressHUD.podspec; sourceTree = "<group>"; };
+		8DB35B641A89415000F028EA /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
+		8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = MBProgressHUD.xcworkspace; sourceTree = "<group>"; };
+		8DB35B681A89415000F028EA /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		8DE507771A6007D80015C96D /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLComment.h; sourceTree = "<group>"; };
 		8DE507781A6007D80015C96D /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLComment.m; sourceTree = "<group>"; };
 		8DE507791A6007D80015C96D /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDocument.h; sourceTree = "<group>"; };
@@ -277,13 +304,13 @@
 		8DE7C93F1A55FE0000190B79 /* CustomMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenuCell.swift; sourceTree = "<group>"; };
 		8DE7C9411A56CBDF00190B79 /* FirstTimeHere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTimeHere.swift; sourceTree = "<group>"; };
 		8DE7C94E1A56D54000190B79 /* NewsSys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSys.swift; sourceTree = "<group>"; };
-		8DE7C9511A58136100190B79 /* 3slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3slidecell.png; sourceTree = "<group>"; };
-		8DE7C9521A58136100190B79 /* 4slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4slidecell.png; sourceTree = "<group>"; };
+		8DE7C9511A58136100190B79 /* 4slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4slidecell.png; sourceTree = "<group>"; };
+		8DE7C9521A58136100190B79 /* 5slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5slidecell.png; sourceTree = "<group>"; };
 		8DE7C9531A58136100190B79 /* 2slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2slidecell.png; sourceTree = "<group>"; };
-		8DE7C9541A58136100190B79 /* 7slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7slidecell.png; sourceTree = "<group>"; };
+		8DE7C9541A58136100190B79 /* 8slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8slidecell.png; sourceTree = "<group>"; };
 		8DE7C9551A58136100190B79 /* 1slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1slidecell.png; sourceTree = "<group>"; };
-		8DE7C95B1A5813F300190B79 /* 5slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5slidecell.png; sourceTree = "<group>"; };
-		8DE7C95D1A58142200190B79 /* 6slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6slidecell.png; sourceTree = "<group>"; };
+		8DE7C95B1A5813F300190B79 /* 6slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6slidecell.png; sourceTree = "<group>"; };
+		8DE7C95D1A58142200190B79 /* 7slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7slidecell.png; sourceTree = "<group>"; };
 		8DE7C9601A58566C00190B79 /* appicon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60.png"; sourceTree = "<group>"; };
 		8DE7C9611A58566C00190B79 /* appicon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60@2x.png"; sourceTree = "<group>"; };
 		8DE7C9621A58566C00190B79 /* appicon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60@3x.png"; sourceTree = "<group>"; };
@@ -362,6 +389,7 @@
 				8D1157331A7680AD0073CB5F /* Acknowledgements.py */,
 				8D1157361A76813D0073CB5F /* CFSSpringTableView.license */,
 				8D0800EF1A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license */,
+				8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */,
 			);
 			path = Licenses;
 			sourceTree = "<group>";
@@ -473,6 +501,7 @@
 				8DE7C95F1A58566C00190B79 /* iphone */,
 				8D1157251A767BC70073CB5F /* Licenses */,
 				8DE7C9281A549AC200190B79 /* iRate */,
+				8DB35B3F1A89415000F028EA /* MBProgressHUD */,
 				8D41A7E31A53341800168254 /* LaunchScreen.xib */,
 				8D41A7DE1A53341800168254 /* Main.storyboard */,
 				8D3FAF371A53BDF60008EB99 /* Ohel-Shem Ext */,
@@ -550,6 +579,31 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		8DB35B3F1A89415000F028EA /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8DB35B401A89415000F028EA /* .gitignore */,
+				8DB35B411A89415000F028EA /* .travis.yml */,
+				8DB35B5F1A89415000F028EA /* LICENSE */,
+				8DB35B601A89415000F028EA /* MBProgressHUD-Prefix.pch */,
+				8DB35B611A89415000F028EA /* MBProgressHUD.h */,
+				8DB35B621A89415000F028EA /* MBProgressHUD.m */,
+				8DB35B631A89415000F028EA /* MBProgressHUD.podspec */,
+				8DB35B641A89415000F028EA /* MBProgressHUD.xcodeproj */,
+				8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */,
+				8DB35B681A89415000F028EA /* README.mdown */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		8DB35B651A89415000F028EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DB35B871A89415000F028EA /* libMBProgressHUD.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8DE507761A6007D80015C96D /* HTMLReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,14 +662,15 @@
 		8DE7C9501A58136100190B79 /* png */ = {
 			isa = PBXGroup;
 			children = (
-				8DE7C9511A58136100190B79 /* 3slidecell.png */,
-				8DE7C95B1A5813F300190B79 /* 5slidecell.png */,
-				8DE7C9521A58136100190B79 /* 4slidecell.png */,
+				8DE7C9511A58136100190B79 /* 4slidecell.png */,
+				8DE7C95B1A5813F300190B79 /* 6slidecell.png */,
+				8DE7C9521A58136100190B79 /* 5slidecell.png */,
 				8DE7C9531A58136100190B79 /* 2slidecell.png */,
-				8DE7C9541A58136100190B79 /* 7slidecell.png */,
-				8DE7C95D1A58142200190B79 /* 6slidecell.png */,
+				8DE7C9541A58136100190B79 /* 8slidecell.png */,
+				8DE7C95D1A58142200190B79 /* 7slidecell.png */,
 				8DE7C9551A58136100190B79 /* 1slidecell.png */,
 				8D00BFD81A6469A10098A608 /* 0slidecell.png */,
+				8DB35B3B1A87B64A00F028EA /* 3slidecell.png */,
 			);
 			path = png;
 			sourceTree = "<group>";
@@ -768,6 +823,10 @@
 					ProductGroup = 8D3FAF4B1A542D660008EB99 /* Products */;
 					ProjectRef = 8D3FAF4A1A542D660008EB99 /* Alamofire.xcodeproj */;
 				},
+				{
+					ProductGroup = 8DB35B651A89415000F028EA /* Products */;
+					ProjectRef = 8DB35B641A89415000F028EA /* MBProgressHUD.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -793,6 +852,13 @@
 			remoteRef = 8D3FAF511A542D660008EB99 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8DB35B871A89415000F028EA /* libMBProgressHUD.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMBProgressHUD.a;
+			remoteRef = 8DB35B861A89415000F028EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -811,7 +877,7 @@
 				8D41A7E01A53341800168254 /* Main.storyboard in Resources */,
 				8D0800F01A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license in Resources */,
 				8DE7C97E1A58566C00190B79 /* appicon-Small@2x.png in Resources */,
-				8DE7C95E1A58142200190B79 /* 6slidecell.png in Resources */,
+				8DE7C95E1A58142200190B79 /* 7slidecell.png in Resources */,
 				8DE7C9761A58566C00190B79 /* appicon-72@2x.png in Resources */,
 				8DE7C9771A58566C00190B79 /* appicon-76.png in Resources */,
 				8D11572C1A767C460073CB5F /* AMSlideMenu.license in Resources */,
@@ -820,11 +886,13 @@
 				8DE7C9581A58136100190B79 /* 2slidecell.png in Resources */,
 				8D41A7E51A53341800168254 /* LaunchScreen.xib in Resources */,
 				8DE7C9271A549AA600190B79 /* timetable.json in Resources */,
+				8DB35B6A1A89415000F028EA /* .travis.yml in Resources */,
 				8DE7C98B1A5AB4DE00190B79 /* CFSSpringTableView.podspec in Resources */,
 				8DE7C9811A58566C00190B79 /* appicon@2x.png in Resources */,
 				8DE7C97F1A58566C00190B79 /* appicon-Small@3x.png in Resources */,
-				8DE7C95C1A5813F300190B79 /* 5slidecell.png in Resources */,
+				8DE7C95C1A5813F300190B79 /* 6slidecell.png in Resources */,
 				8DE7C9801A58566C00190B79 /* appicon.png in Resources */,
+				8DB35B7D1A89415000F028EA /* LICENSE in Resources */,
 				8D1169CE1A72EE0400B59241 /* WSCoachMarksView.podspec in Resources */,
 				8D861FE71A685543005EEA7A /* Siren.bundle in Resources */,
 				8DE7C9741A58566C00190B79 /* appicon-60@3x.png in Resources */,
@@ -839,25 +907,30 @@
 				8D1157371A76813D0073CB5F /* CFSSpringTableView.license in Resources */,
 				8DE7C9791A58566C00190B79 /* appicon-Small-40.png in Resources */,
 				8DE7C97C1A58566C00190B79 /* appicon-Small-50@2x.png in Resources */,
-				8DE7C9571A58136100190B79 /* 4slidecell.png in Resources */,
+				8DE7C9571A58136100190B79 /* 5slidecell.png in Resources */,
 				8DE7C97D1A58566C00190B79 /* appicon-Small.png in Resources */,
 				8DE7C95A1A58136100190B79 /* 1slidecell.png in Resources */,
+				8DB35B801A89415000F028EA /* MBProgressHUD.xcworkspace in Resources */,
 				8D41A7E21A53341800168254 /* Images.xcassets in Resources */,
 				8DE7C92C1A549AC200190B79 /* iRate.bundle in Resources */,
 				8DE7C97B1A58566C00190B79 /* appicon-Small-50.png in Resources */,
 				8DE7C9731A58566C00190B79 /* appicon-60@2x.png in Resources */,
-				8DE7C9561A58136100190B79 /* 3slidecell.png in Resources */,
+				8DE7C9561A58136100190B79 /* 4slidecell.png in Resources */,
 				8D1169CA1A72EE0400B59241 /* .gitignore in Resources */,
+				8DB35B691A89415000F028EA /* .gitignore in Resources */,
 				8D11572A1A767C0E0073CB5F /* Siren.license in Resources */,
 				8D1157321A767D4A0073CB5F /* Alef.license in Resources */,
 				8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */,
+				8DB35B3E1A87B6AA00F028EA /* MBProgressHUD.license in Resources */,
 				8DE7C9721A58566C00190B79 /* appicon-60.png in Resources */,
 				8DE7C97A1A58566C00190B79 /* appicon-Small-40@2x.png in Resources */,
 				8DE7C9831A58566C00190B79 /* iTunesArtwork@2x in Resources */,
+				8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */,
+				8DB35B3C1A87B64A00F028EA /* 3slidecell.png in Resources */,
 				8DE7C9781A58566C00190B79 /* appicon-76@2x.png in Resources */,
 				8D1157301A767CC30073CB5F /* WSCoachMarksView.license in Resources */,
 				8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */,
-				8DE7C9591A58136100190B79 /* 7slidecell.png in Resources */,
+				8DE7C9591A58136100190B79 /* 8slidecell.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +1004,7 @@
 				8DE507AA1A6007D80015C96D /* HTMLTreeEnumerator.m in Sources */,
 				8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */,
 				8DE507A21A6007D80015C96D /* HTMLOrderedDictionary.m in Sources */,
+				8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */,
 				8D861FE81A685543005EEA7A /* Siren.swift in Sources */,
 				8D41A80C1A53348200168254 /* AMSlideMenuLeftTableViewController.m in Sources */,
 				8DE507A51A6007D80015C96D /* HTMLSelector.m in Sources */,

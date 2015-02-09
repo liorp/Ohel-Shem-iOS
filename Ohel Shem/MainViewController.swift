@@ -76,18 +76,21 @@ class MainViewController: AMSlideMenuMainViewController {
             theSegue = "toHour"
             break
         case 3:
-            theSegue = "toTest"
+            theSegue = "toBell"
             break
         case 4:
-            theSegue = "toNews"
+            theSegue = "toTest"
             break
         case 5:
-            theSegue = "toTerms"
+            theSegue = "toNews"
             break
         case 6:
-            theSegue = "toAbout"
+            theSegue = "toTerms"
             break
         case 7:
+            theSegue = "toAbout"
+            break
+        case 8:
             theSegue = "toSettings"
             break
         default:

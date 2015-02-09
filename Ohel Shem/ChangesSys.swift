@@ -36,7 +36,7 @@ class ChangesSys: UITableViewController {
 
         changes = SchoolWebsiteDataManager.sharedInstance.GetChanges()
 
-        self.tableView.reloadData()
+        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
         let formatter = NSDateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
@@ -123,7 +123,7 @@ class ChangesSys: UITableViewController {
                 // update some UI
                 let i = 0
                 self.isRefreshing = false
-                self.tableView.reloadData()
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                 //self.theTextView?.attributedText = textToDisplay
                 //self.theTextView?.textAlignment = NSTextAlignment.Right
             }

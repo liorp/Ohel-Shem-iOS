@@ -16,7 +16,7 @@ extension String {
     }
 }
 
-class TestSys: UITableViewController {
+class TestSys: UITableViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var refresherControl: UIRefreshControl?
 
@@ -56,7 +56,7 @@ class TestSys: UITableViewController {
                 // update some UI
                 let i = 0
                 self.isRefreshing = false
-                self.tableView.reloadData()
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                 //self.theTextView?.attributedText = textToDisplay
                 //self.theTextView?.textAlignment = NSTextAlignment.Right
             }
@@ -67,7 +67,7 @@ class TestSys: UITableViewController {
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק מבחנים")
 
         testsArr = SchoolWebsiteDataManager.sharedInstance.GetTests()
-        self.tableView.reloadData()
+        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
         let formatter = NSDateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
@@ -82,42 +82,64 @@ class TestSys: UITableViewController {
         let titleSpaceSeperated = ((selectedCell! as CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         let subtitleSpaceSeperated = ((selectedCell! as CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
-        var saveAlert: UIAlertController
+        if (objc_getClass("UIAlertController") != nil) {
+            var saveAlert: UIAlertController
 
-        //If it's a moed b we display moed b
-        if (String(titleSpaceSeperated[1] as NSString) == "במועד") {
-            saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
+            //If it's a moed b we display moed b
+            if (String(titleSpaceSeperated[1] as NSString) == "במועד") {
+                saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
 
+            } else {
+                saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
+            }
+
+            let cancelAction = UIAlertAction(title: "לא", style: .Cancel) { (action) in
+                selectedCell!.setSelected(false, animated: false)
+            }
+            saveAlert.addAction(cancelAction)
+
+            let OKAction = UIAlertAction(title: "כן", style: .Default) { (action) in
+                let daysTextField = saveAlert.textFields![0] as UITextField
+                let num = daysTextField.text!.toInt()
+                selectedCell?.setSelected(false, animated: false)
+                self.haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String], numberOfDaysBefore: num!)
+            }
+
+            OKAction.enabled = false
+
+            saveAlert.addAction(OKAction)
+
+            saveAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                textField.placeholder = "כמה ימים לפני?"
+
+                NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue(), usingBlock: { (notification) -> Void in
+                    OKAction.enabled = (textField.text != "" && textField.text.toInt() != nil)
+                })
+            }
+            
+            self.presentViewController(saveAlert, animated: true) {
+                // ...
+            }
         } else {
-            saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
+            var saveAlert: UIAlertView
+            if (String(titleSpaceSeperated[1] as NSString) == "במועד") {
+                let message = ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString))
+                saveAlert = UIAlertView(title: "רוצה שאזכיר לך לפני?", message: message, delegate: self, cancelButtonTitle: "כן", otherButtonTitles: "לא")
+
+            } else {
+                let message = "על המבחן " + String(titleSpaceSeperated[1] as NSString)
+                saveAlert = UIAlertView(title: "רוצה שאזכיר לך לפני?", message: message, delegate: self, cancelButtonTitle: "כן", otherButtonTitles: "לא")
+            }
+            saveAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+            saveAlert.show()
         }
+    }
 
-        let cancelAction = UIAlertAction(title: "לא", style: .Cancel) { (action) in
-            selectedCell!.setSelected(false, animated: false)
-        }
-        saveAlert.addAction(cancelAction)
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if (alertView.textFieldAtIndex(0)!.text != "" && alertView.textFieldAtIndex(0)!.text.toInt() != nil) {
+            //haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String], numberOfDaysBefore: alertView.textFieldAtIndex(0).text.toInt()!)
+        } else {
 
-        let OKAction = UIAlertAction(title: "כן", style: .Default) { (action) in
-            let daysTextField = saveAlert.textFields![0] as UITextField
-            let num = daysTextField.text!.toInt()
-            selectedCell?.setSelected(false, animated: false)
-            self.haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String], numberOfDaysBefore: num!)
-        }
-
-        OKAction.enabled = false
-
-        saveAlert.addAction(OKAction)
-
-        saveAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            textField.placeholder = "כמה ימים לפני?"
-
-            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue(), usingBlock: { (notification) -> Void in
-                OKAction.enabled = (textField.text != "" && textField.text.toInt() != nil)
-            })
-        }
-
-        self.presentViewController(saveAlert, animated: true) {
-            // ...
         }
     }
 

@@ -23,5 +23,6 @@
 #import "FBShimmering/FBShimmeringLayer.h"
 #import "FBShimmering/FBShimmeringView.h"
 #import "WSCoachMarksView-master/WSCoachMarksView.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
 #endif

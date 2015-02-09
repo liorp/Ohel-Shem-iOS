@@ -39,6 +39,7 @@ class SchoolTerms: UIViewController {
 
         let termsURL = NSURL(string: "http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
         let theRequest = NSURLRequest(URL: termsURL!)
+        //theRequest.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
         terms!.loadRequest(theRequest)
         terms!.scalesPageToFit = true
     }
