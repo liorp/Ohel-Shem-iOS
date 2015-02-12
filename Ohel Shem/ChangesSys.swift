@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Alamofire
+//import Alamofire
 
 class ChangesSys: UITableViewController {
 
@@ -74,12 +74,14 @@ class ChangesSys: UITableViewController {
                 //Display day of changes in last row
                 cell.textLabel!.text = dateOfChanges
                 cell.textLabel?.textColor = UIColor.redColor()
-                cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 14)
+                cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 16)
             }
 
             cell.textLabel!.textAlignment = NSTextAlignment.Right
             cell.textLabel!.backgroundColor = UIColor.clearColor()
             cell.backgroundColor = UIColor.clearColor()
+            cell.textLabel!.lineBreakMode = .ByWordWrapping
+            cell.textLabel!.numberOfLines = 0
 
             return cell
         } else {

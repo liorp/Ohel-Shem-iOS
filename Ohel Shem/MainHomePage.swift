@@ -26,7 +26,7 @@ class MainHomePage: UIViewController {
     func GetGreeting() -> String{
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
+        let components = calendar.components(.CalendarUnitHour, fromDate: date)
         let hour = components.hour
 
         var homeString = "שלום, "

@@ -51,6 +51,14 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
     //MARK: - UITextField Delegate Methods
 
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if (textField.text == classNum?.text || textField.text == layerNum?.text) {
+            return false
+        } else {
+            return true
+        }
+    }
+
     func textFieldDidBeginEditing(textField: UITextField!) {
         activeTextField = textField
         //tableView.scrollEnabled = true
@@ -116,7 +124,9 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)*/
 
         tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.Interactive
-        hello!.font = UIFont(name: "Alef-Bold", size: 7.8 * UIScreen.mainScreen().scale)
+        hello!.font = UIFont(name: "Alef-Bold", size: 18 + 3 * UIScreen.mainScreen().scale)
+        hello!.lineBreakMode = .ByWordWrapping
+        hello!.numberOfLines = 0
 
         var gestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         gestureRecognizer.cancelsTouchesInView = false

@@ -57,5 +57,6 @@ class SchoolTerms: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
+        self.navigationController?.navigationBar.translucent = false
     }
 }
