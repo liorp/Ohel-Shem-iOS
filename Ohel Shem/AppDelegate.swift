@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var j = 0
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-            application.registerForRemoteNotifications()
+            application.unregisterForRemoteNotifications()
         /*for family in UIFont.familyNames()
         {
             println(family)
@@ -33,23 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.applicationIconBadgeNumber = 0
         }
 
-        //if (!application.isRegisteredForRemoteNotifications()) {
-            application.cancelAllLocalNotifications()
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
-            var localNotification = UILocalNotification()
-
-            let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
-
-            localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
-            localNotification.timeZone = NSTimeZone.defaultTimeZone()
-            localNotification.applicationIconBadgeNumber = 1
-            localNotification.soundName = UILocalNotificationDefaultSoundName;
-            localNotification.alertAction = "כן!"
-            localNotification.repeatInterval = NSCalendarUnit.DayCalendarUnit
-            localNotification.fireDate = date
-
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        //}
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
 
         let font : UIFont? = UIFont(name: "Alef-Bold", size: 22)
 
@@ -98,6 +82,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
 
+    }
+
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        var localNotification = UILocalNotification()
+
+        let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
+
+        localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.applicationIconBadgeNumber = 1
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        localNotification.alertAction = "כן!"
+        localNotification.repeatInterval = NSCalendarUnit.DayCalendarUnit
+        localNotification.fireDate = date
+
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
 
     func applicationWillResignActive(application: UIApplication) {
