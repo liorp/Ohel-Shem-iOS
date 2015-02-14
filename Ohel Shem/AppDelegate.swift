@@ -33,7 +33,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.applicationIconBadgeNumber = 0
         }
 
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        } else {
+            let localNotification = UILocalNotification()
+
+            //let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
+
+            let now = NSDate(timeIntervalSinceNow: 0)
+            let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+            let components = calendar?.components(NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.SecondCalendarUnit, fromDate: now)
+            components?.setValue(21, forComponent: NSCalendarUnit.HourCalendarUnit)
+            components?.setValue(3, forComponent: NSCalendarUnit.MinuteCalendarUnit)
+            components?.setValue(0, forComponent: NSCalendarUnit.SecondCalendarUnit)
+
+            localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.applicationIconBadgeNumber = 1
+            localNotification.soundName = UILocalNotificationDefaultSoundName;
+            localNotification.alertAction = "כן!"
+            localNotification.repeatInterval = NSCalendarUnit.DayCalendarUnit
+            localNotification.fireDate = calendar?.dateFromComponents(components!)
+
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
 
         let font : UIFont? = UIFont(name: "Alef-Bold", size: 22)
 
@@ -85,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        var localNotification = UILocalNotification()
+        let localNotification = UILocalNotification()
 
         let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
 
@@ -108,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        NSURLCache.sharedURLCache().removeAllCachedResponses() //Clears the cache
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

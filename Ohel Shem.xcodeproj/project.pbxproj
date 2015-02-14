@@ -25,6 +25,7 @@
 		8D1169CB1A72EE0400B59241 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C51A72EE0400B59241 /* LICENSE */; };
 		8D1169CD1A72EE0400B59241 /* WSCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1169C81A72EE0400B59241 /* WSCoachMarksView.m */; };
 		8D1169CE1A72EE0400B59241 /* WSCoachMarksView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C91A72EE0400B59241 /* WSCoachMarksView.podspec */; };
+		8D13C0B01A8F718500B3472A /* LaunchImages7.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */; };
 		8D1DD7E11A613B3D000B9C9A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D1DD7E01A613B3D000B9C9A /* EventKit.framework */; };
 		8D3FAF1A1A5352BA0008EB99 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3FAF181A53521F0008EB99 /* libxml2.dylib */; };
 		8D3FAF2C1A535AF40008EB99 /* TestSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3FAF2B1A535AF40008EB99 /* TestSys.swift */; };
@@ -196,6 +197,7 @@
 		8D1169C71A72EE0400B59241 /* WSCoachMarksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCoachMarksView.h; sourceTree = "<group>"; };
 		8D1169C81A72EE0400B59241 /* WSCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCoachMarksView.m; sourceTree = "<group>"; };
 		8D1169C91A72EE0400B59241 /* WSCoachMarksView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WSCoachMarksView.podspec; sourceTree = "<group>"; };
+		8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LaunchImages7.xcassets; sourceTree = "<group>"; };
 		8D1DD7E01A613B3D000B9C9A /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		8D3FAF181A53521F0008EB99 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		8D3FAF2B1A535AF40008EB99 /* TestSys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSys.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				8D861FE41A685543005EEA7A /* Siren */,
 				8D41A7D81A53341800168254 /* Supporting Files */,
 				8D1169C31A72EE0400B59241 /* WSCoachMarksView-master */,
+				8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */,
 			);
 			path = "Ohel Shem";
 			sourceTree = "<group>";
@@ -931,6 +934,7 @@
 				8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */,
 				8DB35B3C1A87B64A00F028EA /* 3slidecell.png in Resources */,
 				8DE7C9781A58566C00190B79 /* appicon-76@2x.png in Resources */,
+				8D13C0B01A8F718500B3472A /* LaunchImages7.xcassets in Resources */,
 				8D1157301A767CC30073CB5F /* WSCoachMarksView.license in Resources */,
 				8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */,
 				8DE7C9591A58136100190B79 /* 8slidecell.png in Resources */,
@@ -1161,7 +1165,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1198,7 +1202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1210,6 +1214,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Ohel Shem/Ohel Shem.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1226,7 +1231,7 @@
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Ohel Shem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -1242,6 +1247,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Ohel Shem/Ohel Shem.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1256,7 +1262,7 @@
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Ohel Shem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-lxml2",

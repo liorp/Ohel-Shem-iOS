@@ -23,7 +23,7 @@ class MainViewController: AMSlideMenuMainViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func updateKVStoreItems (notification: NSNotification){
+    func updateKVStoreItems(notification: NSNotification) {
         // Get the list of keys that changed.
         let userInfo: NSDictionary = notification.userInfo!
         let reasonForChange: NSNumber = userInfo.objectForKey(NSUbiquitousKeyValueStoreChangeReasonKey) as NSNumber

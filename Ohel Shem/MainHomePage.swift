@@ -109,41 +109,10 @@ class MainHomePage: UIViewController {
                     let attrChange = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)): " + changesString[i - 1] + "\n", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()])
                     changes.appendAttributedString(attrChange)
                 } else {
-                    /*if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
-                        //If we don't, we show the corresponding hour
-                        var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
-                        theHourWith.insert("עם", atIndex: 1)
-                        var display = join(" ", theHourWith) as String
-                        changes.appendAttributedString(NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(display)\n", attributes: attrBody))
-                    } else {
-                        if hours[i-1] == "שעה חופשית!" {
-                            let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(hours[i-1])\n", attributes: attrBody)
-                            changes.appendAttributedString(attrEmptyHour)
-                        } else {
-                            let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
-                            changes.appendAttributedString(attrEmptyHour)
-                        }
-                    }*/
                     AppendRegularHour(i)
                 }
             } else {
                 AppendRegularHour(i)
-                /*if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
-                    var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
-                    //Check if it's special classes that don't let me put in the regular עם
-                    //if hours[i-1] == "jbd"{}
-                    theHourWith.insert("עם", atIndex: 1)
-                    var display = join(" ", theHourWith) as String
-                    changes.appendAttributedString(NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(display)\n", attributes: attrBody))
-                } else {
-                    if hours[i-1] == "שעה חופשית!" {
-                        let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(hours[i-1])\n", attributes: attrBody)
-                        changes.appendAttributedString(attrEmptyHour)
-                    } else {
-                        let attrEmptyHour = NSAttributedString(string: "•בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
-                        changes.appendAttributedString(attrEmptyHour)
-                    }
-                }*/
             }
         }
         return changes
@@ -218,7 +187,7 @@ class MainHomePage: UIViewController {
             stillSabbath = false
         }
 
-        let changes: NSAttributedString = ((weekDay == 7 || stillSabbath) ? NSAttributedString(string: "אין לימודים בשבת!", attributes: attrBody) : GetTodaysFormattedChanges(SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: GetTodaysHours()))
+        let changes: NSAttributedString = ((weekDay == 7 || stillSabbath) ? NSAttributedString(string: "אין לימודים בשבת!\n", attributes: attrBody) : GetTodaysFormattedChanges(SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: GetTodaysHours()))
 
         final.appendAttributedString(changes)
 
