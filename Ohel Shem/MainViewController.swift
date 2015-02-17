@@ -78,9 +78,12 @@ class MainViewController: AMSlideMenuMainViewController {
         case 3:
             theSegue = "toBell"
             break
+        // FIX: This should be updated to match the latest version of test system
+        /*
         case 4:
             theSegue = "toTest"
             break
+        */
         case 5:
             theSegue = "toNews"
             break

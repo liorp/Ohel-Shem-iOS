@@ -123,8 +123,8 @@ class MainHomePage: UIViewController {
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
         let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
         let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
-
-        for (var i = 0, j = 0; i < tests.count && j < num; i++) {
+        // FIX: This should be updated to match the latest version of test system
+        /*for (var i = 0, j = 0; i < tests.count && j < num; i++) {
             let currentTest = tests[i].componentsSeparatedByString(" ")
             var dateComponenta = NSDateComponents()
             var k = (currentTest[1] != "במועד" ? 0 : 1)
@@ -141,7 +141,8 @@ class MainHomePage: UIViewController {
                 returnString.appendAttributedString(NSAttributedString(string: "\(tests[i])\n", attributes: attrBody))
                 j++
             }
-        }
+        }*/
+        returnString = NSMutableAttributedString(string: "\(tests[0])\n", attributes: attrBody)
         return returnString
     }
 
@@ -198,7 +199,6 @@ class MainHomePage: UIViewController {
 
         let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
         let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
-        //var attrTests = NSMutableAttributedString(string: "\(tests[0]) \n\(tests[1]) \n\(tests[2]) \n", attributes: attrBody)
         final.appendAttributedString(GetTop(numberOfTests: 3))
 
         //Append the date of validity of system

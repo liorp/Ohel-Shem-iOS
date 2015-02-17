@@ -109,7 +109,7 @@ class SchoolWebsiteDataManager {
     :returns: A string array of tests for the user
     */
     func GetTests() -> [String] {
-        let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
+        /*let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
 
         // Parse a string and find an element.
         let document = HTMLDocument(string: data)
@@ -125,7 +125,8 @@ class SchoolWebsiteDataManager {
                 let inner = (node as HTMLNode).nodesMatchingSelector("td")
                 testsArr.append("מבחן ב" + String(inner[0].textContent) + " ב" + String(inner[2].textContent))
             }
-        }
+        }*/
+        let testsArr = ["לוח המבחנים מושבת עד לעליית הגרסה החדשה"]
         return testsArr
     }
 
