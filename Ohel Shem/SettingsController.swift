@@ -260,7 +260,22 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
     }
 
-    @IBAction func updateUserInfo(sender: UITextField){
-
+    @IBAction func beginUserLogin(sender: UITextField){
+        if (userName?.text.isEmpty == true || password?.text.isEmpty == true) {
+            if (objc_getClass("UIAlertController") != nil) {
+                let emptyAlert = UIAlertController(title: "פרטים חסרים", message: "אנא וודא כי מילאת שם משתמש וסיסמה", preferredStyle: UIAlertControllerStyle.Alert)
+                emptyAlert.addAction(UIAlertAction(title: "הבנתי", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                    
+                }))
+                self.presentViewController(emptyAlert, animated: true, completion: { () -> Void in
+                    
+                })
+            } else {
+                let emptyAlert = UIAlertView(title: "פרטים חסרים", message: "אנא וודא כי מילאת שם משתמש וסיסמה", delegate: nil, cancelButtonTitle: "הבנתי")
+                emptyAlert.show()
+            }
+        } else {
+            //Begin connecting user asynchronously
+        }
     }
 }

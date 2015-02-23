@@ -1078,6 +1078,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
+                                                        <action selector="beginUserLogin:" destination="O6i-9g-Klr" eventType="editingDidEnd" id="wkS-z3-wUc"/>
                                                         <outlet property="delegate" destination="O6i-9g-Klr" id="4oC-dl-HVv"/>
                                                     </connections>
                                                 </textField>
@@ -1107,6 +1108,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                     <connections>
+                                                        <action selector="beginUserLogin:" destination="O6i-9g-Klr" eventType="editingDidEnd" id="bAt-wr-52U"/>
                                                         <outlet property="delegate" destination="O6i-9g-Klr" id="cEh-zl-btj"/>
                                                     </connections>
                                                 </textField>
