@@ -26,7 +26,7 @@ class ChangesSys: UITableViewController {
         self.addLeftMenuButton()
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
 
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = 44
 
         self.tableView.estimatedRowHeight = 44
     }
@@ -39,8 +39,9 @@ class ChangesSys: UITableViewController {
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
         let formatter = NSDateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
-        let lastUpdated = "התעדכן לאחרונה ב: " + formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
+        //formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
+        //NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
         refreshControl!.attributedTitle! = NSAttributedString(string: lastUpdated)
 
         refreshControl!.endRefreshing()
@@ -83,6 +84,9 @@ class ChangesSys: UITableViewController {
             cell.textLabel!.lineBreakMode = .ByWordWrapping
             cell.textLabel!.numberOfLines = 0
 
+
+            
+
             return cell
         } else {
             var cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) as UITableViewCell
@@ -90,6 +94,8 @@ class ChangesSys: UITableViewController {
             cell.textLabel?.textColor = UIColor.redColor()
             cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 14)
             cell.textLabel!.textAlignment = NSTextAlignment.Center
+
+
 
             return cell
         }

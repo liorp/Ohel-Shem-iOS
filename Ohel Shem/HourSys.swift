@@ -51,7 +51,7 @@ class HourSys: UITableViewController {
         let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
         weekDay = myComponents.weekday
         hours = SchoolWebsiteDataManager.sharedInstance.GetHours(itemIndex! + 1)
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = 44
 
         self.tableView.estimatedRowHeight = 44
     }
@@ -80,10 +80,14 @@ class HourSys: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.parentViewController!.parentViewController!.navigationItem.title = "יום " + numberToHebrewNumbersMale[itemIndex! + 1]!
     }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.addLeftMenuButton()
 
+        self.tableView.contentInset = UIEdgeInsetsMake(self.parentViewController!.parentViewController!.navigationController!.navigationBar.frame.height + 20, 0, 0, 0)
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+        
         /*let blurEffect = UIBlurEffect(style: .Light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         tableView.backgroundView = blurEffectView
@@ -92,7 +96,8 @@ class HourSys: UITableViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.automaticallyAdjustsScrollViewInsets = true
-        self.tableView.contentInset = UIEdgeInsetsMake(self.parentViewController!.parentViewController!.navigationController!.navigationBar.frame.height + 20, 0, 0, 0)
+        //self.automaticallyAdjustsScrollViewInsets = false
+
+        //self.tableView.contentOffset = CGPointMake(0, -(self.parentViewController!.parentViewController!.navigationController!.navigationBar.frame.height + 20))
     }
 }

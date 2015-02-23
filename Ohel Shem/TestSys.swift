@@ -39,7 +39,7 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
 
         isRefreshing = true
 
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = 60
 
         self.tableView.estimatedRowHeight = 60
     }
@@ -69,9 +69,9 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
         testsArr = SchoolWebsiteDataManager.sharedInstance.GetTests()
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
-        let formatter = NSDateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
-        let lastUpdated = "התעדכן לאחרונה ב: " + formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
+        //formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
+        //NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
         refreshControl!.attributedTitle! = NSAttributedString(string: lastUpdated)
 
         refreshControl!.endRefreshing()
