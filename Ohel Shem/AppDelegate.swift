@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var j = 0
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-            application.unregisterForRemoteNotifications()
+        Crashlytics.startWithAPIKey("9e4dce43dfba49a9386ebed039ab07d466d9596d")
+        application.unregisterForRemoteNotifications()
         /*for family in UIFont.familyNames()
         {
             println(family)

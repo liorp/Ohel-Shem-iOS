@@ -60,11 +60,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             widgetLabel?.text = "גע לעדכון"
         }
         self.widgetLabel?.textColor = UIColor.whiteColor()
-        self.widgetLabel?.sizeToFit()
+        /*self.widgetLabel?.sizeToFit()
         var currentSize = self.widgetLabel!.frame.size
         currentSize = self.widgetLabel!.sizeThatFits(currentSize)
         currentSize.height += 20
-        self.preferredContentSize = currentSize
+        self.preferredContentSize = currentSize*/
     }
 
     func gotoMainApp() {

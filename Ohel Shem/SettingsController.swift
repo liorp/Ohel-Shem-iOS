@@ -117,6 +117,15 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         self.layerNum!.text = layers[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue]
         self.classNum!.text = String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue)
 
+        if let username: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("username") {
+            self.userName!.text = String(NSUserDefaults.standardUserDefaults().valueForKey("username")! as NSString)
+        }
+        if let password: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("password") {
+            self.password!.text = String(NSUserDefaults.standardUserDefaults().valueForKey("password")! as NSString)
+        }
+
+        self.userName!.autocorrectionType = UITextAutocorrectionType.No
+
         /*let blurEffect = UIBlurEffect(style: .Light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         tableView.backgroundView = blurEffectView
@@ -172,15 +181,17 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         classNum?.resignFirstResponder()
         classAndLayerInput?.resignFirstResponder()
         name?.resignFirstResponder()
+        password?.resignFirstResponder()
+        userName?.resignFirstResponder()
         self.view.resignFirstResponder()
         self.tableView.resignFirstResponder()
 
-        classAndLayerInput?.endEditing(true)
+        /*classAndLayerInput?.endEditing(true)
         classNum?.endEditing(true)
         layerNum?.endEditing(true)
         name?.endEditing(true)
         self.view.endEditing(true)
-        self.tableView.endEditing(true)
+        self.tableView.endEditing(true)*/
     }
 
     func hideKeyboard(){
@@ -188,15 +199,17 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         classNum?.resignFirstResponder()
         classAndLayerInput?.resignFirstResponder()
         name?.resignFirstResponder()
+        password?.resignFirstResponder()
+        userName?.resignFirstResponder()
         self.view.resignFirstResponder()
         self.tableView.resignFirstResponder()
 
-        classAndLayerInput?.endEditing(true)
+        /*classAndLayerInput?.endEditing(true)
         classNum?.endEditing(true)
         layerNum?.endEditing(true)
         name?.endEditing(true)
         self.view.endEditing(true)
-        self.tableView.endEditing(true)
+        self.tableView.endEditing(true)*/
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -237,9 +250,9 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "infoHasChanged", object: nil))
 
-        classAndLayerInput?.endEditing(true)
+        /*classAndLayerInput?.endEditing(true)
         classNum?.endEditing(true)
-        layerNum?.endEditing(true)
+        layerNum?.endEditing(true)*/
     }
 
     @IBAction func updateClassandLayer(sender: UITextField){
@@ -252,12 +265,12 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         //NSUbiquitousKeyValueStore.defaultStore().setValue(sender.text, forKey: "layerNum")
         NSUserDefaults.standardUserDefaults().synchronize()
         //NSUbiquitousKeyValueStore.defaultStore().synchronize()
-        classAndLayerInput?.endEditing(true)
+        /*classAndLayerInput?.endEditing(true)
         classNum?.endEditing(true)
-        layerNum?.endEditing(true)
+        layerNum?.endEditing(true)*/
 
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "infoHasChanged", object: nil))
-
+        self.hideKeyboard()
     }
 
     @IBAction func beginUserLogin(sender: UITextField){
@@ -276,6 +289,22 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
             }
         } else {
             //Begin connecting user asynchronously
+            request(.POST, "http://ohel-shem.com/~royejacobovich/iPhoneApp/login.php", parameters: ["username" : userName!.text, "password" : password!.text], encoding: ParameterEncoding.URL)
+                .response { (request, response, data, error) in
+                    println(request)
+                    println(response)
+                    println(error)
+                    if (error == nil && response?.statusCode != 403 && response?.statusCode == 200){
+                        //Save username and password
+                        NSUserDefaults.standardUserDefaults().setValue(self.userName!.text, forKey: "username")
+                        NSUserDefaults.standardUserDefaults().setValue(self.password!.text, forKey: "password")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        print(data)
+                    }
+                    if (error != nil){
+                        print(error)
+                    }
+            }
         }
     }
 }

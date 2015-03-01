@@ -52,6 +52,12 @@
 		8D41A8101A53348200168254 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */; };
 		8D41A8131A5335CD00168254 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8121A5335CD00168254 /* SlideMenu.swift */; };
 		8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8141A5338C700168254 /* ChangesSys.swift */; };
+		8D4903931A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4903921A9B63AC0062DB78 /* Crashlytics.framework */; };
+		8D4903941A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4903921A9B63AC0062DB78 /* Crashlytics.framework */; };
+		8D49039D1A9C56190062DB78 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D49039B1A9C56190062DB78 /* Alamofire.swift */; };
+		8D49039E1A9C56190062DB78 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D49039B1A9C56190062DB78 /* Alamofire.swift */; };
+		8D49039F1A9C56190062DB78 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D49039C1A9C56190062DB78 /* LICENSE */; };
+		8D4903A01A9C56190062DB78 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D49039C1A9C56190062DB78 /* LICENSE */; };
 		8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */; };
 		8D861FE71A685543005EEA7A /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FE51A685543005EEA7A /* Siren.bundle */; };
 		8D861FE81A685543005EEA7A /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FE61A685543005EEA7A /* Siren.swift */; };
@@ -128,20 +134,6 @@
 			remoteGlobalIDString = 8D3FAF321A53BDF60008EB99;
 			remoteInfo = "Ohel-Shem Ext";
 		};
-		8D3FAF4F1A542D660008EB99 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D3FAF4A1A542D660008EB99 /* Alamofire.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
-			remoteInfo = Alamofire;
-		};
-		8D3FAF511A542D660008EB99 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D3FAF4A1A542D660008EB99 /* Alamofire.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
-			remoteInfo = AlamofireTests;
-		};
 		8D41A7EB1A53341800168254 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D41A7CD1A53341800168254 /* Project object */;
@@ -209,7 +201,6 @@
 		8D3FAF3C1A53BDF60008EB99 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		8D3FAF461A542B680008EB99 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		8D3FAF481A542D490008EB99 /* list23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list23.png; path = ../list23.png; sourceTree = "<group>"; };
-		8D3FAF4A1A542D660008EB99 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		8D3FAF581A5472980008EB99 /* Ohel Shem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Ohel Shem.entitlements"; sourceTree = "<group>"; };
 		8D3FAF5C1A5480B30008EB99 /* SchoolTerms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTerms.swift; sourceTree = "<group>"; };
 		8D41A7D51A53341800168254 /* Ohel Shem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ohel Shem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +231,9 @@
 		8D41A8111A53349900168254 /* Ohel-Shem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ohel-Shem-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D41A8121A5335CD00168254 /* SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
 		8D41A8141A5338C700168254 /* ChangesSys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangesSys.swift; sourceTree = "<group>"; };
+		8D4903921A9B63AC0062DB78 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		8D49039B1A9C56190062DB78 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		8D49039C1A9C56190062DB78 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8D603A421A651ECA00D69E5B /* Ohel-Shem Ext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Ohel-Shem Ext.entitlements"; path = "Ohel-Shem Ext/Ohel-Shem Ext.entitlements"; sourceTree = "<group>"; };
 		8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolWebsiteDataManager.swift; sourceTree = "<group>"; };
 		8D861FE51A685543005EEA7A /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
@@ -343,6 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D4903941A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */,
 				8D3FAF361A53BDF60008EB99 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D1DD7E11A613B3D000B9C9A /* EventKit.framework in Frameworks */,
+				8D4903931A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */,
 				8D3FAF1A1A5352BA0008EB99 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,21 +433,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8D3FAF4B1A542D660008EB99 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8D3FAF501A542D660008EB99 /* Alamofire.framework */,
-				8D3FAF521A542D660008EB99 /* AlamofireTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8D41A7CC1A53341800168254 = {
 			isa = PBXGroup;
 			children = (
 				8D603A421A651ECA00D69E5B /* Ohel-Shem Ext.entitlements */,
 				8DE507761A6007D80015C96D /* HTMLReader */,
-				8D3FAF4A1A542D660008EB99 /* Alamofire.xcodeproj */,
 				8D3FAF181A53521F0008EB99 /* libxml2.dylib */,
 				8D41A7D71A53341800168254 /* Ohel Shem */,
 				8D41A7ED1A53341800168254 /* Ohel ShemTests */,
@@ -496,6 +482,7 @@
 				8D41A8121A5335CD00168254 /* SlideMenu.swift */,
 				8D3FAF2B1A535AF40008EB99 /* TestSys.swift */,
 				8D41A7E11A53341800168254 /* Images.xcassets */,
+				8D49039A1A9C56190062DB78 /* Alamofire */,
 				8D41A7FA1A53348200168254 /* AMSlideMenu */,
 				8DE7C9851A5AB4DE00190B79 /* CFSSpringTableView-master */,
 				8D00BFBF1A6166AB0098A608 /* FBShimmering */,
@@ -512,6 +499,7 @@
 				8D41A7D81A53341800168254 /* Supporting Files */,
 				8D1169C31A72EE0400B59241 /* WSCoachMarksView-master */,
 				8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */,
+				8D4903921A9B63AC0062DB78 /* Crashlytics.framework */,
 			);
 			path = "Ohel Shem";
 			sourceTree = "<group>";
@@ -562,6 +550,15 @@
 				8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */,
 			);
 			path = AMSlideMenu;
+			sourceTree = "<group>";
+		};
+		8D49039A1A9C56190062DB78 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				8D49039B1A9C56190062DB78 /* Alamofire.swift */,
+				8D49039C1A9C56190062DB78 /* LICENSE */,
+			);
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		8D861FE41A685543005EEA7A /* Siren */ = {
@@ -745,6 +742,7 @@
 				8D41A7D21A53341800168254 /* Frameworks */,
 				8D3FAF441A53BDF60008EB99 /* Embed App Extensions */,
 				8DE7C93E1A55F91D00190B79 /* ShellScript */,
+				8D49038E1A9B63510062DB78 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -803,7 +801,7 @@
 								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -826,10 +824,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8D3FAF4B1A542D660008EB99 /* Products */;
-					ProjectRef = 8D3FAF4A1A542D660008EB99 /* Alamofire.xcodeproj */;
-				},
-				{
 					ProductGroup = 8DB35B651A89415000F028EA /* Products */;
 					ProjectRef = 8DB35B641A89415000F028EA /* MBProgressHUD.xcodeproj */;
 				},
@@ -844,20 +838,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8D3FAF501A542D660008EB99 /* Alamofire.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Alamofire.framework;
-			remoteRef = 8D3FAF4F1A542D660008EB99 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8D3FAF521A542D660008EB99 /* AlamofireTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AlamofireTests.xctest;
-			remoteRef = 8D3FAF511A542D660008EB99 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8DB35B871A89415000F028EA /* libMBProgressHUD.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -872,6 +852,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D4903A01A9C56190062DB78 /* LICENSE in Resources */,
 				8D3FAF3D1A53BDF60008EB99 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -933,6 +914,7 @@
 				8DE7C9831A58566C00190B79 /* iTunesArtwork@2x in Resources */,
 				8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */,
 				8DB35B3C1A87B64A00F028EA /* 3slidecell.png in Resources */,
+				8D49039F1A9C56190062DB78 /* LICENSE in Resources */,
 				8DE7C9781A58566C00190B79 /* appicon-76@2x.png in Resources */,
 				8D13C0B01A8F718500B3472A /* LaunchImages7.xcassets in Resources */,
 				8D1157301A767CC30073CB5F /* WSCoachMarksView.license in Resources */,
@@ -977,6 +959,19 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
+		8D49038E1A9B63510062DB78 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 9e4dce43dfba49a9386ebed039ab07d466d9596d 8827d3d8b50d289dc30615e09acd8041a2cea11804deba09e8075ca3067a2163";
+		};
 		8DE7C93E1A55F91D00190B79 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -997,6 +992,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D49039E1A9C56190062DB78 /* Alamofire.swift in Sources */,
 				8D3FAF3B1A53BDF60008EB99 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1042,6 +1038,7 @@
 				8D3FAF5D1A5480B30008EB99 /* SchoolTerms.swift in Sources */,
 				8DF695361A606514008851E0 /* FirstTimeHereViewControllerManager.swift in Sources */,
 				8DE507A61A6007D80015C96D /* HTMLSerialization.m in Sources */,
+				8D49039D1A9C56190062DB78 /* Alamofire.swift in Sources */,
 				8DE507AB1A6007D80015C96D /* NSString+HTMLEntities.m in Sources */,
 				8DE507A41A6007D80015C96D /* HTMLPreprocessedInputStream.m in Sources */,
 				8DE507A31A6007D80015C96D /* HTMLParser.m in Sources */,
@@ -1104,6 +1101,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1124,6 +1122,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Ohel-Shem Ext/Ohel-Shem Ext.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Ohel-Shem Ext/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1153,6 +1152,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1197,6 +1197,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1220,11 +1221,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Ohel Shem/Ohel Shem.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Ohel_Shem-gbmhidblllzujgfiiaqinvqrsdiz/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Ohel",
+					Shem,
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = (
@@ -1257,6 +1260,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Ohel_Shem-gbmhidblllzujgfiiaqinvqrsdiz/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Ohel",
+					Shem,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

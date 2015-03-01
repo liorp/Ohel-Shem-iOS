@@ -13,9 +13,9 @@ class MainViewController: AMSlideMenuMainViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        let store = NSUbiquitousKeyValueStore.defaultStore()
+        /*let store = NSUbiquitousKeyValueStore.defaultStore()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateKVStoreItems:"), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: store)
-        store.synchronize()
+        store.synchronize()*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +23,7 @@ class MainViewController: AMSlideMenuMainViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func updateKVStoreItems(notification: NSNotification) {
+    /*func updateKVStoreItems(notification: NSNotification) {
         // Get the list of keys that changed.
         let userInfo: NSDictionary = notification.userInfo!
         let reasonForChange: NSNumber = userInfo.objectForKey(NSUbiquitousKeyValueStoreChangeReasonKey) as NSNumber
@@ -49,7 +49,7 @@ class MainViewController: AMSlideMenuMainViewController {
                     userDefaults().setObject(value, forKey: key as String)
                 }
         }
-    }
+    }*/
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

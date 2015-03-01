@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Uwf-D6-83m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Uwf-D6-83m">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -1078,7 +1078,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="beginUserLogin:" destination="O6i-9g-Klr" eventType="editingDidEnd" id="wkS-z3-wUc"/>
+                                                        <action selector="beginUserLogin:" destination="O6i-9g-Klr" eventType="editingDidEndOnExit" id="jqf-TG-bd1"/>
                                                         <outlet property="delegate" destination="O6i-9g-Klr" id="4oC-dl-HVv"/>
                                                     </connections>
                                                 </textField>
@@ -1108,7 +1108,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <action selector="beginUserLogin:" destination="O6i-9g-Klr" eventType="editingDidEnd" id="bAt-wr-52U"/>
+                                                        <action selector="beginUserLogin:" destination="O6i-9g-Klr" eventType="editingDidEndOnExit" id="EWb-i3-AKg"/>
                                                         <outlet property="delegate" destination="O6i-9g-Klr" id="cEh-zl-btj"/>
                                                     </connections>
                                                 </textField>
@@ -1190,9 +1190,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="נוצר על-ידי: ליאור פולק" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ycy-uB-RbY">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ycy-uB-RbY">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">-איך משנים פרטים אישיים? שם, סיסמה?
+אפשר להיכנס עם נתונים אחרים דרך הגדרות האפליקציה. על מנת להחליף סיסמה אנא פנו למחנך הכיתה. 
+-מי אחראי על פיתוח האפליקציה?
+ליאור פולק הוא המפתח של האפליקציה לאייפון. 
+-האם יש גרסה לאנדרואיד?
+כן. הגרסה לאנדרואיד פותחה ע״י יואב שטרנברג וניתן להוריד אותה מהפליי סטור. 
+-האם האפליקציה בקוד פתוח?
+כן. אפשר לראות את הקוד בגיטהאב. 
+-איך אפשר לעזור?
+אפשר לפנות לצוות אתר ולבקש לעזור. אנחנו גם מחויבות אישית!
+-קרדיטים:
+צוות אתר- רועי יעקובוביץ, ליאור פולק, יואב שטרנברג
+-אתם מתכננים עוד דברים לאפליקציה?
+ברור שכן! כרגע אנחנו מתכננים גרסה לשעון של אפל (רק תסתכל ותדע מה יש עכשיו במערכת), מועדי ב מהאפליקציה, גרסה למורים, צ׳ופרים לתלמידים ועוד המון הפתעות!
+נוצר על-ידי: ליאור פולק</string>
                                 <fontDescription key="fontDescription" name="Alef-Regular" family="Alef" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
