@@ -12,15 +12,18 @@ import UIKit
 class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var hello: UILabel?
+    @IBOutlet weak var versionLabel: UILabel?
     @IBOutlet weak var userName: UITextField?
     @IBOutlet weak var password: UITextField?
     @IBOutlet weak var name: UITextField?
     @IBOutlet weak var layerNum: UITextField?
     @IBOutlet weak var classNum: UITextField?
     @IBOutlet weak var classAndLayerInput: UIPickerView?
+
     let classes = ["1","2","3","4","5","6","7","8","9","10","11","12"]
     let layers = [9:"ט׳",10:"י׳",11:"י״א", 12:"י״ב"]
     let oppositeLayers = ["ט׳":9, "י׳":10, "י״א":11, "י״ב":12]
+
     var currentContentInset: UIEdgeInsets?
     var activeTextField: UITextField?
 
@@ -146,6 +149,18 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         self.tableView.estimatedRowHeight = 44
 
         self.setPreselectedPicker(UITextField())
+
+        let versionNumber: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+
+        let buildNumber: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+
+        let versionBuildString = "אהל שם. גרסה: \(versionNumber) (\(buildNumber)). נוצר עם ♥"
+
+        versionLabel!.text = versionBuildString
+
+        versionLabel!.numberOfLines = 0
+
+        versionLabel!.font = UIFont(name: "Alef-Bold", size: 14)
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

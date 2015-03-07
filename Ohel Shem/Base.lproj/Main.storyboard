@@ -944,22 +944,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJt-xx-xPZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYd-Aj-NDA">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="AJt-xx-xPZ" secondAttribute="trailing" id="I3u-x6-D8w"/>
-                            <constraint firstItem="AJt-xx-xPZ" firstAttribute="top" secondItem="o47-dH-azn" secondAttribute="top" id="J0N-lU-gEG"/>
-                            <constraint firstItem="AJt-xx-xPZ" firstAttribute="bottom" secondItem="KhR-Oo-yfB" secondAttribute="top" id="RSH-mX-jc6"/>
-                            <constraint firstItem="AJt-xx-xPZ" firstAttribute="leading" secondItem="J2L-G2-0bR" secondAttribute="leading" id="bkK-e4-PgK"/>
+                            <constraint firstItem="XYd-Aj-NDA" firstAttribute="bottom" secondItem="KhR-Oo-yfB" secondAttribute="top" id="96x-19-Upa"/>
+                            <constraint firstItem="XYd-Aj-NDA" firstAttribute="leading" secondItem="J2L-G2-0bR" secondAttribute="leading" id="9dl-L0-Mfc"/>
+                            <constraint firstAttribute="trailing" secondItem="XYd-Aj-NDA" secondAttribute="trailing" id="GI0-95-8rr"/>
+                            <constraint firstItem="XYd-Aj-NDA" firstAttribute="top" secondItem="o47-dH-azn" secondAttribute="bottom" id="fy2-ST-FGf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="התקנון" id="hva-qf-uEt"/>
                     <connections>
-                        <outlet property="terms" destination="AJt-xx-xPZ" id="KNv-ef-ifH"/>
+                        <outlet property="terms" destination="XYd-Aj-NDA" id="Fv3-cK-FsH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5JR-Hx-FgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1155,6 +1155,20 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Ijb-rh-fcn" style="IBUITableViewCellStyleDefault" id="mfj-sV-Z0B">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mfj-sV-Z0B" id="W7C-09-dSq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ijb-rh-fcn">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1172,6 +1186,7 @@
                         <outlet property="name" destination="7Yp-vZ-ffH" id="gxb-X3-5Eq"/>
                         <outlet property="password" destination="g8t-36-LI8" id="pSQ-dd-hL6"/>
                         <outlet property="userName" destination="pVJ-ZH-322" id="LxL-bw-VUU"/>
+                        <outlet property="versionLabel" destination="Ijb-rh-fcn" id="K5p-ux-ZaK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJF-OI-DtD" userLabel="First Responder" sceneMemberID="firstResponder"/>

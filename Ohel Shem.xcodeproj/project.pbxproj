@@ -73,6 +73,7 @@
 		8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB35B621A89415000F028EA /* MBProgressHUD.m */; };
 		8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B631A89415000F028EA /* MBProgressHUD.podspec */; };
 		8DB35B801A89415000F028EA /* MBProgressHUD.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */; };
+		8DC8971A1AA769E9009C2D7C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC897191AA769E9009C2D7C /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8DE5079C1A6007D80015C96D /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE507781A6007D80015C96D /* HTMLComment.m */; };
 		8DE5079D1A6007D80015C96D /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5077A1A6007D80015C96D /* HTMLDocument.m */; };
 		8DE5079E1A6007D80015C96D /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5077C1A6007D80015C96D /* HTMLDocumentType.m */; };
@@ -254,6 +255,7 @@
 		8DB35B641A89415000F028EA /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = MBProgressHUD.xcworkspace; sourceTree = "<group>"; };
 		8DB35B681A89415000F028EA /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		8DC897191AA769E9009C2D7C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8DE507771A6007D80015C96D /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLComment.h; sourceTree = "<group>"; };
 		8DE507781A6007D80015C96D /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLComment.m; sourceTree = "<group>"; };
 		8DE507791A6007D80015C96D /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDocument.h; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC8971A1AA769E9009C2D7C /* WebKit.framework in Frameworks */,
 				8D1DD7E11A613B3D000B9C9A /* EventKit.framework in Frameworks */,
 				8D4903931A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */,
 				8D3FAF1A1A5352BA0008EB99 /* libxml2.dylib in Frameworks */,
@@ -408,6 +411,7 @@
 		8D3FAF341A53BDF60008EB99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DC897191AA769E9009C2D7C /* WebKit.framework */,
 				8D1DD7E01A613B3D000B9C9A /* EventKit.framework */,
 				8D3FAF351A53BDF60008EB99 /* NotificationCenter.framework */,
 			);
@@ -1226,8 +1230,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Ohel_Shem-gbmhidblllzujgfiiaqinvqrsdiz/Build/Products/Debug-iphoneos",
-					"$(PROJECT_DIR)/Ohel",
-					Shem,
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = (
@@ -1260,8 +1262,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Ohel_Shem-gbmhidblllzujgfiiaqinvqrsdiz/Build/Products/Debug-iphoneos",
-					"$(PROJECT_DIR)/Ohel",
-					Shem,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

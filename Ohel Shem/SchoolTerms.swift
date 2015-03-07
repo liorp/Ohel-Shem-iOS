@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import WebKit
 
 class SchoolTerms: UIViewController {
 
-    @IBOutlet weak var terms: UIWebView?
+    @IBOutlet weak var terms: UIView?
 
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         //It seems that you've discovered an easter egg!
@@ -34,14 +35,6 @@ class SchoolTerms: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        //terms! = SchoolWebsiteDataManager.sharedInstance.GetTerms()
-
-        let termsURL = NSURL(string: "http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
-        let theRequest = NSURLRequest(URL: termsURL!)
-        //theRequest.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
-        terms!.loadRequest(theRequest)
-        terms!.scalesPageToFit = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,5 +51,24 @@ class SchoolTerms: UIViewController {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         self.navigationController?.navigationBar.translucent = false
+        //terms! = SchoolWebsiteDataManager.sharedInstance.GetTerms()
+
+        let termsURL = NSURL(string: "http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
+        let theRequest = NSURLRequest(URL: termsURL!)
+        //theRequest.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
+
+
+        if (NSClassFromString("WKWebView") != nil) {
+            let config = WKWebViewConfiguration()
+            let terms8 = WKWebView(frame: terms!.frame, configuration: config)
+            self.view.addSubview(terms8)
+            terms8.loadRequest(theRequest)
+        }
+        else {
+            let terms7 = UIWebView(frame: terms!.frame)
+            self.view.addSubview(terms7)
+            terms7.loadRequest(theRequest)
+            terms7.scalesPageToFit = true
+        }
     }
 }
