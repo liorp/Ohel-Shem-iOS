@@ -236,10 +236,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="שלום, ליאור" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKB-73-XwB">
-                                    <rect key="frame" x="54" y="23" width="137" height="32"/>
+                                    <rect key="frame" x="20" y="23" width="193" height="32"/>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="137" id="ASg-gb-jp6"/>
+                                        <constraint firstAttribute="width" constant="193" id="ASg-gb-jp6"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -250,7 +250,7 @@
                             <color key="backgroundColor" red="0.96470588235294119" green="0.9882352941176471" blue="0.93333333333333335" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="BKB-73-XwB" firstAttribute="top" secondItem="Bfp-eC-5vw" secondAttribute="topMargin" constant="15" id="6Wg-S9-Tmp"/>
-                                <constraint firstItem="BKB-73-XwB" firstAttribute="leading" secondItem="Bfp-eC-5vw" secondAttribute="leading" constant="54" id="bJU-cA-Utu"/>
+                                <constraint firstItem="BKB-73-XwB" firstAttribute="leading" secondItem="Bfp-eC-5vw" secondAttribute="leading" constant="20" id="bJU-cA-Utu"/>
                                 <constraint firstAttribute="bottom" secondItem="BKB-73-XwB" secondAttribute="bottom" constant="23" id="scR-l6-JRa"/>
                             </constraints>
                         </view>
