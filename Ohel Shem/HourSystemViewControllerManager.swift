@@ -60,7 +60,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         let weekDay = myComponents.weekday
-        appearance.currentPage = weekDay != 7 ? weekDay : 0
+        appearance.currentPage = (6 - weekDay) % 6//weekDay != 7 ? weekDay : 0
     }
 
     // MARK: - UIPageViewControllerDataSource
@@ -113,11 +113,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         let weekDay = myComponents.weekday
         print("weekday " + String(weekDay))
-        if weekDay == 7 {
-            return 0
-        } else {
-            return weekDay-1
-        }
+        return (6 - weekDay) % 6
     }
 }
 
