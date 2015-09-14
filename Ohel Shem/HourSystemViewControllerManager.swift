@@ -25,7 +25,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
 
     private func createPageViewController() {
 
-        let pageController = self.storyboard!.instantiateViewControllerWithIdentifier("HourSystem") as UIPageViewController
+        let pageController = self.storyboard!.instantiateViewControllerWithIdentifier("HourSystem") as! UIPageViewController
         pageController.dataSource = self
         //pageController.automaticallyAdjustsScrollViewInsets = false
 
@@ -33,13 +33,13 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 0)
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         let weekDay = myComponents.weekday
 
         let firstController = getItemController((weekDay - 1) % 6)!
         let startingViewControllers: NSArray = [firstController]
-        pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 
         pageViewController = pageController
         addChildViewController(pageViewController!)
@@ -57,17 +57,17 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 0)
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         let weekDay = myComponents.weekday
-        appearance.currentPage = (6 - weekDay) % 6
+        appearance.currentPage = weekDay != 7 ? weekDay : 0
     }
 
     // MARK: - UIPageViewControllerDataSource
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
 
-        let itemController = viewController as HourSys
+        let itemController = viewController as! HourSys
 
         if itemController.itemIndex!+1 < numberOfPages {
             return getItemController(itemController.itemIndex!+1)
@@ -78,7 +78,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
 
-        let itemController = viewController as HourSys
+        let itemController = viewController as! HourSys
 
         if itemController.itemIndex! > 0 {
             return getItemController(itemController.itemIndex!-1)
@@ -90,7 +90,7 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
     private func getItemController(itemIndex: Int) -> HourSys? {
 
         if itemIndex < numberOfPages {
-            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("HourSystemContent") as HourSys
+            let pageItemController = self.storyboard!.instantiateViewControllerWithIdentifier("HourSystemContent") as! HourSys
             pageItemController.itemIndex = itemIndex
             return pageItemController
         }
@@ -109,11 +109,15 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 0)
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         let weekDay = myComponents.weekday
-        println("weekday " + String(weekDay))
-        return (6 - weekDay) % 6
+        print("weekday " + String(weekDay))
+        if weekDay == 7 {
+            return 0
+        } else {
+            return weekDay-1
+        }
     }
 }
 

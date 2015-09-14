@@ -18,7 +18,7 @@ class SlideMenu: AMSlideMenuLeftTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        hello!.text = "שלום, " + (NSUserDefaults.standardUserDefaults().valueForKey("studentName")? as String)
+        hello!.text = "שלום, " + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as? String ?? "")
         hello!.textAlignment = NSTextAlignment.Right
         hello!.font = UIFont(name: "Alef-Bold", size: 25)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeInfo:", name: "infoHasChanged", object: nil)
@@ -30,7 +30,7 @@ class SlideMenu: AMSlideMenuLeftTableViewController {
     }
 
     func changeInfo(notification: NSNotification){
-        hello!.text = "שלום, " + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as String)
+        hello!.text = "שלום, " + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as! String)
         hello!.font = UIFont(name: "Alef-Bold", size: 25)
     }
 
@@ -40,29 +40,51 @@ class SlideMenu: AMSlideMenuLeftTableViewController {
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.textLabel!.font = UIFont(name: "Alef-Bold", size: 8 * UIScreen.mainScreen().scale)
-        cell.backgroundColor! = UIColor.clearColor()
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone{
+            cell.textLabel!.font = UIFont(name: "Alef-Bold", size: 8 * UIScreen.mainScreen().scale)
+            cell.backgroundColor! = UIColor.clearColor()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
 
-        let image = UIImage(named: "\(indexPath.row)slidecell.png")
+            let image = UIImage(named: "\(indexPath.row)slidecell.png")
 
-        let size = CGSizeApplyAffineTransform(image!.size, CGAffineTransformMakeScale(0.055 * UIScreen.mainScreen().scale, 0.055 * UIScreen.mainScreen().scale))
-        let hasAlpha = false
-        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+            let size = CGSizeApplyAffineTransform(image!.size, CGAffineTransformMakeScale(0.055 * UIScreen.mainScreen().scale, 0.055 * UIScreen.mainScreen().scale))
+            let hasAlpha = false
+            let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
 
-        UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
-        image!.drawInRect(CGRect(origin: CGPointZero, size: size))
+            UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
+            image!.drawInRect(CGRect(origin: CGPointZero, size: size))
 
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
 
-        cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.imageView!.image = scaledImage
+            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+            cell.imageView!.image = scaledImage
 
-        //(self.tableView! as CFSSpringTableView).prepareCellForShow(cell)
+            //(self.tableView! as CFSSpringTableView).prepareCellForShow(cell)
+        } else {
+            cell.textLabel!.font = UIFont(name: "Alef-Bold", size: 13 * UIScreen.mainScreen().scale)
+            cell.backgroundColor! = UIColor.clearColor()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+
+            let image = UIImage(named: "\(indexPath.row)slidecell.png")
+
+            let size = CGSizeApplyAffineTransform(image!.size, CGAffineTransformMakeScale(0.1 * UIScreen.mainScreen().scale, 0.1 * UIScreen.mainScreen().scale))
+            let hasAlpha = false
+            let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+
+            UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
+            image!.drawInRect(CGRect(origin: CGPointZero, size: size))
+
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+
+            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+            cell.imageView!.image = scaledImage
+
+            //(self.tableView! as CFSSpringTableView).prepareCellForShow(cell)
+        }
     }
 
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.textLabel?.textColor = UIColor.whiteColor()
 
         /*UIView.animateWithDuration(0.3, delay: 0,  options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
@@ -76,7 +98,7 @@ class SlideMenu: AMSlideMenuLeftTableViewController {
     }
 
     override func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.textLabel?.textColor = UIColor.blackColor()
         return indexPath
     }

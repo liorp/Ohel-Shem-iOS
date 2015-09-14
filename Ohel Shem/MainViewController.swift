@@ -84,16 +84,16 @@ class MainViewController: AMSlideMenuMainViewController {
             theSegue = "toTest"
             break
         */
-        case 5:
+        case 4:
             theSegue = "toNews"
             break
-        case 6:
+        case 5:
             theSegue = "toTerms"
             break
-        case 7:
+        case 6:
             theSegue = "toAbout"
             break
-        case 8:
+        case 7:
             theSegue = "toSettings"
             break
         default:
@@ -104,8 +104,11 @@ class MainViewController: AMSlideMenuMainViewController {
     }
 
     override func leftMenuWidth() -> CGFloat {
-        
-        return UIScreen.mainScreen().bounds.width / 1.5
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone{
+            return UIScreen.mainScreen().bounds.width / 1.5
+        } else {
+            return UIScreen.mainScreen().bounds.width / 2.5
+        }
     }
 
     override func deepnessForLeftMenu() -> Bool {

@@ -34,11 +34,14 @@ class ChangesSys: UITableViewController {
     @IBAction func willRefresh(sender: UIRefreshControl){
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק שינויים")
 
-        changes = SchoolWebsiteDataManager.sharedInstance.GetChanges()
-
+        do{
+            changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
+        } catch{
+            print(error)
+        }
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
-        let formatter = NSDateFormatter()
+        //let formatter = NSDateFormatter()
         //formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
         //NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
@@ -61,7 +64,7 @@ class ChangesSys: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (!isRefreshing) {
-            var cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) 
             if ((indexPath.row <= changes.count && changes.count == 0) || (indexPath.row < changes.count && changes.count != 0)) {
                 if (changes.count > 1) {
                     cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": " + (changes[indexPath.row] == "-" ? "אין שינויים!" : changes[indexPath.row])
@@ -89,7 +92,7 @@ class ChangesSys: UITableViewController {
 
             return cell
         } else {
-            var cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) 
             cell.textLabel!.text = "מעדכן..."
             cell.textLabel?.textColor = UIColor.redColor()
             cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 14)
@@ -125,15 +128,19 @@ class ChangesSys: UITableViewController {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // do some task
-            self.changes = SchoolWebsiteDataManager.sharedInstance.GetChanges()
-            self.dateOfChanges = SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
+            do {
+            self.changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
+            self.dateOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
             dispatch_async(dispatch_get_main_queue()) {
                 // update some UI
-                let i = 0
+                //let i = 0
                 self.isRefreshing = false
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                 //self.theTextView?.attributedText = textToDisplay
                 //self.theTextView?.textAlignment = NSTextAlignment.Right
+            }
+            } catch{
+                print(error)
             }
         }
     }

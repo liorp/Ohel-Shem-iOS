@@ -16,7 +16,7 @@ class SchoolWebsiteDataManager {
     /**
     Gets the shared instance (aka Singleton) for the SchoolWebsiteDataManager class
 
-    :returns: The shared instance (aka Singleton) for the SchoolWebsiteDataManager class
+    - returns: The shared instance (aka Singleton) for the SchoolWebsiteDataManager class
     */
     class var sharedInstance: SchoolWebsiteDataManager {
         return _SchoolWebsiteDataManager
@@ -25,22 +25,23 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get an hour system, using the user's settings of class and layer
 
-    :param: weekDay    The day for which to fetch the hours
+    - Parameters: 
+        - weekDay:    The day for which to fetch the hours
 
-    :returns: The hour system for the requested day, or an empty array if none exists
+    - returns: The hour system for the requested day, or an empty array if none exists
     */
-    func GetHours(weekDay : Int) -> [String] {
+    func GetHours(weekDay : Int) throws -> [String] {
         var hours: [String] = []
         let path = NSBundle.mainBundle().pathForResource("timetable", ofType: "json")
-        let jsonData = NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe, error: nil)
-        var jsonResult = NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.allZeros, error: nil) as NSArray!
+        let jsonData = try NSData(contentsOfFile: path!, options: [NSDataReadingOptions.DataReadingMappedIfSafe])
+        let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions()) as! NSArray
         
         var res = ""
 
         for index in 0...10 {
             if (weekDay != 7) {
-                res = jsonResult?[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue - 9][NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue - 1][weekDay - 1][index] as String
-                if (res == "" || res == " " || countElements(res) == 0 || countElements(res) == 1) {
+                res = jsonResult[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue - 9][NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue - 1][weekDay - 1][index] as! String
+                if (res == "" || res == " " || res.characters.count == 0 || res.characters.count == 1) {
                     res = "שעה חופשית!"
                 }
             } else {
@@ -54,13 +55,13 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get the string of the changes day, using the user's settings of class and layer
 
-    :returns: The day string, e.g. ״לוח השינויים המוצג הינו רלוונטי ליום ראשון ה-״
+    - returns: The day string, e.g. ״לוח השינויים המוצג הינו רלוונטי ליום ראשון ה-״
     */
-    func GetDayOfChanges() -> String {
-        let data = NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/php/changes/changes_sys/index.php?layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
+    func GetDayOfChanges() throws -> String {
+        let data = try NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/php/changes/changes_sys/index.php?layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208))
 
         // Parse a string and find an element.
-        let document = HTMLDocument(string: data)
+        let document = HTMLDocument(string: data as String)
         let changesTables = document.nodesMatchingSelector("font")
         return changesTables[2].textContent
     }
@@ -68,17 +69,18 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get the news, using the user's settings of class and layer
 
-    :param: HTMLContent    Pass true to get the the news as an HTML string; otherwise, pass false
+    - Parameters: 
+        - HTMLContent:    Pass true to get the the news as an HTML string; otherwise, pass false
 
-    :returns: The news for today, in HTML or in plain text
+    - returns: The news for today, in HTML or in plain text
     */
-    func GetNews(#HTMLContent: Bool) -> String {
+    func GetNews(HTMLContent HTMLContent: Bool) throws -> String {
         var newsString = ""
 
-        let data = NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/portal4/Archive.php?" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding:NSUTF8StringEncoding , error: nil)
+        let data = try NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/portal4/Archive.php?" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding:NSUTF8StringEncoding)
 
         // Parse a string and find an element.
-        let document = HTMLDocument(string: data)
+        let document = HTMLDocument(string: data as String)
         let newsTable = document.firstNodeMatchingSelector("#MainBlock_Content")
 
         for node in newsTable.nodesMatchingSelector(".LBnews"){
@@ -97,7 +99,7 @@ class SchoolWebsiteDataManager {
     func GetTerms() -> UIWebView {
         let termsURL = NSURL(string: "http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
         let theRequest = NSURLRequest(URL: termsURL!)
-        var webView = UIWebView()
+        let webView = UIWebView()
         webView.loadRequest(theRequest)
         webView.scalesPageToFit = true
         return webView
@@ -106,7 +108,7 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get a test list, using the user's settings of class and layer
 
-    :returns: A string array of tests for the user
+    - returns: A string array of tests for the user
     */
     func GetTests() -> [String] {
         /*let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
@@ -133,13 +135,13 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get a test date list, using the user's settings of class and layer
 
-    :returns: A string array of tests dates for the user
+    - returns: A string array of tests dates for the user
     */
-    func GetTestsDates() -> [String] {
-        let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
+    func GetTestsDates() throws -> [String] {
+        let data = try NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208))
 
         // Parse a string and find an element.
-        let document = HTMLDocument(string: data)
+        let document = HTMLDocument(string: data as String)
         let theTable = document.firstNodeMatchingSelector("tbody")
         var skipFirstRow = false
         var testsDatesArr: [String] = []
@@ -149,7 +151,7 @@ class SchoolWebsiteDataManager {
             if (!skipFirstRow) {
                 skipFirstRow = true
             } else {
-                let inner = (node as HTMLNode).nodesMatchingSelector("td")
+                let inner = (node as! HTMLNode).nodesMatchingSelector("td")
                 testsDatesArr.append("ב" + String(inner[2].textContent))
             }
         }
@@ -159,15 +161,15 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get the numeber of tests, using the user's settings of class and layer. Used for numberOfRows in TestSys
 
-    :returns: The number of tests for the user
+    - returns: The number of tests for the user
     */
-    func NumberOfTests() -> Int {
-        let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
+    func NumberOfTests() throws -> Int {
+        let data = try NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208))
 
         // Parse a string and find an element.
-        let document = HTMLDocument(string: data)
+        let document = HTMLDocument(string: data as String)
         let theTable = document.firstNodeMatchingSelector("tbody")
-        var skipFirstRow = false
+        //var skipFirstRow = false
 
         return theTable.nodesMatchingSelector("tr").count - 1
     }
@@ -175,13 +177,15 @@ class SchoolWebsiteDataManager {
     /**
     Sends a request to Ohel-Shem's website to get today's changes, using the user's settings of class and layer
 
-    :returns: A string array of today's changes for the user
+    - returns: A string array of today's changes for the user
     */
-    func GetChanges () -> [String]{
-        let data = NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/php/changes/changes_sys/index.php?layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
+    func GetChanges () throws -> [String]{
+        //let data = NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/php/changes/changes_sys/index.php?layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
+        let data = try NSString(contentsOfURL: NSURL(string: "http://ohel-shem.com/php/changes/changes_sys/index.php?layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue))!, encoding: CFStringConvertEncodingToNSStringEncoding(0x0208))
+
 
         // Parse a string and find an element.
-        let document = HTMLDocument(string: data)
+        let document = HTMLDocument(string: data as String)
         let theTable = document.firstNodeMatchingSelector("table[bgcolor=white]")
         var changes: [String] = []
 
@@ -190,7 +194,7 @@ class SchoolWebsiteDataManager {
                 var skippedRowOne = false
                 var skippedColumnOne = false
                 //var hour = 1
-                var firstTime = true
+                //var firstTime = true
                 var classNum = 1
 
                 for row in theTable.nodesMatchingSelector("tr") {

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Alef-Regular.ttf">
-            <string>Alef-Regular</string>
             <string>Alef-Regular</string>
         </mutableArray>
     </customFonts>
@@ -18,30 +19,32 @@
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  זכויות יוצרים 2014 © ליאור פולק. כל הזכויות שמורות." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="436" width="441" height="24"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="KDE-cr-Boa"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Alef-Regular" family="Alef" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אהל שם" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-jv-OyR">
-                    <rect key="frame" x="20" y="107" width="441" height="50"/>
-                    <fontDescription key="fontDescription" name="Alef-Regular" family="Alef" pointSize="36"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.gif" translatesAutoresizingMaskIntoConstraints="NO" id="dQl-qK-2cc">
-                    <rect key="frame" x="131" y="183" width="219" height="114"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ohel.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQl-qK-2cc">
+                    <rect key="frame" x="140" y="140" width="200" height="200"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="NnG-4U-2ph"/>
+                        <constraint firstAttribute="width" secondItem="dQl-qK-2cc" secondAttribute="height" multiplier="1:1" id="X6S-Kd-eSO"/>
+                    </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.5490196078431373" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <animations/>
+            <color key="backgroundColor" red="0.12549019607843137" green="0.5607843137254902" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="dQl-qK-2cc" firstAttribute="top" secondItem="Afb-jv-OyR" secondAttribute="bottom" constant="26" id="2YZ-4T-xCX"/>
-                <constraint firstItem="Afb-jv-OyR" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="3QB-i6-BEM"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="L0O-2Q-X3u"/>
-                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerX" secondItem="Afb-jv-OyR" secondAttribute="centerX" id="Yvt-FL-aE1"/>
-                <constraint firstItem="Afb-jv-OyR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="kRt-ck-9Cb"/>
-                <constraint firstItem="Afb-jv-OyR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lch-bN-RqV"/>
-                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uVa-9F-0VW"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="Afb-jv-OyR" secondAttribute="leading" id="zvq-ie-UZe"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="OuN-MO-w7E"/>
+                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="U9S-sU-UPl"/>
+                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="do2-Ri-Z9D"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="i1U-Re-5v7"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="dQl-qK-2cc" secondAttribute="bottom" priority="999" constant="96" id="jcm-1s-9X7"/>
+                <constraint firstItem="dQl-qK-2cc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ybP-2l-cv2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -50,6 +53,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo.gif" width="219" height="114"/>
+        <image name="ohel.png" width="1024" height="1024"/>
     </resources>
 </document>

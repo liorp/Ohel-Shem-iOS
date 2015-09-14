@@ -27,7 +27,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
@@ -39,21 +39,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.NewData)
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition({ context in
             self.widgetLabel!.frame = CGRectMake(0, 0, size.width, size.height)
             }, completion: nil)
-    }
+    }*/
 
     func userDefaultsDidChange(notification: NSNotification) {
         self.widgetPerformUpdateWithCompletionHandler{
             (result: NCUpdateResult) in
-            println("got back: \(result)")
+            print("got back: \(result)")
         }
     }
 
     func updateLabel(){
-        var sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
+        let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
         if let text = sharedDefaults?.valueForKey("todayViewText") as? String {
             widgetLabel?.text = "בגדול, היום שלך נראה ככה: \n" + text//.stringByReplacingOccurrencesOfString("\n", withString: ", ", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)//.substringToIndex(advance(text.endIndex, -2))
         } else {

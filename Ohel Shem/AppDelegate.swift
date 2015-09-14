@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Fabric
 import Crashlytics
 
 @UIApplicationMain
@@ -16,16 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var j = 0
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Crashlytics.startWithAPIKey("9e4dce43dfba49a9386ebed039ab07d466d9596d")
+        Fabric.with([Crashlytics.self()])
         application.unregisterForRemoteNotifications()
         /*for family in UIFont.familyNames()
         {
-            println(family)
+        print(family)
 
-            for name in UIFont.fontNamesForFamilyName((family as NSString))
-            {
-                println(name)
-            }
+        for name in UIFont.fontNamesForFamilyName((family as NSString))
+        {
+        print(name)
+        }
         }*/
 
         // Override point for customization after application launch.
@@ -36,30 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
-        } else {
-            let localNotification = UILocalNotification()
-
-            //let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
-
-            let now = NSDate(timeIntervalSinceNow: 0)
-            let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-            let components = calendar?.components(NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.SecondCalendarUnit, fromDate: now)
-            components?.setValue(21, forComponent: NSCalendarUnit.HourCalendarUnit)
-            components?.setValue(3, forComponent: NSCalendarUnit.MinuteCalendarUnit)
-            components?.setValue(0, forComponent: NSCalendarUnit.SecondCalendarUnit)
-
-            localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
-            localNotification.timeZone = NSTimeZone.defaultTimeZone()
-            localNotification.applicationIconBadgeNumber = 1
-            localNotification.soundName = UILocalNotificationDefaultSoundName;
-            localNotification.alertAction = "כן!"
-            localNotification.repeatInterval = NSCalendarUnit.DayCalendarUnit
-            localNotification.fireDate = calendar?.dateFromComponents(components!)
-
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        }
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
 
         let font : UIFont? = UIFont(name: "Alef-Bold", size: 22)
 
@@ -68,21 +46,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITextField.appearance().font = UIFont(name: "Alef-Regular", size: 16)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : font!]
 
-        if let name: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("studentName") {
+        /*if let _: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("studentName") {
 
         } else {
             NSUserDefaults.standardUserDefaults().setValue("ליאור", forKey: "studentName")
         }
-        if let classNum: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("classNum") {
+
+        if let _: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("classNum") {
 
         } else {
             NSUserDefaults.standardUserDefaults().setValue("4", forKey: "classNum")
         }
-        if let layerNum: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("layerNum"){
+
+        if let _: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("layerNum") {
 
         } else {
-            NSUserDefaults.standardUserDefaults().setValue("11", forKey: "layerNum")
-        }
+            NSUserDefaults.standardUserDefaults().setValue("12", forKey: "layerNum")
+        }*/
         /* Siren code should go below window?.makeKeyAndVisible()
 
         // Siren is a singleton
@@ -102,12 +82,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checks.
         */
         siren.checkVersion(.Weekly)*/
-        
+
         return true
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        NSUserDefaults.standardUserDefaults().setValue(deviceToken, forKey: "deviceToken")
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://google.com")!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
 
+        var token = NSString(format: "%@", deviceToken)
+
+        token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
+        token = token.stringByReplacingOccurrencesOfString(">", withString: "")
+        token = token.stringByReplacingOccurrencesOfString("<", withString: "")
+
+        let params = ["deviceToken":String(token)] as Dictionary<String, String>
+
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+        } catch {
+            print(error)
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            print("Response: \(response)")
+            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("Body: \(strData)")
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+                // The JSONObjectWithData constructor didn't return an error. But, we should still
+                // check and make sure that json has a value using optional binding.
+                if let parseJSON = json {
+                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+                    let success = parseJSON["success"] as? Int
+                    print("Succes: \(success)")
+                } else {
+                    // Woa, okay the json object was nil, something went wrong. Maybe the server isn't running?
+                    let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    print("Error could not parse JSON: \(jsonStr)")
+                }
+            } catch {
+                print(error)
+            }
+        })
+
+        task.resume()
+
+    }
+
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
     }
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
@@ -120,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         localNotification.applicationIconBadgeNumber = 1
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         localNotification.alertAction = "כן!"
-        localNotification.repeatInterval = NSCalendarUnit.DayCalendarUnit
+        localNotification.repeatInterval = NSCalendarUnit.Day
         localNotification.fireDate = date
 
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
@@ -144,7 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }

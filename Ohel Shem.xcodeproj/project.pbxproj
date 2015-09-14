@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F6C6FD494D37E5EC5C72DAD /* Pods_Ohel_Shem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496241EA08DAEDC57EB7A8D4 /* Pods_Ohel_Shem.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8D00BFC61A6166AB0098A608 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC31A6166AB0098A608 /* FBShimmeringLayer.m */; };
 		8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */; };
 		8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFD61A6458FC0098A608 /* MainHomePage.swift */; };
@@ -21,8 +22,6 @@
 		8D1157321A767D4A0073CB5F /* Alef.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157311A767D4A0073CB5F /* Alef.license */; };
 		8D1157341A7680AD0073CB5F /* Acknowledgements.py in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157331A7680AD0073CB5F /* Acknowledgements.py */; };
 		8D1157371A76813D0073CB5F /* CFSSpringTableView.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157361A76813D0073CB5F /* CFSSpringTableView.license */; };
-		8D1169CA1A72EE0400B59241 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C41A72EE0400B59241 /* .gitignore */; };
-		8D1169CB1A72EE0400B59241 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C51A72EE0400B59241 /* LICENSE */; };
 		8D1169CD1A72EE0400B59241 /* WSCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1169C81A72EE0400B59241 /* WSCoachMarksView.m */; };
 		8D1169CE1A72EE0400B59241 /* WSCoachMarksView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8D1169C91A72EE0400B59241 /* WSCoachMarksView.podspec */; };
 		8D13C0B01A8F718500B3472A /* LaunchImages7.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */; };
@@ -52,28 +51,24 @@
 		8D41A8101A53348200168254 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */; };
 		8D41A8131A5335CD00168254 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8121A5335CD00168254 /* SlideMenu.swift */; };
 		8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8141A5338C700168254 /* ChangesSys.swift */; };
-		8D4903931A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4903921A9B63AC0062DB78 /* Crashlytics.framework */; };
-		8D4903941A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4903921A9B63AC0062DB78 /* Crashlytics.framework */; };
-		8D49039D1A9C56190062DB78 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D49039B1A9C56190062DB78 /* Alamofire.swift */; };
-		8D49039E1A9C56190062DB78 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D49039B1A9C56190062DB78 /* Alamofire.swift */; };
-		8D49039F1A9C56190062DB78 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D49039C1A9C56190062DB78 /* LICENSE */; };
-		8D4903A01A9C56190062DB78 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D49039C1A9C56190062DB78 /* LICENSE */; };
+		8D74886B1BA4432B0002E331 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886A1BA4432B0002E331 /* timetable.json */; settings = {ASSET_TAGS = (); }; };
+		8D74886D1BA6AFC60002E331 /* ohel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886C1BA6AFC60002E331 /* ohel.png */; settings = {ASSET_TAGS = (); }; };
 		8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */; };
-		8D861FE71A685543005EEA7A /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FE51A685543005EEA7A /* Siren.bundle */; };
-		8D861FE81A685543005EEA7A /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FE61A685543005EEA7A /* Siren.swift */; };
 		8D861FEA1A6D363B005EEA7A /* HourSystemViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FE91A6D363B005EEA7A /* HourSystemViewControllerManager.swift */; };
 		8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */; };
 		8D861FEF1A6F8976005EEA7A /* Alef-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEE1A6F8976005EEA7A /* Alef-Bold.ttf */; };
 		8D861FF21A724A8D005EEA7A /* CustomTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FF11A724A8C005EEA7A /* CustomTestCell.swift */; };
-		8DB35B3C1A87B64A00F028EA /* 3slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3B1A87B64A00F028EA /* 3slidecell.png */; };
+		8DB35B3C1A87B64A00F028EA /* hoursslidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3B1A87B64A00F028EA /* hoursslidecell.png */; };
 		8DB35B3E1A87B6AA00F028EA /* MBProgressHUD.license in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */; };
-		8DB35B691A89415000F028EA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B401A89415000F028EA /* .gitignore */; };
 		8DB35B6A1A89415000F028EA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B411A89415000F028EA /* .travis.yml */; };
-		8DB35B7D1A89415000F028EA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B5F1A89415000F028EA /* LICENSE */; };
 		8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB35B621A89415000F028EA /* MBProgressHUD.m */; };
 		8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B631A89415000F028EA /* MBProgressHUD.podspec */; };
 		8DB35B801A89415000F028EA /* MBProgressHUD.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */; };
 		8DC8971A1AA769E9009C2D7C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC897191AA769E9009C2D7C /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8DE4C8741BA3815200AAFF9F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE4C8731BA3815200AAFF9F /* libc++.tbd */; };
+		8DE4C8761BA3815A00AAFF9F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE4C8751BA3815A00AAFF9F /* libz.tbd */; };
+		8DE4C8781BA3817600AAFF9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE4C8771BA3817600AAFF9F /* Security.framework */; };
+		8DE4C87A1BA3817C00AAFF9F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE4C8791BA3817C00AAFF9F /* SystemConfiguration.framework */; };
 		8DE5079C1A6007D80015C96D /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE507781A6007D80015C96D /* HTMLComment.m */; };
 		8DE5079D1A6007D80015C96D /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5077A1A6007D80015C96D /* HTMLDocument.m */; };
 		8DE5079E1A6007D80015C96D /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5077C1A6007D80015C96D /* HTMLDocumentType.m */; };
@@ -90,20 +85,20 @@
 		8DE507A91A6007D80015C96D /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE507961A6007D80015C96D /* HTMLTokenizer.m */; };
 		8DE507AA1A6007D80015C96D /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE507991A6007D80015C96D /* HTMLTreeEnumerator.m */; };
 		8DE507AB1A6007D80015C96D /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5079B1A6007D80015C96D /* NSString+HTMLEntities.m */; };
-		8DE7C9271A549AA600190B79 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9261A549AA600190B79 /* timetable.json */; };
+		8DE7C9271A549AA600190B79 /* timetable old.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9261A549AA600190B79 /* timetable old.json */; };
 		8DE7C92C1A549AC200190B79 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9291A549AC200190B79 /* iRate.bundle */; };
 		8DE7C92D1A549AC200190B79 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C92B1A549AC200190B79 /* iRate.m */; };
 		8DE7C93A1A55780D00190B79 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9391A55780D00190B79 /* logo.gif */; };
 		8DE7C9401A55FE0000190B79 /* CustomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C93F1A55FE0000190B79 /* CustomMenuCell.swift */; };
 		8DE7C9421A56CBDF00190B79 /* FirstTimeHere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C9411A56CBDF00190B79 /* FirstTimeHere.swift */; };
 		8DE7C94F1A56D54000190B79 /* NewsSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C94E1A56D54000190B79 /* NewsSys.swift */; };
-		8DE7C9561A58136100190B79 /* 4slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9511A58136100190B79 /* 4slidecell.png */; };
-		8DE7C9571A58136100190B79 /* 5slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9521A58136100190B79 /* 5slidecell.png */; };
+		8DE7C9561A58136100190B79 /* 3slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9511A58136100190B79 /* 3slidecell.png */; };
+		8DE7C9571A58136100190B79 /* 4slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9521A58136100190B79 /* 4slidecell.png */; };
 		8DE7C9581A58136100190B79 /* 2slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9531A58136100190B79 /* 2slidecell.png */; };
-		8DE7C9591A58136100190B79 /* 8slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9541A58136100190B79 /* 8slidecell.png */; };
+		8DE7C9591A58136100190B79 /* 7slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9541A58136100190B79 /* 7slidecell.png */; };
 		8DE7C95A1A58136100190B79 /* 1slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9551A58136100190B79 /* 1slidecell.png */; };
-		8DE7C95C1A5813F300190B79 /* 6slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95B1A5813F300190B79 /* 6slidecell.png */; };
-		8DE7C95E1A58142200190B79 /* 7slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95D1A58142200190B79 /* 7slidecell.png */; };
+		8DE7C95C1A5813F300190B79 /* 5slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95B1A5813F300190B79 /* 5slidecell.png */; };
+		8DE7C95E1A58142200190B79 /* 6slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C95D1A58142200190B79 /* 6slidecell.png */; };
 		8DE7C9721A58566C00190B79 /* appicon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9601A58566C00190B79 /* appicon-60.png */; };
 		8DE7C9731A58566C00190B79 /* appicon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9611A58566C00190B79 /* appicon-60@2x.png */; };
 		8DE7C9741A58566C00190B79 /* appicon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9621A58566C00190B79 /* appicon-60@3x.png */; };
@@ -120,8 +115,6 @@
 		8DE7C97F1A58566C00190B79 /* appicon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C96D1A58566C00190B79 /* appicon-Small@3x.png */; };
 		8DE7C9801A58566C00190B79 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C96E1A58566C00190B79 /* appicon.png */; };
 		8DE7C9811A58566C00190B79 /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C96F1A58566C00190B79 /* appicon@2x.png */; };
-		8DE7C9821A58566C00190B79 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9701A58566C00190B79 /* iTunesArtwork */; };
-		8DE7C9831A58566C00190B79 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9711A58566C00190B79 /* iTunesArtwork@2x */; };
 		8DE7C98A1A5AB4DE00190B79 /* CFSSpringTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7C9871A5AB4DE00190B79 /* CFSSpringTableView.m */; };
 		8DE7C98B1A5AB4DE00190B79 /* CFSSpringTableView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7C9881A5AB4DE00190B79 /* CFSSpringTableView.podspec */; };
 		8DF695361A606514008851E0 /* FirstTimeHereViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF695351A606514008851E0 /* FirstTimeHereViewControllerManager.swift */; };
@@ -163,9 +156,21 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DC309631BA1E5DB003947E7 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		496241EA08DAEDC57EB7A8D4 /* Pods_Ohel_Shem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ohel_Shem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6437CC546F22D1294AF5E477 /* Pods-Ohel Shem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ohel Shem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ohel Shem/Pods-Ohel Shem.debug.xcconfig"; sourceTree = "<group>"; };
 		8D00BFC01A6166AB0098A608 /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
 		8D00BFC11A6166AB0098A608 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
 		8D00BFC21A6166AB0098A608 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
@@ -200,13 +205,13 @@
 		8D3FAF391A53BDF60008EB99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D3FAF3A1A53BDF60008EB99 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8D3FAF3C1A53BDF60008EB99 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		8D3FAF461A542B680008EB99 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		8D3FAF461A542B680008EB99 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8D3FAF481A542D490008EB99 /* list23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list23.png; path = ../list23.png; sourceTree = "<group>"; };
 		8D3FAF581A5472980008EB99 /* Ohel Shem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Ohel Shem.entitlements"; sourceTree = "<group>"; };
 		8D3FAF5C1A5480B30008EB99 /* SchoolTerms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTerms.swift; sourceTree = "<group>"; };
 		8D41A7D51A53341800168254 /* Ohel Shem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ohel Shem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D41A7D91A53341800168254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D41A7DA1A53341800168254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D41A7DA1A53341800168254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8D41A7DC1A53341800168254 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8D41A7DF1A53341800168254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D41A7E11A53341800168254 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -232,18 +237,15 @@
 		8D41A8111A53349900168254 /* Ohel-Shem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ohel-Shem-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D41A8121A5335CD00168254 /* SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
 		8D41A8141A5338C700168254 /* ChangesSys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangesSys.swift; sourceTree = "<group>"; };
-		8D4903921A9B63AC0062DB78 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		8D49039B1A9C56190062DB78 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
-		8D49039C1A9C56190062DB78 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8D603A421A651ECA00D69E5B /* Ohel-Shem Ext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Ohel-Shem Ext.entitlements"; path = "Ohel-Shem Ext/Ohel-Shem Ext.entitlements"; sourceTree = "<group>"; };
+		8D74886A1BA4432B0002E331 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
+		8D74886C1BA6AFC60002E331 /* ohel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ohel.png; path = ../ohel.png; sourceTree = "<group>"; };
 		8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolWebsiteDataManager.swift; sourceTree = "<group>"; };
-		8D861FE51A685543005EEA7A /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
-		8D861FE61A685543005EEA7A /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
-		8D861FE91A6D363B005EEA7A /* HourSystemViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourSystemViewControllerManager.swift; sourceTree = "<group>"; };
+		8D861FE91A6D363B005EEA7A /* HourSystemViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HourSystemViewControllerManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Regular.ttf"; sourceTree = "<group>"; };
 		8D861FEE1A6F8976005EEA7A /* Alef-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Bold.ttf"; sourceTree = "<group>"; };
 		8D861FF11A724A8C005EEA7A /* CustomTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTestCell.swift; sourceTree = "<group>"; };
-		8DB35B3B1A87B64A00F028EA /* 3slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3slidecell.png; sourceTree = "<group>"; };
+		8DB35B3B1A87B64A00F028EA /* hoursslidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hoursslidecell.png; sourceTree = "<group>"; };
 		8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBProgressHUD.license; sourceTree = "<group>"; };
 		8DB35B401A89415000F028EA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8DB35B411A89415000F028EA /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
@@ -256,6 +258,10 @@
 		8DB35B671A89415000F028EA /* MBProgressHUD.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = MBProgressHUD.xcworkspace; sourceTree = "<group>"; };
 		8DB35B681A89415000F028EA /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		8DC897191AA769E9009C2D7C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8DE4C8731BA3815200AAFF9F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8DE4C8751BA3815A00AAFF9F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8DE4C8771BA3817600AAFF9F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8DE4C8791BA3817C00AAFF9F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8DE507771A6007D80015C96D /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLComment.h; sourceTree = "<group>"; };
 		8DE507781A6007D80015C96D /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLComment.m; sourceTree = "<group>"; };
 		8DE507791A6007D80015C96D /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDocument.h; sourceTree = "<group>"; };
@@ -293,7 +299,7 @@
 		8DE507991A6007D80015C96D /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLTreeEnumerator.m; sourceTree = "<group>"; };
 		8DE5079A1A6007D80015C96D /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLEntities.h"; sourceTree = "<group>"; };
 		8DE5079B1A6007D80015C96D /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLEntities.m"; sourceTree = "<group>"; };
-		8DE7C9261A549AA600190B79 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
+		8DE7C9261A549AA600190B79 /* timetable old.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "timetable old.json"; sourceTree = "<group>"; };
 		8DE7C9291A549AC200190B79 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		8DE7C92A1A549AC200190B79 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		8DE7C92B1A549AC200190B79 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
@@ -302,13 +308,13 @@
 		8DE7C93F1A55FE0000190B79 /* CustomMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenuCell.swift; sourceTree = "<group>"; };
 		8DE7C9411A56CBDF00190B79 /* FirstTimeHere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTimeHere.swift; sourceTree = "<group>"; };
 		8DE7C94E1A56D54000190B79 /* NewsSys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSys.swift; sourceTree = "<group>"; };
-		8DE7C9511A58136100190B79 /* 4slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4slidecell.png; sourceTree = "<group>"; };
-		8DE7C9521A58136100190B79 /* 5slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5slidecell.png; sourceTree = "<group>"; };
+		8DE7C9511A58136100190B79 /* 3slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3slidecell.png; sourceTree = "<group>"; };
+		8DE7C9521A58136100190B79 /* 4slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4slidecell.png; sourceTree = "<group>"; };
 		8DE7C9531A58136100190B79 /* 2slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2slidecell.png; sourceTree = "<group>"; };
-		8DE7C9541A58136100190B79 /* 8slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8slidecell.png; sourceTree = "<group>"; };
+		8DE7C9541A58136100190B79 /* 7slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7slidecell.png; sourceTree = "<group>"; };
 		8DE7C9551A58136100190B79 /* 1slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1slidecell.png; sourceTree = "<group>"; };
-		8DE7C95B1A5813F300190B79 /* 6slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6slidecell.png; sourceTree = "<group>"; };
-		8DE7C95D1A58142200190B79 /* 7slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7slidecell.png; sourceTree = "<group>"; };
+		8DE7C95B1A5813F300190B79 /* 5slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5slidecell.png; sourceTree = "<group>"; };
+		8DE7C95D1A58142200190B79 /* 6slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6slidecell.png; sourceTree = "<group>"; };
 		8DE7C9601A58566C00190B79 /* appicon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60.png"; sourceTree = "<group>"; };
 		8DE7C9611A58566C00190B79 /* appicon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60@2x.png"; sourceTree = "<group>"; };
 		8DE7C9621A58566C00190B79 /* appicon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60@3x.png"; sourceTree = "<group>"; };
@@ -325,13 +331,14 @@
 		8DE7C96D1A58566C00190B79 /* appicon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-Small@3x.png"; sourceTree = "<group>"; };
 		8DE7C96E1A58566C00190B79 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		8DE7C96F1A58566C00190B79 /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
-		8DE7C9701A58566C00190B79 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
-		8DE7C9711A58566C00190B79 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
+		8DE7C9701A58566C00190B79 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
+		8DE7C9711A58566C00190B79 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		8DE7C9861A5AB4DE00190B79 /* CFSSpringTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFSSpringTableView.h; sourceTree = "<group>"; };
 		8DE7C9871A5AB4DE00190B79 /* CFSSpringTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFSSpringTableView.m; sourceTree = "<group>"; };
 		8DE7C9881A5AB4DE00190B79 /* CFSSpringTableView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CFSSpringTableView.podspec; sourceTree = "<group>"; };
 		8DE7C9891A5AB4DE00190B79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8DF695351A606514008851E0 /* FirstTimeHereViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTimeHereViewControllerManager.swift; sourceTree = "<group>"; };
+		EDC825639C26CC4031F4CFCD /* Pods-Ohel Shem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ohel Shem.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ohel Shem/Pods-Ohel Shem.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,7 +346,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D4903941A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */,
 				8D3FAF361A53BDF60008EB99 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,10 +354,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE4C87A1BA3817C00AAFF9F /* SystemConfiguration.framework in Frameworks */,
+				8DE4C8781BA3817600AAFF9F /* Security.framework in Frameworks */,
+				8DE4C8761BA3815A00AAFF9F /* libz.tbd in Frameworks */,
+				8DE4C8741BA3815200AAFF9F /* libc++.tbd in Frameworks */,
 				8DC8971A1AA769E9009C2D7C /* WebKit.framework in Frameworks */,
 				8D1DD7E11A613B3D000B9C9A /* EventKit.framework in Frameworks */,
-				8D4903931A9B63AD0062DB78 /* Crashlytics.framework in Frameworks */,
 				8D3FAF1A1A5352BA0008EB99 /* libxml2.dylib in Frameworks */,
+				0F6C6FD494D37E5EC5C72DAD /* Pods_Ohel_Shem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,9 +421,14 @@
 		8D3FAF341A53BDF60008EB99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DE4C8791BA3817C00AAFF9F /* SystemConfiguration.framework */,
+				8DE4C8771BA3817600AAFF9F /* Security.framework */,
+				8DE4C8751BA3815A00AAFF9F /* libz.tbd */,
+				8DE4C8731BA3815200AAFF9F /* libc++.tbd */,
 				8DC897191AA769E9009C2D7C /* WebKit.framework */,
 				8D1DD7E01A613B3D000B9C9A /* EventKit.framework */,
 				8D3FAF351A53BDF60008EB99 /* NotificationCenter.framework */,
+				496241EA08DAEDC57EB7A8D4 /* Pods_Ohel_Shem.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -447,6 +462,7 @@
 				8D41A7ED1A53341800168254 /* Ohel ShemTests */,
 				8D3FAF341A53BDF60008EB99 /* Frameworks */,
 				8D41A7D61A53341800168254 /* Products */,
+				EE679281103428A77D1C5A98 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -467,7 +483,8 @@
 				8D3FAF581A5472980008EB99 /* Ohel Shem.entitlements */,
 				8DE7C9391A55780D00190B79 /* logo.gif */,
 				8D41A8111A53349900168254 /* Ohel-Shem-Bridging-Header.h */,
-				8DE7C9261A549AA600190B79 /* timetable.json */,
+				8D74886A1BA4432B0002E331 /* timetable.json */,
+				8DE7C9261A549AA600190B79 /* timetable old.json */,
 				8DE7C93C1A557A4900190B79 /* list23.png */,
 				8D41A7DA1A53341800168254 /* AppDelegate.swift */,
 				8D41A8141A5338C700168254 /* ChangesSys.swift */,
@@ -486,24 +503,21 @@
 				8D41A8121A5335CD00168254 /* SlideMenu.swift */,
 				8D3FAF2B1A535AF40008EB99 /* TestSys.swift */,
 				8D41A7E11A53341800168254 /* Images.xcassets */,
-				8D49039A1A9C56190062DB78 /* Alamofire */,
+				8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */,
 				8D41A7FA1A53348200168254 /* AMSlideMenu */,
 				8DE7C9851A5AB4DE00190B79 /* CFSSpringTableView-master */,
 				8D00BFBF1A6166AB0098A608 /* FBShimmering */,
 				8D861FEB1A6F895F005EEA7A /* Fonts */,
 				8DE7C95F1A58566C00190B79 /* iphone */,
-				8D1157251A767BC70073CB5F /* Licenses */,
 				8DE7C9281A549AC200190B79 /* iRate */,
-				8DB35B3F1A89415000F028EA /* MBProgressHUD */,
 				8D41A7E31A53341800168254 /* LaunchScreen.xib */,
+				8D1157251A767BC70073CB5F /* Licenses */,
 				8D41A7DE1A53341800168254 /* Main.storyboard */,
+				8DB35B3F1A89415000F028EA /* MBProgressHUD */,
 				8D3FAF371A53BDF60008EB99 /* Ohel-Shem Ext */,
 				8DE7C9501A58136100190B79 /* png */,
-				8D861FE41A685543005EEA7A /* Siren */,
 				8D41A7D81A53341800168254 /* Supporting Files */,
 				8D1169C31A72EE0400B59241 /* WSCoachMarksView-master */,
-				8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */,
-				8D4903921A9B63AC0062DB78 /* Crashlytics.framework */,
 			);
 			path = "Ohel Shem";
 			sourceTree = "<group>";
@@ -554,24 +568,6 @@
 				8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */,
 			);
 			path = AMSlideMenu;
-			sourceTree = "<group>";
-		};
-		8D49039A1A9C56190062DB78 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				8D49039B1A9C56190062DB78 /* Alamofire.swift */,
-				8D49039C1A9C56190062DB78 /* LICENSE */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
-		8D861FE41A685543005EEA7A /* Siren */ = {
-			isa = PBXGroup;
-			children = (
-				8D861FE51A685543005EEA7A /* Siren.bundle */,
-				8D861FE61A685543005EEA7A /* Siren.swift */,
-			);
-			path = Siren;
 			sourceTree = "<group>";
 		};
 		8D861FEB1A6F895F005EEA7A /* Fonts */ = {
@@ -666,15 +662,16 @@
 		8DE7C9501A58136100190B79 /* png */ = {
 			isa = PBXGroup;
 			children = (
-				8DE7C9511A58136100190B79 /* 4slidecell.png */,
-				8DE7C95B1A5813F300190B79 /* 6slidecell.png */,
-				8DE7C9521A58136100190B79 /* 5slidecell.png */,
+				8D74886C1BA6AFC60002E331 /* ohel.png */,
+				8DE7C9511A58136100190B79 /* 3slidecell.png */,
+				8DE7C95B1A5813F300190B79 /* 5slidecell.png */,
+				8DE7C9521A58136100190B79 /* 4slidecell.png */,
 				8DE7C9531A58136100190B79 /* 2slidecell.png */,
-				8DE7C9541A58136100190B79 /* 8slidecell.png */,
-				8DE7C95D1A58142200190B79 /* 7slidecell.png */,
+				8DE7C9541A58136100190B79 /* 7slidecell.png */,
+				8DE7C95D1A58142200190B79 /* 6slidecell.png */,
 				8DE7C9551A58136100190B79 /* 1slidecell.png */,
 				8D00BFD81A6469A10098A608 /* 0slidecell.png */,
-				8DB35B3B1A87B64A00F028EA /* 3slidecell.png */,
+				8DB35B3B1A87B64A00F028EA /* hoursslidecell.png */,
 			);
 			path = png;
 			sourceTree = "<group>";
@@ -715,6 +712,15 @@
 			path = "CFSSpringTableView-master";
 			sourceTree = "<group>";
 		};
+		EE679281103428A77D1C5A98 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6437CC546F22D1294AF5E477 /* Pods-Ohel Shem.debug.xcconfig */,
+				EDC825639C26CC4031F4CFCD /* Pods-Ohel Shem.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -740,13 +746,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D41A7F41A53341800168254 /* Build configuration list for PBXNativeTarget "Ohel Shem" */;
 			buildPhases = (
+				EF504014DEBFA5DBA208385A /* Check Pods Manifest.lock */,
 				8D41A7D31A53341800168254 /* Resources */,
 				8D1157351A7680D70073CB5F /* ShellScript */,
 				8D41A7D11A53341800168254 /* Sources */,
 				8D41A7D21A53341800168254 /* Frameworks */,
 				8D3FAF441A53BDF60008EB99 /* Embed App Extensions */,
 				8DE7C93E1A55F91D00190B79 /* ShellScript */,
-				8D49038E1A9B63510062DB78 /* ShellScript */,
+				9D344C35E1C1A25A2BE86C71 /* Embed Pods Frameworks */,
+				5BA2E77B1EB912A71D6A2760 /* Copy Pods Resources */,
+				8DC309631BA1E5DB003947E7 /* Embed Watch Content */,
+				8DE4C8711BA37FB100AAFF9F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -782,7 +792,9 @@
 		8D41A7CD1A53341800168254 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Lior Pollak";
 				TargetAttributes = {
 					8D3FAF321A53BDF60008EB99 = {
@@ -803,6 +815,9 @@
 							};
 							com.apple.BackgroundModes = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 0;
@@ -856,7 +871,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D4903A01A9C56190062DB78 /* LICENSE in Resources */,
 				8D3FAF3D1A53BDF60008EB99 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -868,7 +882,7 @@
 				8D41A7E01A53341800168254 /* Main.storyboard in Resources */,
 				8D0800F01A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license in Resources */,
 				8DE7C97E1A58566C00190B79 /* appicon-Small@2x.png in Resources */,
-				8DE7C95E1A58142200190B79 /* 7slidecell.png in Resources */,
+				8DE7C95E1A58142200190B79 /* 6slidecell.png in Resources */,
 				8DE7C9761A58566C00190B79 /* appicon-72@2x.png in Resources */,
 				8DE7C9771A58566C00190B79 /* appicon-76.png in Resources */,
 				8D11572C1A767C460073CB5F /* AMSlideMenu.license in Resources */,
@@ -876,21 +890,17 @@
 				8D1157281A767BDE0073CB5F /* iRate.license in Resources */,
 				8DE7C9581A58136100190B79 /* 2slidecell.png in Resources */,
 				8D41A7E51A53341800168254 /* LaunchScreen.xib in Resources */,
-				8DE7C9271A549AA600190B79 /* timetable.json in Resources */,
+				8DE7C9271A549AA600190B79 /* timetable old.json in Resources */,
 				8DB35B6A1A89415000F028EA /* .travis.yml in Resources */,
 				8DE7C98B1A5AB4DE00190B79 /* CFSSpringTableView.podspec in Resources */,
 				8DE7C9811A58566C00190B79 /* appicon@2x.png in Resources */,
 				8DE7C97F1A58566C00190B79 /* appicon-Small@3x.png in Resources */,
-				8DE7C95C1A5813F300190B79 /* 6slidecell.png in Resources */,
+				8DE7C95C1A5813F300190B79 /* 5slidecell.png in Resources */,
 				8DE7C9801A58566C00190B79 /* appicon.png in Resources */,
-				8DB35B7D1A89415000F028EA /* LICENSE in Resources */,
 				8D1169CE1A72EE0400B59241 /* WSCoachMarksView.podspec in Resources */,
-				8D861FE71A685543005EEA7A /* Siren.bundle in Resources */,
 				8DE7C9741A58566C00190B79 /* appicon-60@3x.png in Resources */,
-				8D1169CB1A72EE0400B59241 /* LICENSE in Resources */,
 				8D3FAF491A542D490008EB99 /* list23.png in Resources */,
 				8DE7C9751A58566C00190B79 /* appicon-72.png in Resources */,
-				8DE7C9821A58566C00190B79 /* iTunesArtwork in Resources */,
 				8D11572E1A767C870073CB5F /* FBShimmering.license in Resources */,
 				8D1157341A7680AD0073CB5F /* Acknowledgements.py in Resources */,
 				8D861FEF1A6F8976005EEA7A /* Alef-Bold.ttf in Resources */,
@@ -898,7 +908,7 @@
 				8D1157371A76813D0073CB5F /* CFSSpringTableView.license in Resources */,
 				8DE7C9791A58566C00190B79 /* appicon-Small-40.png in Resources */,
 				8DE7C97C1A58566C00190B79 /* appicon-Small-50@2x.png in Resources */,
-				8DE7C9571A58136100190B79 /* 5slidecell.png in Resources */,
+				8DE7C9571A58136100190B79 /* 4slidecell.png in Resources */,
 				8DE7C97D1A58566C00190B79 /* appicon-Small.png in Resources */,
 				8DE7C95A1A58136100190B79 /* 1slidecell.png in Resources */,
 				8DB35B801A89415000F028EA /* MBProgressHUD.xcworkspace in Resources */,
@@ -906,24 +916,22 @@
 				8DE7C92C1A549AC200190B79 /* iRate.bundle in Resources */,
 				8DE7C97B1A58566C00190B79 /* appicon-Small-50.png in Resources */,
 				8DE7C9731A58566C00190B79 /* appicon-60@2x.png in Resources */,
-				8DE7C9561A58136100190B79 /* 4slidecell.png in Resources */,
-				8D1169CA1A72EE0400B59241 /* .gitignore in Resources */,
-				8DB35B691A89415000F028EA /* .gitignore in Resources */,
+				8DE7C9561A58136100190B79 /* 3slidecell.png in Resources */,
 				8D11572A1A767C0E0073CB5F /* Siren.license in Resources */,
 				8D1157321A767D4A0073CB5F /* Alef.license in Resources */,
 				8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */,
+				8D74886D1BA6AFC60002E331 /* ohel.png in Resources */,
 				8DB35B3E1A87B6AA00F028EA /* MBProgressHUD.license in Resources */,
 				8DE7C9721A58566C00190B79 /* appicon-60.png in Resources */,
 				8DE7C97A1A58566C00190B79 /* appicon-Small-40@2x.png in Resources */,
-				8DE7C9831A58566C00190B79 /* iTunesArtwork@2x in Resources */,
 				8DB35B7F1A89415000F028EA /* MBProgressHUD.podspec in Resources */,
-				8DB35B3C1A87B64A00F028EA /* 3slidecell.png in Resources */,
-				8D49039F1A9C56190062DB78 /* LICENSE in Resources */,
+				8D74886B1BA4432B0002E331 /* timetable.json in Resources */,
+				8DB35B3C1A87B64A00F028EA /* hoursslidecell.png in Resources */,
 				8DE7C9781A58566C00190B79 /* appicon-76@2x.png in Resources */,
 				8D13C0B01A8F718500B3472A /* LaunchImages7.xcassets in Resources */,
 				8D1157301A767CC30073CB5F /* WSCoachMarksView.license in Resources */,
 				8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */,
-				8DE7C9591A58136100190B79 /* 8slidecell.png in Resources */,
+				8DE7C9591A58136100190B79 /* 7slidecell.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +945,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5BA2E77B1EB912A71D6A2760 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ohel Shem/Pods-Ohel Shem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8D1157351A7680D70073CB5F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -963,7 +986,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
-		8D49038E1A9B63510062DB78 /* ShellScript */ = {
+		8DE4C8711BA37FB100AAFF9F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -974,7 +997,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 9e4dce43dfba49a9386ebed039ab07d466d9596d 8827d3d8b50d289dc30615e09acd8041a2cea11804deba09e8075ca3067a2163";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 9e4dce43dfba49a9386ebed039ab07d466d9596d 8827d3d8b50d289dc30615e09acd8041a2cea11804deba09e8075ca3067a2163";
 		};
 		8DE7C93E1A55F91D00190B79 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -989,6 +1012,36 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
+		9D344C35E1C1A25A2BE86C71 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ohel Shem/Pods-Ohel Shem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF504014DEBFA5DBA208385A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -996,7 +1049,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D49039E1A9C56190062DB78 /* Alamofire.swift in Sources */,
 				8D3FAF3B1A53BDF60008EB99 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1012,7 +1064,6 @@
 				8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */,
 				8DE507A21A6007D80015C96D /* HTMLOrderedDictionary.m in Sources */,
 				8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */,
-				8D861FE81A685543005EEA7A /* Siren.swift in Sources */,
 				8D41A80C1A53348200168254 /* AMSlideMenuLeftTableViewController.m in Sources */,
 				8DE507A51A6007D80015C96D /* HTMLSelector.m in Sources */,
 				8D3FAF471A542B680008EB99 /* SettingsController.swift in Sources */,
@@ -1042,7 +1093,6 @@
 				8D3FAF5D1A5480B30008EB99 /* SchoolTerms.swift in Sources */,
 				8DF695361A606514008851E0 /* FirstTimeHereViewControllerManager.swift in Sources */,
 				8DE507A61A6007D80015C96D /* HTMLSerialization.m in Sources */,
-				8D49039D1A9C56190062DB78 /* Alamofire.swift in Sources */,
 				8DE507AB1A6007D80015C96D /* NSString+HTMLEntities.m in Sources */,
 				8DE507A41A6007D80015C96D /* HTMLPreprocessedInputStream.m in Sources */,
 				8DE507A31A6007D80015C96D /* HTMLParser.m in Sources */,
@@ -1114,6 +1164,7 @@
 				INFOPLIST_FILE = "Ohel-Shem Ext/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.Ohel-Shem.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1130,6 +1181,7 @@
 				INFOPLIST_FILE = "Ohel-Shem Ext/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.Ohel-Shem.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1156,6 +1208,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1171,7 +1224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1209,7 +1262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1219,6 +1272,7 @@
 		};
 		8D41A7F51A53341800168254 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6437CC546F22D1294AF5E477 /* Pods-Ohel Shem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1229,7 +1283,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Ohel_Shem-gbmhidblllzujgfiiaqinvqrsdiz/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = (
@@ -1238,12 +1292,14 @@
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Ohel Shem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lc++",
+					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Experimental/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
@@ -1252,6 +1308,7 @@
 		};
 		8D41A7F61A53341800168254 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDC825639C26CC4031F4CFCD /* Pods-Ohel Shem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1261,7 +1318,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Ohel_Shem-gbmhidblllzujgfiiaqinvqrsdiz/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1269,12 +1326,14 @@
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "Ohel Shem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lc++",
+					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Experimental/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
@@ -1285,16 +1344,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Ohel ShemTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ohel Shem.app/Ohel Shem";
 			};
@@ -1304,12 +1361,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Ohel ShemTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ohel Shem.app/Ohel Shem";
 			};

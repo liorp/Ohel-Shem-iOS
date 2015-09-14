@@ -19,15 +19,15 @@ class HourSys: UITableViewController {
     var itemIndex: Int?
 
     func getNextHoliday(month: Int, day: Int) -> NSDate! {
-        var hebrew = NSCalendar(calendarIdentifier: NSHebrewCalendar)
-        var unitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitYear
+        let hebrew = NSCalendar(calendarIdentifier: NSCalendarIdentifierHebrew)
+        let unitFlags: NSCalendarUnit = [NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year]
 
-        var componentsOfToday = hebrew?.components(unitFlags, fromDate: NSDate(timeIntervalSinceNow: 0))
-        var componentsOfFutureDate = NSDateComponents()
+        let componentsOfToday = hebrew?.components(unitFlags, fromDate: NSDate(timeIntervalSinceNow: 0))
+        let componentsOfFutureDate = NSDateComponents()
         componentsOfFutureDate.month = month
         componentsOfFutureDate.day = day
 
-        var AlreadyPassedDate: Bool = (componentsOfFutureDate.month < componentsOfToday!.month || (componentsOfFutureDate.month == componentsOfToday!.month && componentsOfFutureDate.day < componentsOfToday!.day ))
+        let AlreadyPassedDate: Bool = (componentsOfFutureDate.month < componentsOfToday!.month || (componentsOfFutureDate.month == componentsOfToday!.month && componentsOfFutureDate.day < componentsOfToday!.day ))
 
         if  (AlreadyPassedDate){
             componentsOfFutureDate.year = componentsOfToday!.year + 1
@@ -47,22 +47,28 @@ class HourSys: UITableViewController {
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 0)
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         weekDay = myComponents.weekday
-        hours = SchoolWebsiteDataManager.sharedInstance.GetHours(itemIndex! + 1)
-        self.tableView.rowHeight = 44
+        do {
+            hours = try SchoolWebsiteDataManager.sharedInstance.GetHours(itemIndex! + 1)
+        } catch {
+            print(error)
+        }
 
         self.tableView.estimatedRowHeight = 44
+
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("hourCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("hourCell", forIndexPath: indexPath) 
         let display = hours![indexPath.row]
 
         cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": \(display)"
         cell.textLabel!.textAlignment = NSTextAlignment.Right
         cell.textLabel!.backgroundColor = UIColor.clearColor()
+        cell.textLabel!.numberOfLines = 0
         cell.backgroundColor = UIColor.clearColor()
         return cell
     }

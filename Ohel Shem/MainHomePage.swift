@@ -15,9 +15,12 @@ class MainHomePage: UIViewController {
     let numberToHebrewNumbersMale = [1:"ראשון", 2:"שני", 3:"שלישי", 4:"רביעי", 5:"חמישי", 6:"שישי", 7:"שבת"]
     let newLine = "\n"
     var final = NSMutableAttributedString()
+
     let fontHead: UIFont? = UIFont(name: "Alef-Bold", size: 24.0)
     let fontSubHead: UIFont? = UIFont(name: "Alef-Bold", size: 22.0)
     let fontBody: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
+    let fontSmall: UIFont? = UIFont(name: "Alef-Regular", size: 16.0)
+
     let hebrewMonthToNumber = ["בינואר":1, "בפברואר":2, "במרץ":3, "באפריל":4, "במאי":5, "ביוני":6, "ביולי":7, "באוגוסט":8, "בספטמבר":9, "באוקטובר":10, "בנובמבר":11, "בדצמבר":12]
     var timer: NSTimer?
 
@@ -26,7 +29,7 @@ class MainHomePage: UIViewController {
     func GetGreeting() -> String{
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.CalendarUnitHour, fromDate: date)
+        let components = calendar.components(NSCalendarUnit.Hour, fromDate: date)
         let hour = components.hour
 
         var homeString = "שלום, "
@@ -51,33 +54,35 @@ class MainHomePage: UIViewController {
             homeString = "לך לישון כבר, "
         }
 
-        homeString = homeString + (NSUserDefaults.standardUserDefaults().valueForKey("studentName")? as String)
+        homeString = homeString + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as! String)
         homeString = homeString +  " מכיתה "
-        homeString = homeString +  layers[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue]!
+        homeString = homeString +  layers[NSUserDefaults.standardUserDefaults().valueForKey("layerNum") as! Int]!
         homeString = homeString +  " "
-        homeString = homeString +  String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue)
+        homeString = homeString +  String(NSUserDefaults.standardUserDefaults().valueForKey("classNum") as! Int)
         homeString = homeString +  ","
         homeString += " זהו הסיכום היומי שלך: \n \n"
         return homeString
     }
 
-    func GetTodaysHours() -> [String]{
+    func GetTodaysHours() throws -> [String]{
         //Compute date of today
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 0)
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         var weekDay: Int
         weekDay = myComponents.weekday
 
         //This checks if we should get tommorow's hours or today's hours
-        if SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] == numberToHebrewNumbersMale[weekDay]{
-
-            return SchoolWebsiteDataManager.sharedInstance.GetHours(weekDay)
+        let day = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")
+        if day[day.count - 2] == numberToHebrewNumbersMale[weekDay]{
+            let hours = try SchoolWebsiteDataManager.sharedInstance.GetHours(weekDay)
+            return hours
 
         } else {
-            return SchoolWebsiteDataManager.sharedInstance.GetHours((weekDay == 7 ? 1 : weekDay + 1))
+            let hours = try SchoolWebsiteDataManager.sharedInstance.GetHours((weekDay == 7 ? 1 : weekDay + 1))
+            return hours
         }
     }
 
@@ -85,19 +90,25 @@ class MainHomePage: UIViewController {
         //Getting the changes
         var changes = NSMutableAttributedString(string: "")
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
+        let attrWith = [NSFontAttributeName : fontSmall! , NSForegroundColorAttributeName: UIColor.blackColor()]
         func AppendRegularHour(i : Int) {
             if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
                 //If we don't, we show the corresponding hour
                 var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
                 theHourWith.insert("עם", atIndex: 1)
-                let display = join(" ", theHourWith) as String
-                changes.appendAttributedString(NSAttributedString(string: "◉בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(display)\n", attributes: attrBody))
+                let display = theHourWith.joinWithSeparator(" ") as String
+                let theHourName = display.componentsSeparatedByString(" ").first!
+                var theHourWith1 = display.componentsSeparatedByString(" ")
+                theHourWith1.removeFirst()
+                let theHourWith2 = theHourWith1.joinWithSeparator(" ")
+                changes.appendAttributedString(NSAttributedString(string: "◉ בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(theHourName)", attributes: attrBody))
+                changes.appendAttributedString(NSAttributedString(string: " \(theHourWith2)\n", attributes: attrWith))
             } else {
                 if hours[i-1] == "שעה חופשית!" {
-                    let attrEmptyHour = NSAttributedString(string: "◉בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(hours[i-1])\n", attributes: attrBody)
+                    let attrEmptyHour = NSAttributedString(string: "◉ בשעה ה\(String(numberToHebrewNumbers[i]!)) יש \(hours[i-1])\n", attributes: attrBody)
                     changes.appendAttributedString(attrEmptyHour)
                 } else {
-                    let attrEmptyHour = NSAttributedString(string: "◉בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
+                    let attrEmptyHour = NSAttributedString(string: "◉ בשעה ה\(String(numberToHebrewNumbers[i]!)) \(hours[i-1])\n", attributes: attrBody)
                     changes.appendAttributedString(attrEmptyHour)
                 }
             }
@@ -106,7 +117,7 @@ class MainHomePage: UIViewController {
             if i - 1 < changesString.count {
                 if (changesString[i - 1] != "-"){
                     //If we have a change, we show it
-                    let attrChange = NSAttributedString(string: "◉בשעה ה\(String(numberToHebrewNumbers[i]!)): " + changesString[i - 1] + "\n", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()])
+                    let attrChange = NSAttributedString(string: "◉ בשעה ה\(String(numberToHebrewNumbers[i]!)): " + changesString[i - 1] + "\n", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()])
                     changes.appendAttributedString(attrChange)
                 } else {
                     AppendRegularHour(i)
@@ -121,7 +132,7 @@ class MainHomePage: UIViewController {
     func GetTop(numberOfTests num : Int) -> NSAttributedString{
         var returnString = NSMutableAttributedString(string: "")
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
-        let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
+        //let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
         let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
         // FIX: This should be updated to match the latest version of test system
         /*for (var i = 0, j = 0; i < tests.count && j < num; i++) {
@@ -146,7 +157,7 @@ class MainHomePage: UIViewController {
         return returnString
     }
 
-    func GetHomeString() -> NSAttributedString {
+    func GetHomeString() throws -> NSAttributedString {
 
         var homeString = ""
 
@@ -161,7 +172,7 @@ class MainHomePage: UIViewController {
         let attributedNews: NSAttributedString = NSAttributedString(string: "החדשות החמות ביותר: \n", attributes: attrNews)
         final.appendAttributedString(attributedNews)
 
-        let news = SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: false).componentsSeparatedByString(newLine)
+        let news = try SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: false).componentsSeparatedByString(newLine)
 
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
         let attributedNewsBody = NSMutableAttributedString(string: "\(news[0]), \(news[2]), \(news[4]) \n \n", attributes: attrBody)
@@ -172,41 +183,47 @@ class MainHomePage: UIViewController {
         let attributedBegadol: NSAttributedString = NSAttributedString(string: "בגדול, ככה היום שלך נראה: \n", attributes: attrBegadol)
         final.appendAttributedString(attributedBegadol)
 
-        let changeFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
+        //let changeFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
 
-        let formatter  = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
         let todayDate = NSDate(timeIntervalSinceNow: 10800)//Check if 3 hours from now is Saturday, since changes are in 9 pm
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar!.components(.WeekdayCalendarUnit, fromDate: todayDate)
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         var weekDay: Int
         weekDay = myComponents.weekday
 
         var stillSabbath = true
 
-        if SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
+        if try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
             stillSabbath = false
         }
-
-        let changes: NSAttributedString = ((weekDay == 7 || stillSabbath) ? NSAttributedString(string: "אין לימודים בשבת!\n", attributes: attrBody) : GetTodaysFormattedChanges(SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: GetTodaysHours()))
+        let hours = try GetTodaysHours()
+        let changes: NSAttributedString = ((weekDay == 7 || stillSabbath) ? NSAttributedString(string: "אין לימודים בשבת!\n", attributes: attrBody) : GetTodaysFormattedChanges(try SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: hours))
 
         final.appendAttributedString(changes)
 
         //Show tests
-        let attrTest = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)*/]
-        let attributedTestHead: NSAttributedString = NSAttributedString(string: "\nיש לך מבחנים בקרוב: \n", attributes: attrTest)
-        final.appendAttributedString(attributedTestHead)
+        //let attrTest = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)*/]
+        //let attributedTestHead: NSAttributedString = NSAttributedString(string: "\nיש לך מבחנים בקרוב: \n", attributes: attrTest)
+        //final.appendAttributedString(attributedTestHead)
 
-        let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
-        let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
-        final.appendAttributedString(GetTop(numberOfTests: 3))
+        //let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
+        //let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
+        //final.appendAttributedString(GetTop(numberOfTests: 3))
 
         //Append the date of validity of system
-        final.appendAttributedString(NSAttributedString(string: "\n" + SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges() + ", וגם מערכת השעות", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
+        let dayOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
+        final.appendAttributedString(NSAttributedString(string: "\n" + dayOfChanges + ", וגם מערכת השעות", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
+
+        let today = NSDate(timeIntervalSinceNow: 0)
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let components = calendar!.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: today)
+        let dateString = "\nנלקח בתאריך \(components.day).\(components.month).\(components.year), בשעה \(components.hour):\(components.minute):\(components.second)"
+
+        final.appendAttributedString(NSAttributedString(string: dateString, attributes:attrBody))
 
         let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
 
-        let changesToTodayExt = changes.string + " " + SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges() + ", וגם מערכת השעות"
+        let changesToTodayExt = changes.string + " " + dayOfChanges + ", וגם מערכת השעות\n\(dateString)"
 
         sharedDefaults?.setValue(changesToTodayExt, forKey: "todayViewText")
         sharedDefaults?.synchronize()
@@ -233,52 +250,65 @@ class MainHomePage: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        //timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
-        self.animateLoading(NSTimer())
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            // do some task
-            let textToDisplay = self.GetHomeString()
-            dispatch_async(dispatch_get_main_queue()) {
-                // update some UI
-                //self.timer?.invalidate()
-                self.theTextView?.layer.removeAllAnimations()
-                self.theTextView?.attributedText = textToDisplay
-                self.theTextView?.textAlignment = NSTextAlignment.Right
-            }
-        }
-/*
-        //self.theTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
-        /*let seen: Bool = NSUserDefaults.standardUserDefaults().boolForKey("seenTutorial")
-        if seen {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "BeginInit:", name: "finishedTutorial", object: nil)
 
-        } else {*/
-        if (UIApplication.sharedApplication().delegate! as AppDelegate).j == 0 {
+        //self.theTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
+        let seen: Bool = NSUserDefaults.standardUserDefaults().boolForKey("seenTutorial")
+        if seen {
+            self.BeginInit(NSNotification(name: "Dummy notification", object: nil))
+        } else {
             iRate.sharedInstance().daysUntilPrompt = 5
             iRate.sharedInstance().usesUntilPrompt = 15
             iRate.sharedInstance().verboseLogging = false
-            (UIApplication.sharedApplication().delegate! as AppDelegate).j++
-            self.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("FirstTimeHereViewControllerManager") as FirstTimeHereViewControllerManager, animated: true, { () -> Void in
-                let i = 1
+            self.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("FirstTimeHereViewControllerManager") as! FirstTimeHereViewControllerManager, animated: true, completion: { () -> Void in
                 let seenCoachingMarks = NSUserDefaults.standardUserDefaults().boolForKey("seenCoachingMarks")
                 if seenCoachingMarks == false {
                     //NSUserDefaults.standardUserDefaults().setBool(true, forKey: "seenCoachingMarks")
                     //NSUserDefaults.standardUserDefaults().synchronize()
                     // Setup coach marks
-                    let coachMarks = [
-                        [
-                            "rect": NSValue(CGRect: CGRectMake(0, 0, 45, 45)),//self.navigationItem.leftBarButtonItem!.customView!.frame),
-                            "caption": "תפריט"
-                        ]
+                    /*let coachMarks = [
+                    [
+                    "rect": NSValue(CGRect: CGRectMake(0, 0, 45, 45)),//self.navigationItem.leftBarButtonItem!.customView!.frame),
+                    "caption": "תפריט"
                     ]
-                    let coachMarksView = WSCoachMarksView(frame: self.view.frame, coachMarks: coachMarks)
+                    ]*/
+                    //let coachMarksView = WSCoachMarksView(frame: self.view.frame, coachMarks: coachMarks)
                     //self.view.addSubview(coachMarksView)
                     //coachMarksView.start()
                 }
             })
         }
-        //}
-*/
+    }
+
+    func BeginInit(notification: NSNotification) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        //self.animateLoading(NSTimer())
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            do {
+                let textToDisplay = try self.GetHomeString()
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    self.timer?.invalidate()
+                    self.theTextView?.layer.removeAllAnimations()
+                    self.theTextView?.attributedText = textToDisplay
+                    self.theTextView?.textAlignment = NSTextAlignment.Right
+                }
+            } catch {
+                print(error)
+                let textToDisplay = "קרתה שגיאה בתהליך ההתחברות לשרת"
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    self.timer?.invalidate()
+                    self.theTextView?.layer.removeAllAnimations()
+                    self.theTextView?.text = textToDisplay
+                    self.theTextView?.textAlignment = NSTextAlignment.Right
+                }
+            }
+        }
     }
 
     func animateLoading(timer: NSTimer) {
@@ -288,7 +318,7 @@ class MainHomePage: UIViewController {
         animation.subtype = kCATransitionFromRight
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         self.theTextView?.layer.addAnimation(animation, forKey: "changeTextTransition")*/
-        var animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        /*var animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
 
         let times = [0.0, 0.25, 0.45, 0.90, 1.0]
         let angles = [0, (-M_PI * 20.0/180.0), (-M_PI * 20.0/180.0), (M_PI * 2.0), (M_PI * 2.0)]
@@ -301,9 +331,9 @@ class MainHomePage: UIViewController {
         let oldFrame = self.theTextView?.frame
         self.theTextView?.layer.anchorPoint = CGPointMake(0.5, 0)
         self.theTextView?.frame = oldFrame!
-        self.theTextView?.layer.addAnimation(animation, forKey: "loading.animation.key")
+        self.theTextView?.layer.addAnimation(animation, forKey: "loading.animation.key")*/
 
-        /*if (self.theTextView?.text == "מעדכן...") {
+        if (self.theTextView?.text == "מעדכן...") {
             self.theTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
             self.theTextView?.textAlignment = NSTextAlignment.Center
         } else if (self.theTextView?.text == "מעדכן..") {
@@ -315,6 +345,6 @@ class MainHomePage: UIViewController {
         } else if (self.theTextView?.text == "מעדכן"){
             self.theTextView?.attributedText = NSAttributedString(string: "מעדכן.", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
             self.theTextView?.textAlignment = NSTextAlignment.Center
-        }*/
+        }
     }
 }

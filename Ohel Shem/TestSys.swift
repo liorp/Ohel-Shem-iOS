@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 import EventKit
 
-extension String {
+/*extension String {
     func stripCharactersInSet(chars: [Character]) -> String {
         return String(filter(self) {find(chars, $0) == nil})
     }
-}
+}*/
 
 class TestSys: UITableViewController, UIAlertViewDelegate {
 
@@ -54,7 +54,7 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
             self.testsArr = SchoolWebsiteDataManager.sharedInstance.GetTests()
             dispatch_async(dispatch_get_main_queue()) {
                 // update some UI
-                let i = 0
+                //let i = 0
                 self.isRefreshing = false
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                 //self.theTextView?.attributedText = textToDisplay
@@ -79,8 +79,8 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-        let titleSpaceSeperated = ((selectedCell! as CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let subtitleSpaceSeperated = ((selectedCell! as CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let subtitleSpaceSeperated = ((selectedCell! as! CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
         if (objc_getClass("UIAlertController") != nil) {
             var saveAlert: UIAlertController
@@ -99,10 +99,14 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
             saveAlert.addAction(cancelAction)
 
             let OKAction = UIAlertAction(title: "כן", style: .Default) { (action) in
-                let daysTextField = saveAlert.textFields![0] as UITextField
-                let num = daysTextField.text!.toInt()
+                let daysTextField = saveAlert.textFields![0] 
+                let num = Int(daysTextField.text!)
                 selectedCell?.setSelected(false, animated: false)
-                self.haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String], numberOfDaysBefore: num!)
+                do {
+                    try self.haveAReminder(subtitleSpaceSeperated , subject: titleSpaceSeperated , numberOfDaysBefore: num!)
+                } catch {
+                    print(error)
+                }
             }
 
             OKAction.enabled = false
@@ -113,7 +117,7 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
                 textField.placeholder = "כמה ימים לפני?"
 
                 NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue(), usingBlock: { (notification) -> Void in
-                    OKAction.enabled = (textField.text != "" && textField.text.toInt() != nil)
+                    OKAction.enabled = (textField.text != "" && Int(textField.text!) != nil)
                 })
             }
             
@@ -136,32 +140,34 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
     }
 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if (alertView.textFieldAtIndex(0)!.text != "" && alertView.textFieldAtIndex(0)!.text.toInt() != nil) {
+        if (alertView.textFieldAtIndex(0)!.text != "" && Int(alertView.textFieldAtIndex(0)!.text!) != nil) {
             //haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String], numberOfDaysBefore: alertView.textFieldAtIndex(0).text.toInt()!)
         } else {
 
         }
     }
 
-    func haveAReminder(date: [String], subject: [String], numberOfDaysBefore days: Int) {
-        var dateComponenta = NSDateComponents()
+    func haveAReminder(date: [String], subject: [String], numberOfDaysBefore days: Int) throws {
+        let dateComponenta = NSDateComponents()
         let year = date[4] as NSString
-        let month = self.hebrewMonthToNumber[(date[3].stripCharactersInSet([","]) as NSString)]
-        let day = date[2].stripCharactersInSet(["ה", "-"]) as NSString
+        let month = self.hebrewMonthToNumber[date[3].stringByReplacingOccurrencesOfString(",", withString: "") as String]
+        let day = date[2].stringByReplacingOccurrencesOfString("ה", withString: "").stringByReplacingOccurrencesOfString("-", withString: "")
+        //let month = self.hebrewMonthToNumber[(date[3].stripCharactersInSet([","]) as NSString) as String]
+        //let day = date[2].stripCharactersInSet(["ה", "-"]) as NSString
 
-        dateComponenta.day = day.integerValue - days
+        dateComponenta.day = Int(day)! - days
         dateComponenta.month = month!
         dateComponenta.year = year.integerValue
 
-        let dateOfReminder = NSCalendar.currentCalendar().dateFromComponents(dateComponenta)
+        //let dateOfReminder = NSCalendar.currentCalendar().dateFromComponents(dateComponenta)
 
-        var eventStore : EKEventStore = EKEventStore()
+        let eventStore : EKEventStore = EKEventStore()
         // 'EKEntityTypeReminder' or 'EKEntityTypeEvent'
-        eventStore.requestAccessToEntityType(EKEntityTypeReminder, completion: {
+        eventStore.requestAccessToEntityType(EKEntityType.Reminder, completion: {
             granted, error in
             if (granted) && (error == nil) {
 
-                var reminder = EKReminder(eventStore: eventStore)
+                let reminder = EKReminder(eventStore: eventStore)
 
                 reminder.title = "מבחן " + (String(subject[1] as NSString) == "במועד" ? (String(subject[1] as NSString) + " " + String(subject[2] as NSString)) : (String(subject[1] as NSString)))
                 reminder.notes = "צריך ללמוד כדי להצליח!"
@@ -169,10 +175,12 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
                 reminder.startDateComponents = dateComponenta
                 reminder.dueDateComponents = dateComponenta
 
-                var error: NSError?
-                var didSave = eventStore.saveReminder(reminder, commit: true, error: &error)
-                if (!didSave) {
-                    print("not saved " + error!.localizedDescription)
+                do {
+                    try eventStore.saveReminder(reminder, commit: true)
+                }
+                catch{
+
+                    //print("not saved " + error)
 
                     let notSavedAlert = UIAlertController(title: "שגיאה", message: "לא יכולנו ליצור תזכורת עבור המבחן", preferredStyle: UIAlertControllerStyle.Alert)
 
@@ -183,7 +191,9 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
                     self.presentViewController(notSavedAlert, animated: true) {
                         // ...
                     }
-                } else {
+                }
+
+
                     print("saved")
 
                     let savedAlert = UIAlertController(title: "הצלחה", message: "יצרנו בשבילך תזכורת עבור המבחן", preferredStyle: UIAlertControllerStyle.Alert)
@@ -195,7 +205,6 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
                     self.presentViewController(savedAlert, animated: true) {
                         // ...
                     }
-                }
             }
         })
     }
@@ -206,7 +215,13 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !isRefreshing {
-            return SchoolWebsiteDataManager.sharedInstance.NumberOfTests()
+            do {
+                let numOfTests = try SchoolWebsiteDataManager.sharedInstance.NumberOfTests()
+                return numOfTests
+            } catch {
+                print(error)
+                return 1
+            }
         } else {
             return 1
         }
@@ -215,7 +230,7 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
         if !isRefreshing {
-            let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as CustomTestCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! CustomTestCell
             let words = (testsArr[indexPath.row] as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             //If it's a moed b we display moed b
             var subtitle : String = ""
@@ -238,7 +253,7 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
             cell.backgroundColor = UIColor.clearColor()
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as CustomTestCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! CustomTestCell
             cell.titleText!.text = "מעדכן..."
             cell.titleText!.font = UIFont(name: "Alef-Bold", size: 18)
             cell.titleText!.textAlignment = NSTextAlignment.Center

@@ -13,8 +13,8 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
     @IBOutlet weak var hello: UILabel?
     @IBOutlet weak var versionLabel: UILabel?
-    @IBOutlet weak var userName: UITextField?
-    @IBOutlet weak var password: UITextField?
+    //@IBOutlet weak var userName: UITextField?
+    //@IBOutlet weak var password: UITextField?
     @IBOutlet weak var name: UITextField?
     @IBOutlet weak var layerNum: UITextField?
     @IBOutlet weak var classNum: UITextField?
@@ -27,6 +27,30 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
     var currentContentInset: UIEdgeInsets?
     var activeTextField: UITextField?
 
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        //It seems that you've discovered an easter egg!
+        if (motion == UIEventSubtype.MotionShake || event!.subtype == UIEventSubtype.MotionShake){
+            let saveAlert = UIAlertController(title: "Flush", message: "Flush the user content and close app", preferredStyle: UIAlertControllerStyle.Alert)
+            let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
+            }
+            saveAlert.addAction(cancelAction)
+
+            let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+                NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+                abort()
+            }
+            saveAlert.addAction(OKAction)
+
+            self.presentViewController(saveAlert, animated: true) {
+                // ...
+            }
+        }
+    }
+
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -35,7 +59,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
     // Called when the UIKeyboardDidShowNotification is sent.
     func keyboardWillBeShown(sender: NSNotification) {
         let info: NSDictionary = sender.userInfo!
-        let value: NSValue = info.valueForKey(UIKeyboardFrameBeginUserInfoKey) as NSValue
+        let value: NSValue = info.valueForKey(UIKeyboardFrameBeginUserInfoKey) as! NSValue
         let keyboardSize: CGSize = value.CGRectValue().size
         let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
         tableView.contentInset = contentInsets
@@ -62,12 +86,12 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         }
     }
 
-    func textFieldDidBeginEditing(textField: UITextField!) {
+    func textFieldDidBeginEditing(textField: UITextField) {
         activeTextField = textField
         //tableView.scrollEnabled = true
     }
 
-    func textFieldDidEndEditing(textField: UITextField!) {
+    func textFieldDidEndEditing(textField: UITextField) {
         activeTextField = nil
         //tableView.scrollEnabled = false
     }
@@ -93,7 +117,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
         hello!.numberOfLines = 0
         hello!.text = "שלום, "
-        hello!.text = hello!.text! + (NSUserDefaults.standardUserDefaults().valueForKey("studentName")? as String)
+        hello!.text = hello!.text! + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as! String)
         hello!.text = hello!.text! +  " מכיתה "
         hello!.text = hello!.text! +  layers[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue]!
         hello!.text = hello!.text! +  " "
@@ -106,7 +130,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         layerNum!.inputView = classAndLayerInput
         let doneButton = UIBarButtonItem(title: "סיימתי", style: UIBarButtonItemStyle.Done, target: self, action: "updateClassandLayer:")
         let middleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        var toolbar = UIToolbar()
+        let toolbar = UIToolbar()
         toolbar.barStyle = UIBarStyle.Default
         toolbar.translucent = true
         toolbar.setItems([middleSpace, doneButton], animated: false)
@@ -116,18 +140,19 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
         self.addLeftMenuButton()
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        self.name!.text = NSUserDefaults.standardUserDefaults().valueForKey("studentName") as String
+        self.name!.text = NSUserDefaults.standardUserDefaults().valueForKey("studentName") as? String
         self.layerNum!.text = layers[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue]
         self.classNum!.text = String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue)
 
-        if let username: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("username") {
-            self.userName!.text = String(NSUserDefaults.standardUserDefaults().valueForKey("username")! as NSString)
+        /*if let username = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String {
+            self.userName!.text = username
         }
-        if let password: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("password") {
-            self.password!.text = String(NSUserDefaults.standardUserDefaults().valueForKey("password")! as NSString)
+        if let password = NSUserDefaults.standardUserDefaults().valueForKey("password") as? String {
+            self.password!.text = password
         }
 
         self.userName!.autocorrectionType = UITextAutocorrectionType.No
+        */
 
         /*let blurEffect = UIBlurEffect(style: .Light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -140,7 +165,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         hello!.lineBreakMode = .ByWordWrapping
         hello!.numberOfLines = 0
 
-        var gestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         gestureRecognizer.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(gestureRecognizer)
 
@@ -150,9 +175,9 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
 
         self.setPreselectedPicker(UITextField())
 
-        let versionNumber: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        let versionNumber: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
 
-        let buildNumber: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+        let buildNumber: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
 
         let versionBuildString = "אהל שם. גרסה: \(versionNumber) (\(buildNumber)). נוצר עם ♥"
 
@@ -175,7 +200,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         }
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
             return classes[row]
         } else {
@@ -191,13 +216,13 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         }
     }
 
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         layerNum?.resignFirstResponder()
         classNum?.resignFirstResponder()
         classAndLayerInput?.resignFirstResponder()
         name?.resignFirstResponder()
-        password?.resignFirstResponder()
-        userName?.resignFirstResponder()
+        //password?.resignFirstResponder()
+        //userName?.resignFirstResponder()
         self.view.resignFirstResponder()
         self.tableView.resignFirstResponder()
 
@@ -214,8 +239,8 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         classNum?.resignFirstResponder()
         classAndLayerInput?.resignFirstResponder()
         name?.resignFirstResponder()
-        password?.resignFirstResponder()
-        userName?.resignFirstResponder()
+        //password?.resignFirstResponder()
+        //userName?.resignFirstResponder()
         self.view.resignFirstResponder()
         self.tableView.resignFirstResponder()
 
@@ -254,7 +279,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         //NSUbiquitousKeyValueStore.defaultStore().synchronize()
 
         hello!.text = "שלום, "
-        hello!.text = hello!.text! + (NSUserDefaults.standardUserDefaults().valueForKey("studentName")? as String)
+        hello!.text = hello!.text! + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as! String)
         hello!.text = hello!.text! +  " מכיתה "
         hello!.text = hello!.text! +  layers[NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue]!
         hello!.text = hello!.text! +  " "
@@ -276,7 +301,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         NSUserDefaults.standardUserDefaults().synchronize()
         //NSUbiquitousKeyValueStore.defaultStore().synchronize()
 
-        NSUserDefaults.standardUserDefaults().setValue(oppositeLayers[layerNum!.text], forKey: "layerNum")
+        NSUserDefaults.standardUserDefaults().setValue(oppositeLayers[layerNum!.text!], forKey: "layerNum")
         //NSUbiquitousKeyValueStore.defaultStore().setValue(sender.text, forKey: "layerNum")
         NSUserDefaults.standardUserDefaults().synchronize()
         //NSUbiquitousKeyValueStore.defaultStore().synchronize()
@@ -288,8 +313,8 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         self.hideKeyboard()
     }
 
-    @IBAction func beginUserLogin(sender: UITextField){
-        if (userName?.text.isEmpty == true || password?.text.isEmpty == true) {
+    /*@IBAction func beginUserLogin(sender: UITextField){
+        if (userName?.text!.isEmpty == true || password?.text!.isEmpty == true) {
             if (objc_getClass("UIAlertController") != nil) {
                 let emptyAlert = UIAlertController(title: "פרטים חסרים", message: "אנא וודא כי מילאת שם משתמש וסיסמה", preferredStyle: UIAlertControllerStyle.Alert)
                 emptyAlert.addAction(UIAlertAction(title: "הבנתי", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
@@ -304,11 +329,11 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
             }
         } else {
             //Begin connecting user asynchronously
-            request(.POST, "http://ohel-shem.com/~royejacobovich/iPhoneApp/login.php", parameters: ["username" : userName!.text, "password" : password!.text], encoding: ParameterEncoding.URL)
+            /*request(.POST, "http://ohel-shem.com/~royejacobovich/iPhoneApp/login.php", parameters: ["username" : userName!.text, "password" : password!.text], encoding: ParameterEncoding.URL)
                 .response { (request, response, data, error) in
-                    println(request)
-                    println(response)
-                    println(error)
+                    print(request)
+                    print(response)
+                    print(error)
                     if (error == nil && response?.statusCode != 403 && response?.statusCode == 200){
                         //Save username and password
                         NSUserDefaults.standardUserDefaults().setValue(self.userName!.text, forKey: "username")
@@ -319,7 +344,7 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
                     if (error != nil){
                         print(error)
                     }
-            }
+            }*/
         }
-    }
+    }*/
 }

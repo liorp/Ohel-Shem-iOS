@@ -14,9 +14,9 @@ class SchoolTerms: UIViewController {
 
     @IBOutlet weak var terms: UIView?
 
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         //It seems that you've discovered an easter egg!
-        /*if (motion == UIEventSubtype.MotionShake || event.subtype == UIEventSubtype.MotionShake){
+        if (motion == UIEventSubtype.MotionShake || event!.subtype == UIEventSubtype.MotionShake){
             let saveAlert = UIAlertController(title: "שמואל קינן הוא המלך שלי", message: "אני מאשר את קבלת עול מלכותו של מלך המשיח שמואל קינן", preferredStyle: UIAlertControllerStyle.Alert)
             let cancelAction = UIAlertAction(title: "כן", style: .Cancel) { (action) in
             }
@@ -29,7 +29,7 @@ class SchoolTerms: UIViewController {
             self.presentViewController(saveAlert, animated: true) {
                 // ...
             }
-        }*/
+        }
     }
 
     override func viewDidLoad() {
@@ -41,19 +41,22 @@ class SchoolTerms: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     override func viewWillAppear(animated: Bool) {
         self.addLeftMenuButton()
     }
+
     override func canBecomeFirstResponder() -> Bool {
         return true
     }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         self.navigationController?.navigationBar.translucent = false
         //terms! = SchoolWebsiteDataManager.sharedInstance.GetTerms()
 
-        let termsURL = NSURL(string: "http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
+        let termsURL = NSURL(string: "https://docs.google.com/uc?export=download&id=0BwfXa-58WjvESWdjM1NYWFdHazEzV2tUNG02WGdzRzI5MDl3")//"https://app.box.com/s/eh7b3mri36di3o8a1jv4l3u2xakiafuz")//"http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
         let theRequest = NSURLRequest(URL: termsURL!)
         //theRequest.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
 
