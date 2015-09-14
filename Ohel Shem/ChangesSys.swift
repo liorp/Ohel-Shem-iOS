@@ -26,9 +26,9 @@ class ChangesSys: UITableViewController {
         self.addLeftMenuButton()
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
 
-        self.tableView.rowHeight = 44
-
         self.tableView.estimatedRowHeight = 44
+
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     @IBAction func willRefresh(sender: UIRefreshControl){
@@ -71,14 +71,28 @@ class ChangesSys: UITableViewController {
                     cell.textLabel?.textColor = (changes[indexPath.row] == "-" ? UIColor.blackColor() : UIColor.redColor())
                     cell.textLabel?.font = (changes[indexPath.row] == "-" ? UIFont(name:"Alef-Regular", size: 16) : UIFont(name:"Alef-Bold", size: 18))
                 } else {
-                    cell.textLabel!.text = "לא ניתן היה למצוא שינויים"
+                    if let noChanges = changes.first where noChanges == "אין שינויים" {
+                        cell.textLabel!.text = "אין שינויים"
+                    } else {
+                        cell.textLabel!.text = "לא ניתן היה למצוא שינויים"
+                    }
                     cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 16)
                 }
             } else {
                 //Display day of changes in last row
-                cell.textLabel!.text = dateOfChanges
+                let today = NSDate(timeIntervalSinceNow: 0)
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                dateFormatter.timeZone = NSTimeZone.localTimeZone()
+                let nowDate = dateFormatter.stringFromDate(today)
+                dateFormatter.dateFormat = "HH:mm:ss"
+                let nowHour = dateFormatter.stringFromDate(today)
+                let dateString = ", ונלקח בתאריך \(nowDate), בשעה \(nowHour)"
+
+                cell.textLabel!.text = dateOfChanges + dateString
                 cell.textLabel?.textColor = UIColor.redColor()
                 cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 16)
+                cell.textLabel?.numberOfLines = 0
             }
 
             cell.textLabel!.textAlignment = NSTextAlignment.Right
@@ -86,9 +100,6 @@ class ChangesSys: UITableViewController {
             cell.backgroundColor = UIColor.clearColor()
             cell.textLabel!.lineBreakMode = .ByWordWrapping
             cell.textLabel!.numberOfLines = 0
-
-
-            
 
             return cell
         } else {

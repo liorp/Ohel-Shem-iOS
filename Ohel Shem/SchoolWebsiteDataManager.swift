@@ -217,6 +217,12 @@ class SchoolWebsiteDataManager {
                 }
             }
         }
+
+        //Perhaps no changes?
+        if changes.count == 0 && data.containsString("אין שינויים") {
+            return ["אין שינויים"]
+        }
+        
         return changes
     }
 }

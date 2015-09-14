@@ -86,8 +86,11 @@ class MainHomePage: UIViewController {
         }
     }
 
-    func GetTodaysFormattedChanges(changesString: [String], hours: [String]) -> NSAttributedString {
+    func GetTodaysFormattedChanges(var changesString: [String], hours: [String]) -> NSAttributedString {
         //Getting the changes
+        if let noChanges = changesString.first where noChanges == "אין שינויים" {
+            changesString = []
+        }
         var changes = NSMutableAttributedString(string: "")
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
         let attrWith = [NSFontAttributeName : fontSmall! , NSForegroundColorAttributeName: UIColor.blackColor()]
@@ -215,11 +218,18 @@ class MainHomePage: UIViewController {
         final.appendAttributedString(NSAttributedString(string: "\n" + dayOfChanges + ", וגם מערכת השעות", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
 
         let today = NSDate(timeIntervalSinceNow: 0)
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        let components = calendar!.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: today)
-        let dateString = "\nנלקח בתאריך \(components.day).\(components.month).\(components.year), בשעה \(components.hour):\(components.minute):\(components.second)"
+        //let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        //let components = calendar!.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: today)
 
-        final.appendAttributedString(NSAttributedString(string: dateString, attributes:attrBody))
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        let nowDate = dateFormatter.stringFromDate(today)
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let nowHour = dateFormatter.stringFromDate(today)
+        let dateString = "\nנלקח בתאריך \(nowDate), בשעה \(nowHour)"
+
+        final.appendAttributedString(NSAttributedString(string: dateString, attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
 
         let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
 
