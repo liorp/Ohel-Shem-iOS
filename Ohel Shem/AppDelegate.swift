@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import Siren
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -63,7 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             NSUserDefaults.standardUserDefaults().setValue("12", forKey: "layerNum")
         }*/
-        /* Siren code should go below window?.makeKeyAndVisible()
+
+        // Siren code should go below window?.makeKeyAndVisible()
 
         // Siren is a singleton
         let siren = Siren.sharedInstance
@@ -72,16 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.appID = "956866498"
 
         // Required on iOS 8: The controller to present the alert from (usually the UIWindow's rootViewController)
-        siren.presentingViewController = window?.rootViewController
+        //siren.presentingViewController = window?.rootViewController
 
         // Optional: Defaults to .Option
-        siren.alertType = SirenAlertType.Skip
+        siren.alertType = SirenAlertType.Option
 
         /*
         Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
         checks.
         */
-        siren.checkVersion(.Weekly)*/
+        siren.checkVersion(.Weekly)
 
         return true
     }
@@ -167,10 +169,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        Siren.sharedInstance.checkVersion(.Immediately)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        Siren.sharedInstance.checkVersion(.Daily)
     }
     
     func applicationWillTerminate(application: UIApplication) {
