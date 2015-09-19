@@ -28,7 +28,7 @@ class SchoolWebsiteDataManager {
     - Parameters: 
         - weekDay:    The day for which to fetch the hours
 
-    - returns: The hour system for the requested day, or an empty array if none exists
+    - returns: The hour system for the requested day, or an empty array if none exists. If weekDay == 7 (Sabbath), returns an 11 element array with "אין לימודים בשבת!"
     */
     func GetHours(weekDay : Int) throws -> [String] {
         var hours: [String] = []

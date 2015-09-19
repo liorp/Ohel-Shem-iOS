@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self()])
-        application.unregisterForRemoteNotifications()
+        //application.unregisterForRemoteNotifications()
         /*for family in UIFont.familyNames()
         {
         print(family)
@@ -84,11 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checks.
         */
         siren.checkVersion(.Weekly)
-
+        
         return true
     }
 
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    /*func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         NSUserDefaults.standardUserDefaults().setValue(deviceToken, forKey: "deviceToken")
         let request = NSMutableURLRequest(URL: NSURL(string: "https://google.com")!)
         let session = NSURLSession.sharedSession()
@@ -138,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print(error)
-    }
+    }*/
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         let localNotification = UILocalNotification()
@@ -169,12 +169,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        Siren.sharedInstance.checkVersion(.Immediately)
+        //Siren.sharedInstance.checkVersion(.Immediately)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        Siren.sharedInstance.checkVersion(.Daily)
+        //Siren.sharedInstance.checkVersion(.Daily)
     }
     
     func applicationWillTerminate(application: UIApplication) {

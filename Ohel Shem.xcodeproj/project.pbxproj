@@ -51,8 +51,8 @@
 		8D41A8101A53348200168254 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */; };
 		8D41A8131A5335CD00168254 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8121A5335CD00168254 /* SlideMenu.swift */; };
 		8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8141A5338C700168254 /* ChangesSys.swift */; };
-		8D74886B1BA4432B0002E331 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886A1BA4432B0002E331 /* timetable.json */; settings = {ASSET_TAGS = (); }; };
-		8D74886D1BA6AFC60002E331 /* ohel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886C1BA6AFC60002E331 /* ohel.png */; settings = {ASSET_TAGS = (); }; };
+		8D74886B1BA4432B0002E331 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886A1BA4432B0002E331 /* timetable.json */; };
+		8D74886D1BA6AFC60002E331 /* ohel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886C1BA6AFC60002E331 /* ohel.png */; };
 		8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */; };
 		8D861FEA1A6D363B005EEA7A /* HourSystemViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FE91A6D363B005EEA7A /* HourSystemViewControllerManager.swift */; };
 		8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */; };
@@ -1303,6 +1303,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Experimental/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
