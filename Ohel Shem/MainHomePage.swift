@@ -28,6 +28,7 @@ class MainHomePage: UIViewController {
     @IBOutlet var mainTextView: UITextView?
     @IBOutlet var progressOfCurrentClass: UIProgressView?
     @IBOutlet var currentClassLabel: UILabel?
+    @IBOutlet var madHashiur: UILabel?
     @IBOutlet var timeToEndCurrentClassLabel: UILabel?
 
     func GetGreeting() -> NSAttributedString{
@@ -95,15 +96,14 @@ class MainHomePage: UIViewController {
 
     func GetHourNumbered(number: Int) -> String {
         do {
-
             if (number == -1) {
-                return "הפסקה!"
+                return "יש עכשיו הפסקה! 🎉"
             }
             if (number == -2) {
-                return "נגמר ביה״ס!"
+                return "נגמר ביה״ס! 💫"
             }
             if (number == -3) {
-                return "אין לימודים בשבת!"
+                return "אין לימודים בשבת! 💤"
             }
 
             //Checking for Sabbath
@@ -122,16 +122,15 @@ class MainHomePage: UIViewController {
                 return "אין לימודים בשבת!"
             }
 
-
             let hours = try self.GetTodaysHours()
             let changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
             if let noChanges = changes.first where noChanges == "אין שינויים" {
-                return "השיעור הנוכחי: " + hours[number-1]
+                return "יש עכשיו " + hours[number-1].componentsSeparatedByString(" ").first!
             } else {
-                if changes[number-1] != "-" {
+                if number <= changes.count && changes[number-1] != "-" {
                     return changes[number-1]
                 } else {
-                    return hours[number-1]
+                    return hours[number-1].componentsSeparatedByString(" ").first!
                 }
             }
         } catch {
@@ -275,18 +274,28 @@ class MainHomePage: UIViewController {
     }
 
     func BeginInit(notification: NSNotification) {
+        self.mainTextView?.userInteractionEnabled = false
+        self.mainTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+        self.mainTextView?.textAlignment = NSTextAlignment.Center
+
+        self.rotateAnimationForView(self.mainTextView!)
+        
         NSNotificationCenter.defaultCenter().removeObserver(self)
         timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
 
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
             // do some task
             do {
                 let greetingText = self.GetGreeting()
                 let newsText = try self.GetNews()
                 let begadolText = try self.GetTodaysFormattedChanges()
                 let dateText = try self.GetChangesHours()
+
+                let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
+                let changesToExt = begadolText.string + dateText.string
+                sharedDefaults?.setValue(changesToExt, forKey: "todayViewText")
+                sharedDefaults?.synchronize()
 
                 let mutableAttrString = NSMutableAttributedString(attributedString: greetingText)
                 mutableAttrString.appendAttributedString(newsText)
@@ -302,23 +311,23 @@ class MainHomePage: UIViewController {
                     self.mainTextView?.attributedText = mutableAttrString
                     self.mainTextView?.textAlignment = NSTextAlignment.Right
 
+                    self.rotateAnimationForView(self.mainTextView!)
+
                     self.currentClassTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "UpdateProgressView:", userInfo: nil, repeats: true)
                     NSRunLoop.currentRunLoop().addTimer(self.currentClassTimer!, forMode: NSRunLoopCommonModes)
 
                     self.currentClassLabel?.text = self.GetHourNumbered(self.GetNumberOfCurrentClass())
-                    //self.addCornersToView(self.mainTextView!)
+                    self.addCornersToView(self.mainTextView!)
 
-                    print("go")
                     UIView.animateWithDuration(0.5, delay: 0.5, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
                         self.progressOfCurrentClass?.alpha = 1
+                        self.madHashiur?.alpha = 1
                         }) { (completed) -> Void in
                             UIView.animateWithDuration(0.5, delay: 0, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
                                 self.currentClassLabel?.alpha = 1
+                                self.timeToEndCurrentClassLabel?.alpha = 1
                                 }) { (completed) -> Void in
-                                    UIView.animateWithDuration(0.5, delay: 0, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
-                                        self.timeToEndCurrentClassLabel?.alpha = 1
-                                        }) { (completed) -> Void in
-                                    }
+                                    self.mainTextView?.userInteractionEnabled = true
                             }
                     }
                 }
@@ -329,26 +338,44 @@ class MainHomePage: UIViewController {
                     // update some UI
                     self.timer?.invalidate()
                     self.mainTextView?.text = textToDisplay
+
+                    self.rotateAnimationForView(self.mainTextView!)
+                    self.mainTextView?.userInteractionEnabled = true
                 }
             }
         }
     }
 
     func UpdateProgressView(timer: NSTimer) {
-        let frac = GetFractionOfTimeLeftForCurrentClass()
+        let frac = GetFractionOfTimePassedForCurrentClass()
+        self.currentClassLabel?.text = self.GetHourNumbered(self.GetNumberOfCurrentClass())
         if frac >= 0 {
             self.progressOfCurrentClass?.progress = frac
-            self.timeToEndCurrentClassLabel?.text = "זמן לסיום: \(frac*45) דקות"
+            let timeToEndText: String
+            if frac < 0.1 {
+                timeToEndText = "רק התחיל, ועוד \(Int(45 - frac*45)) נגמר 😢"
+            } else if frac < 0.2 {
+                timeToEndText = "המצב משתפר, רק עוד \(Int(45 - frac*45)) דקות נגמר 😁"
+            } else if frac < 0.4 {
+                timeToEndText = "אפשר להחזיק עוד \(Int(45 - frac*45)) דקות? 😔"
+            } else if frac < 0.7 {
+                timeToEndText = "נו רק עוד \(Int(45 - frac*45)) דקות וזהו! 😐"
+            } else if frac < 0.9 {
+                timeToEndText = "בשורה משמחת: נשארו רק \(Int(45 - frac*45)) דקות! 😃"
+            } else {
+                timeToEndText = "רק עוד \(Int(45 - frac*45)) דקות! 😝"
+            }
+            self.timeToEndCurrentClassLabel?.text = timeToEndText
         } else {
             self.progressOfCurrentClass?.progress = 1
             self.timeToEndCurrentClassLabel?.text = ""
         }
     }
 
-    func GetFractionOfTimeLeftForCurrentClass() -> Float {
+    func GetFractionOfTimePassedForCurrentClass() -> Float {
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(NSCalendarUnit.Hour, fromDate: date)
+        let components = calendar.components([NSCalendarUnit.Weekday, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: date)
         let hour = components.hour
         let minute = Float(components.minute)
         //let second = components.second
@@ -467,7 +494,7 @@ class MainHomePage: UIViewController {
     func GetNumberOfCurrentClass() -> Int {
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(NSCalendarUnit.Hour, fromDate: date)
+        let components = calendar.components([NSCalendarUnit.Weekday, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: date)
         let hour = components.hour
         let minute = components.minute
         //let second = components.second
@@ -538,15 +565,6 @@ class MainHomePage: UIViewController {
         return -1
     }
 
-    func fixTextView(textView: UITextView) {
-        let fixedWidth = textView.frame.size.width
-        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        var newFrame = textView.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        textView.frame = newFrame
-    }
-
     func addCornersToView(view: UIView) {
         view.layer.cornerRadius = 10.0
         view.layer.borderColor = UIColor.grayColor().CGColor
@@ -571,6 +589,7 @@ class MainHomePage: UIViewController {
 
         self.mainTextView?.alpha = 0
         self.progressOfCurrentClass?.alpha = 0
+        self.madHashiur?.alpha = 0
         self.currentClassLabel?.alpha = 0
         self.timeToEndCurrentClassLabel?.alpha = 0
     }
@@ -582,6 +601,14 @@ class MainHomePage: UIViewController {
         UpdateProgressView(NSTimer())
 
         self.mainTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
+        self.mainTextView?.addMotionEffect(UIMotionEffect.twoAxesShift(20))
+        self.mainTextView?.backgroundColor = UIColor(red: 137/255, green: 207/255, blue: 240/255, alpha: 0.5)
+
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapMainTextView:")
+        gestureRecognizer.numberOfTapsRequired = 1
+
+        self.mainTextView?.addGestureRecognizer(gestureRecognizer)
+        
         let seen: Bool = NSUserDefaults.standardUserDefaults().boolForKey("seenTutorial")
         if seen {
             self.BeginInit(NSNotification(name: "Dummy notification", object: nil))
@@ -590,46 +617,87 @@ class MainHomePage: UIViewController {
             iRate.sharedInstance().usesUntilPrompt = 15
             iRate.sharedInstance().verboseLogging = false
             self.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("FirstTimeHereViewControllerManager") as! FirstTimeHereViewControllerManager, animated: true, completion: { () -> Void in
-                let seenCoachingMarks = NSUserDefaults.standardUserDefaults().boolForKey("seenCoachingMarks")
-                if seenCoachingMarks == false {
-                    //NSUserDefaults.standardUserDefaults().setBool(true, forKey: "seenCoachingMarks")
-                    //NSUserDefaults.standardUserDefaults().synchronize()
-                    // Setup coach marks
-                    /*let coachMarks = [
-                    [
-                    "rect": NSValue(CGRect: CGRectMake(0, 0, 45, 45)),//self.navigationItem.leftBarButtonItem!.customView!.frame),
-                    "caption": "תפריט"
-                    ]
-                    ]*/
-                    //let coachMarksView = WSCoachMarksView(frame: self.view.frame, coachMarks: coachMarks)
-                    //self.view.addSubview(coachMarksView)
-                    //coachMarksView.start()
-                }
             })
         }
     }
 
-    func animateLoading(timer: NSTimer) {
-        /*var animation = CATransition()
-        animation.duration = 0.5
-        animation.type = kCATransitionPush
-        animation.subtype = kCATransitionFromRight
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        self.theTextView?.layer.addAnimation(animation, forKey: "changeTextTransition")*/
-        /*var animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+    func singleTapMainTextView(gestureRecognizer: UIGestureRecognizer) {
+        self.BeginInit(NSNotification(name: "Begin", object: nil))
 
-        let times = [0.0, 0.25, 0.45, 0.90, 1.0]
-        let angles = [0, (-M_PI * 20.0/180.0), (-M_PI * 20.0/180.0), (M_PI * 2.0), (M_PI * 2.0)]
-        let functions = [CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut), CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)]
-        animation.keyTimes = times
-        animation.values = angles
-        animation.timingFunctions = functions
-        animation.duration = 1.7
-        animation.repeatCount = Float.infinity
-        let oldFrame = self.theTextView?.frame
-        self.theTextView?.layer.anchorPoint = CGPointMake(0.5, 0)
-        self.theTextView?.frame = oldFrame!
-        self.theTextView?.layer.addAnimation(animation, forKey: "loading.animation.key")*/
+        /*if (self.mainTextView?.text == "מעדכן...") {
+            return
+        } else if (self.mainTextView?.text == "מעדכן..") {
+            return
+        } else if (self.mainTextView?.text == "מעדכן."){
+            return
+        } else if (self.mainTextView?.text == "מעדכן"){
+            return
+        }
+
+        self.mainTextView?.userInteractionEnabled = false
+        self.mainTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
+        self.mainTextView?.textAlignment = NSTextAlignment.Center
+
+        self.rotateAnimationForView(self.mainTextView!)
+
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        let atimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(atimer, forMode: NSRunLoopCommonModes)
+
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
+            // do some task
+            do {
+                let greetingText = self.GetGreeting()
+                let newsText = try self.GetNews()
+                let begadolText = try self.GetTodaysFormattedChanges()
+                let dateText = try self.GetChangesHours()
+
+                let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
+                let changesToExt = begadolText.string + dateText.string
+                sharedDefaults?.setValue(changesToExt, forKey: "todayViewText")
+                sharedDefaults?.synchronize()
+
+                let mutableAttrString = NSMutableAttributedString(attributedString: greetingText)
+                mutableAttrString.appendAttributedString(newsText)
+                mutableAttrString.appendAttributedString(begadolText)
+                mutableAttrString.appendAttributedString(NSAttributedString(string: "\n"))
+                mutableAttrString.appendAttributedString(dateText)
+
+
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    atimer.invalidate()
+
+                    self.mainTextView?.attributedText = mutableAttrString
+                    self.mainTextView?.textAlignment = NSTextAlignment.Right
+
+                    self.rotateAnimationForView(self.mainTextView!)
+                    self.mainTextView?.userInteractionEnabled = true
+                }
+            } catch {
+                print(error)
+                let textToDisplay = "קרתה שגיאה בתהליך ההתחברות לשרת"
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    self.timer?.invalidate()
+                    self.mainTextView?.text = textToDisplay
+
+                    self.rotateAnimationForView(self.mainTextView!)
+                    self.mainTextView?.userInteractionEnabled = true
+                }
+            }
+        }*/
+    }
+
+    func rotateAnimationForView(view: UIView) {
+        let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation")
+        rotateAnimation.values = [0, CGFloat(M_PI / 100), 0, -CGFloat(M_PI / 100),0]
+        rotateAnimation.duration = 0.2
+
+        view.layer.addAnimation(rotateAnimation, forKey: nil)
+    }
+
+    func animateLoading(timer: NSTimer) {
         if (self.mainTextView?.alpha == 0) {
             UIView.animateWithDuration(0.5, delay: 0, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
                 self.mainTextView?.alpha = 1
@@ -651,88 +719,4 @@ class MainHomePage: UIViewController {
             self.mainTextView?.textAlignment = NSTextAlignment.Center
         }
     }
-
-    //func GetHomeString() throws -> NSAttributedString {
-
-    /*var homeString = ""
-
-    homeString += GetGreeting()
-
-    let attrHead = [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)Bold Header*/]
-    let attributedTitle: NSAttributedString = NSAttributedString(string: homeString, attributes: attrHead)
-    final.appendAttributedString(attributedTitle)*/
-
-    //Show news
-    /*let attrNews = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()]
-    let attributedNews: NSAttributedString = NSAttributedString(string: "החדשות החמות ביותר: \n", attributes: attrNews)
-    final.appendAttributedString(attributedNews)
-
-    let news = try SchoolWebsiteDataManager.sharedInstance.GetNews(HTMLContent: false).componentsSeparatedByString(newLine)
-
-    let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
-    let attributedNewsBody = NSMutableAttributedString(string: "\(news[0]), \(news[2]), \(news[4]) \n \n", attributes: attrBody)
-    final.appendAttributedString(attributedNewsBody)*/
-
-    //Show changes
-    /*let attrBegadol = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()]
-    let attributedBegadol: NSAttributedString = NSAttributedString(string: "בגדול, ככה היום שלך נראה: \n", attributes: attrBegadol)
-    final.appendAttributedString(attributedBegadol)
-    */
-
-    //let changeFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
-    /*
-    let todayDate = NSDate(timeIntervalSinceNow: 10800)//Check if 3 hours from now is Saturday, since changes are in 9 pm
-    let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
-    var weekDay: Int
-    weekDay = myComponents.weekday
-
-    var stillSabbath = true
-
-    if try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
-    stillSabbath = false
-    }
-    let hours = try GetTodaysHours()
-    let changes: NSAttributedString = ((weekDay == 7 || stillSabbath) ? NSAttributedString(string: "אין לימודים בשבת!\n", attributes: attrBody) : GetTodaysFormattedChanges(try SchoolWebsiteDataManager.sharedInstance.GetChanges(), hours: hours))
-
-    final.appendAttributedString(changes)
-    */
-
-
-    //Show tests
-    //let attrTest = [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()/*, NSStrokeWidthAttributeName : NSNumber(float: -3.0)*/]
-    //let attributedTestHead: NSAttributedString = NSAttributedString(string: "\nיש לך מבחנים בקרוב: \n", attributes: attrTest)
-    //final.appendAttributedString(attributedTestHead)
-
-    //let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
-    //let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
-    //final.appendAttributedString(GetTop(numberOfTests: 3))
-
-    //Append the date of validity of system
-    /*let dayOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
-    final.appendAttributedString(NSAttributedString(string: "\n" + dayOfChanges + ", וגם מערכת השעות", attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
-
-    let today = NSDate(timeIntervalSinceNow: 0)
-    //let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    //let components = calendar!.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: today)
-
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "dd.MM.yyyy"
-    dateFormatter.timeZone = NSTimeZone.localTimeZone()
-    let nowDate = dateFormatter.stringFromDate(today)
-    dateFormatter.dateFormat = "HH:mm:ss"
-    let nowHour = dateFormatter.stringFromDate(today)
-    let dateString = "\nנלקח בתאריך \(nowDate), בשעה \(nowHour)"
-    
-    final.appendAttributedString(NSAttributedString(string: dateString, attributes: [NSFontAttributeName : fontSubHead! , NSForegroundColorAttributeName: UIColor.redColor()]))
-    
-    let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
-    
-    let changesToTodayExt = /*changes.string +*/ " " + dayOfChanges + ", וגם מערכת השעות\n\(dateString)"
-    
-    sharedDefaults?.setValue(changesToTodayExt, forKey: "todayViewText")
-    sharedDefaults?.synchronize()*/
-    
-    //return final
-    //}
 }

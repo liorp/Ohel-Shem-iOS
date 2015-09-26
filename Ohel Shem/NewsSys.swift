@@ -33,7 +33,7 @@ class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDel
         if navigationType == UIWebViewNavigationType.LinkClicked {
             if #available(iOS 9.0, *) {
                 let vc = SFSafariViewController(URL: request.URL!)
-                vc.delegate = self
+                vc.delegate = selfDone some optimisations to Home Page.
                 presentViewController(vc, animated: true, completion: nil)
             } else {
                 // Fallback on earlier versions
@@ -47,7 +47,11 @@ class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDel
 
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         defer {
-            decisionHandler(WKNavigationActionPolicy.Allow)
+            if navigationAction.request.URL?.path != "/portal4" {
+                decisionHandler(WKNavigationActionPolicy.Cancel)
+            } else {
+                decisionHandler(WKNavigationActionPolicy.Allow)
+            }
         }
         if navigationAction.navigationType == WKNavigationType.LinkActivated {
             if #available(iOS 9.0, *) {

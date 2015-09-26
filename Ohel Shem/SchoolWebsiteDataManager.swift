@@ -96,15 +96,6 @@ class SchoolWebsiteDataManager {
         return newsString
     }
 
-    func GetTerms() -> UIWebView {
-        let termsURL = NSURL(string: "http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
-        let theRequest = NSURLRequest(URL: termsURL!)
-        let webView = UIWebView()
-        webView.loadRequest(theRequest)
-        webView.scalesPageToFit = true
-        return webView
-    }
-
     /**
     Sends a request to Ohel-Shem's website to get a test list, using the user's settings of class and layer
 

@@ -16,7 +16,7 @@ import EventKit
     }
 }*/
 
-class TestSys: UITableViewController, UIAlertViewDelegate {
+class TestSys: UITableViewController {
 
     @IBOutlet weak var refresherControl: UIRefreshControl?
 
@@ -82,7 +82,6 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
         let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         let subtitleSpaceSeperated = ((selectedCell! as! CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
-        if (objc_getClass("UIAlertController") != nil) {
             var saveAlert: UIAlertController
 
             //If it's a moed b we display moed b
@@ -124,27 +123,6 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
             self.presentViewController(saveAlert, animated: true) {
                 // ...
             }
-        } else {
-            var saveAlert: UIAlertView
-            if (String(titleSpaceSeperated[1] as NSString) == "במועד") {
-                let message = ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString))
-                saveAlert = UIAlertView(title: "רוצה שאזכיר לך לפני?", message: message, delegate: self, cancelButtonTitle: "כן", otherButtonTitles: "לא")
-
-            } else {
-                let message = "על המבחן " + String(titleSpaceSeperated[1] as NSString)
-                saveAlert = UIAlertView(title: "רוצה שאזכיר לך לפני?", message: message, delegate: self, cancelButtonTitle: "כן", otherButtonTitles: "לא")
-            }
-            saveAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-            saveAlert.show()
-        }
-    }
-
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if (alertView.textFieldAtIndex(0)!.text != "" && Int(alertView.textFieldAtIndex(0)!.text!) != nil) {
-            //haveAReminder(subtitleSpaceSeperated as [String], subject: titleSpaceSeperated as [String], numberOfDaysBefore: alertView.textFieldAtIndex(0).text.toInt()!)
-        } else {
-
-        }
     }
 
     func haveAReminder(date: [String], subject: [String], numberOfDaysBefore days: Int) throws {
@@ -179,9 +157,6 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
                     try eventStore.saveReminder(reminder, commit: true)
                 }
                 catch{
-
-                    //print("not saved " + error)
-
                     let notSavedAlert = UIAlertController(title: "שגיאה", message: "לא יכולנו ליצור תזכורת עבור המבחן", preferredStyle: UIAlertControllerStyle.Alert)
 
                     let OKAction = UIAlertAction(title: "אוף", style: .Default) { (action) in
@@ -192,9 +167,6 @@ class TestSys: UITableViewController, UIAlertViewDelegate {
                         // ...
                     }
                 }
-
-
-                    print("saved")
 
                     let savedAlert = UIAlertController(title: "הצלחה", message: "יצרנו בשבילך תזכורת עבור המבחן", preferredStyle: UIAlertControllerStyle.Alert)
 

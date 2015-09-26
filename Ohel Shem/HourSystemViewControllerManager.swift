@@ -112,7 +112,6 @@ class HourSystemViewControllerManager: UIViewController, UIPageViewControllerDat
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         let weekDay = myComponents.weekday
-        print("weekday " + String(weekDay))
         return (6 - weekDay) % 6
     }
 }

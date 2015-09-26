@@ -12,6 +12,7 @@
 		8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */; };
 		8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFD61A6458FC0098A608 /* MainHomePage.swift */; };
 		8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D00BFD81A6469A10098A608 /* 0slidecell.png */; };
+		8D05A7711BADC09E007C01E0 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05A7701BADC09E007C01E0 /* UIExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		8D0800F01A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D0800EF1A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license */; };
 		8D1157211A7679C00073CB5F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157201A7679C00073CB5F /* Settings.bundle */; };
 		8D1157281A767BDE0073CB5F /* iRate.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157271A767BDE0073CB5F /* iRate.license */; };
@@ -179,6 +180,7 @@
 		8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		8D00BFD61A6458FC0098A608 /* MainHomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomePage.swift; sourceTree = "<group>"; };
 		8D00BFD81A6469A10098A608 /* 0slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0slidecell.png; sourceTree = "<group>"; };
+		8D05A7701BADC09E007C01E0 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		8D0800EF1A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Loading-Animation-iOS-Samsel.license"; sourceTree = "<group>"; };
 		8D1157201A7679C00073CB5F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1157271A767BDE0073CB5F /* iRate.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iRate.license; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */,
 				8D3FAF461A542B680008EB99 /* SettingsController.swift */,
 				8D41A8121A5335CD00168254 /* SlideMenu.swift */,
+				8D05A7701BADC09E007C01E0 /* UIExtensions.swift */,
 				8D3FAF2B1A535AF40008EB99 /* TestSys.swift */,
 				8D41A7E11A53341800168254 /* Images.xcassets */,
 				8D13C0AF1A8F718500B3472A /* LaunchImages7.xcassets */,
@@ -1100,6 +1103,7 @@
 				8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */,
 				8D861FF21A724A8D005EEA7A /* CustomTestCell.swift in Sources */,
 				8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */,
+				8D05A7711BADC09E007C01E0 /* UIExtensions.swift in Sources */,
 				8D1169CD1A72EE0400B59241 /* WSCoachMarksView.m in Sources */,
 				8D41A7DB1A53341800168254 /* AppDelegate.swift in Sources */,
 			);

@@ -77,7 +77,7 @@
                                 <rect key="frame" x="267" y="535" width="66" height="45"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="Kbs-e3-CrA"/>
+                                    <constraint firstAttribute="width" constant="66" id="fwf-TC-c35"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Alef-Regular" family="Alef" pointSize="24"/>
                                 <state key="normal" title="הבנתי!">
@@ -144,11 +144,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Lil-Ya-C6Z" firstAttribute="top" secondItem="czg-PN-KeH" secondAttribute="bottom" constant="8" symbolic="YES" id="2at-q9-xNk"/>
+                            <constraint firstItem="h30-Iq-1mk" firstAttribute="centerX" secondItem="czg-PN-KeH" secondAttribute="centerX" id="3PA-1q-PBj"/>
                             <constraint firstItem="jJO-XQ-lkT" firstAttribute="trailing" secondItem="czg-PN-KeH" secondAttribute="trailing" id="At9-vX-UT4"/>
                             <constraint firstItem="A4w-ev-9Ib" firstAttribute="leading" secondItem="jJO-XQ-lkT" secondAttribute="leading" id="BOr-Ug-Ukg"/>
                             <constraint firstItem="fZ9-4d-nbt" firstAttribute="top" secondItem="Lil-Ya-C6Z" secondAttribute="bottom" constant="37" id="DS3-g6-kuS"/>
-                            <constraint firstItem="czg-PN-KeH" firstAttribute="centerX" secondItem="h30-Iq-1mk" secondAttribute="centerX" id="LpD-Ex-WMZ"/>
-                            <constraint firstAttribute="bottom" secondItem="h30-Iq-1mk" secondAttribute="bottom" constant="20" symbolic="YES" id="OCL-5g-bVl"/>
                             <constraint firstItem="czg-PN-KeH" firstAttribute="trailing" secondItem="Nrf-K7-6lz" secondAttribute="trailing" id="SN8-Ey-Mkc"/>
                             <constraint firstItem="fZ9-4d-nbt" firstAttribute="trailing" secondItem="Lil-Ya-C6Z" secondAttribute="trailing" id="TsF-2L-fTf"/>
                             <constraint firstItem="A4w-ev-9Ib" firstAttribute="baseline" secondItem="fZ9-4d-nbt" secondAttribute="baseline" id="UdA-61-AAO"/>
@@ -164,6 +163,7 @@
                             <constraint firstItem="jJO-XQ-lkT" firstAttribute="trailing" secondItem="A4w-ev-9Ib" secondAttribute="trailing" id="uRl-Yd-8Ek"/>
                             <constraint firstItem="Lil-Ya-C6Z" firstAttribute="centerY" secondItem="jJO-XQ-lkT" secondAttribute="centerY" id="uup-CC-g3N"/>
                             <constraint firstItem="jJO-XQ-lkT" firstAttribute="leading" secondItem="Lil-Ya-C6Z" secondAttribute="trailing" constant="33" id="wSq-eC-x7d"/>
+                            <constraint firstAttribute="bottom" secondItem="h30-Iq-1mk" secondAttribute="bottom" constant="20" symbolic="YES" id="xdJ-4j-Yqz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -236,7 +236,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="שלום, ליאור" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKB-73-XwB">
-                                    <rect key="frame" x="20" y="23" width="193" height="32"/>
+                                    <rect key="frame" x="20" y="31" width="193" height="24"/>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="193" id="ASg-gb-jp6"/>
@@ -249,7 +249,7 @@
                             <animations/>
                             <color key="backgroundColor" red="0.96470588235294119" green="0.9882352941176471" blue="0.93333333333333335" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="BKB-73-XwB" firstAttribute="top" secondItem="Bfp-eC-5vw" secondAttribute="topMargin" constant="15" id="6Wg-S9-Tmp"/>
+                                <constraint firstItem="BKB-73-XwB" firstAttribute="top" secondItem="Bfp-eC-5vw" secondAttribute="topMargin" constant="23" id="6Wg-S9-Tmp"/>
                                 <constraint firstItem="BKB-73-XwB" firstAttribute="leading" secondItem="Bfp-eC-5vw" secondAttribute="leading" constant="20" id="bJU-cA-Utu"/>
                                 <constraint firstAttribute="bottom" secondItem="BKB-73-XwB" secondAttribute="bottom" constant="23" id="scR-l6-JRa"/>
                             </constraints>
@@ -1040,56 +1040,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z5U-PV-D3G">
-                                <rect key="frame" x="20" y="72" width="560" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z5U-PV-D3G">
+                                <rect key="frame" x="20" y="72" width="560" height="20"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7Gy-cS-tf9"/>
+                                </constraints>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="שיעור נוכחי: אזרחות" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiG-gl-3Q8">
-                                <rect key="frame" x="154" y="82" width="426" height="58"/>
+                                <rect key="frame" x="280" y="107" width="300" height="39"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Xi3-Tw-ngY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="זמן לסיום: 10 דקות" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C8-ch-91P">
-                                <rect key="frame" x="20" y="82" width="126" height="58"/>
+                                <rect key="frame" x="20" y="107" width="244" height="39"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="270" id="9pF-v5-eWl"/>
-                                    <constraint firstAttribute="height" constant="58" id="ezN-LJ-EXA"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Mh0-gq-ig8"/>
+                                    <constraint firstAttribute="height" constant="39" id="ppk-JJ-Lko"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="טקסט" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="d8U-vX-QsG">
-                                <rect key="frame" x="20" y="148" width="560" height="444"/>
+                                <rect key="frame" x="20" y="154" width="560" height="438"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="מד השיעור" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Fv-gG-746">
+                                <rect key="frame" x="260" y="72" width="80" height="20"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="g2C-5A-W2y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0C8-ch-91P" firstAttribute="leading" secondItem="Z5U-PV-D3G" secondAttribute="leading" id="HNh-NK-RUc"/>
-                            <constraint firstItem="0C8-ch-91P" firstAttribute="leading" secondItem="xW6-zx-iNx" secondAttribute="leadingMargin" id="Lx1-Eb-117"/>
-                            <constraint firstItem="0C8-ch-91P" firstAttribute="top" secondItem="Z5U-PV-D3G" secondAttribute="bottom" constant="8" symbolic="YES" id="MMf-t7-Msl"/>
-                            <constraint firstItem="0C8-ch-91P" firstAttribute="baseline" secondItem="hiG-gl-3Q8" secondAttribute="baseline" id="Seq-yR-heE"/>
-                            <constraint firstItem="Z5U-PV-D3G" firstAttribute="top" secondItem="Uc5-co-tGc" secondAttribute="bottom" constant="8" symbolic="YES" id="cww-dE-N6e"/>
-                            <constraint firstItem="hiG-gl-3Q8" firstAttribute="leading" secondItem="0C8-ch-91P" secondAttribute="trailing" constant="8" symbolic="YES" id="dKB-Id-QLx"/>
-                            <constraint firstItem="d8U-vX-QsG" firstAttribute="top" secondItem="0C8-ch-91P" secondAttribute="bottom" constant="8" symbolic="YES" id="ddl-8M-g39"/>
-                            <constraint firstItem="0C8-ch-91P" firstAttribute="leading" secondItem="d8U-vX-QsG" secondAttribute="leading" id="egu-X3-AKz"/>
-                            <constraint firstItem="d8U-vX-QsG" firstAttribute="trailing" secondItem="hiG-gl-3Q8" secondAttribute="trailing" id="llv-Fo-4yG"/>
-                            <constraint firstItem="4Uj-D3-aTA" firstAttribute="top" secondItem="d8U-vX-QsG" secondAttribute="bottom" constant="8" symbolic="YES" id="raY-0I-mgK"/>
-                            <constraint firstItem="Z5U-PV-D3G" firstAttribute="trailing" secondItem="xW6-zx-iNx" secondAttribute="trailingMargin" id="sIQ-J6-ckV"/>
-                            <constraint firstItem="hiG-gl-3Q8" firstAttribute="firstBaseline" secondItem="0C8-ch-91P" secondAttribute="firstBaseline" id="suq-zU-yAA"/>
-                            <constraint firstItem="hiG-gl-3Q8" firstAttribute="trailing" secondItem="Z5U-PV-D3G" secondAttribute="trailing" id="udL-ed-3E4"/>
+                            <constraint firstItem="d8U-vX-QsG" firstAttribute="leading" secondItem="xW6-zx-iNx" secondAttribute="leadingMargin" id="28U-gw-QOx"/>
+                            <constraint firstItem="6Fv-gG-746" firstAttribute="centerX" secondItem="xW6-zx-iNx" secondAttribute="centerX" id="6R0-e0-APC"/>
+                            <constraint firstItem="6Fv-gG-746" firstAttribute="top" secondItem="Z5U-PV-D3G" secondAttribute="top" id="892-9E-y7Z"/>
+                            <constraint firstItem="0C8-ch-91P" firstAttribute="leading" secondItem="Z5U-PV-D3G" secondAttribute="leading" id="8fH-Eb-zAY"/>
+                            <constraint firstItem="hiG-gl-3Q8" firstAttribute="trailing" secondItem="d8U-vX-QsG" secondAttribute="trailing" id="F38-zu-XRl"/>
+                            <constraint firstItem="0C8-ch-91P" firstAttribute="top" secondItem="xW6-zx-iNx" secondAttribute="top" constant="107" id="Gy5-yY-uq6"/>
+                            <constraint firstItem="Z5U-PV-D3G" firstAttribute="top" secondItem="Uc5-co-tGc" secondAttribute="bottom" constant="8" symbolic="YES" id="Hs2-Xw-lvk"/>
+                            <constraint firstItem="0C8-ch-91P" firstAttribute="firstBaseline" secondItem="hiG-gl-3Q8" secondAttribute="firstBaseline" id="L3Y-1Q-hjX"/>
+                            <constraint firstItem="Z5U-PV-D3G" firstAttribute="trailing" secondItem="hiG-gl-3Q8" secondAttribute="trailing" id="YEG-gA-xw8"/>
+                            <constraint firstItem="0C8-ch-91P" firstAttribute="baseline" secondItem="hiG-gl-3Q8" secondAttribute="baseline" id="dPp-BO-Nxd"/>
+                            <constraint firstItem="d8U-vX-QsG" firstAttribute="trailing" secondItem="xW6-zx-iNx" secondAttribute="trailingMargin" id="diL-Ou-KUe"/>
+                            <constraint firstItem="4Uj-D3-aTA" firstAttribute="top" secondItem="d8U-vX-QsG" secondAttribute="bottom" constant="8" symbolic="YES" id="eeX-O4-jdC"/>
+                            <constraint firstItem="hiG-gl-3Q8" firstAttribute="leading" secondItem="0C8-ch-91P" secondAttribute="trailing" constant="16" id="ivY-Ld-XKY"/>
+                            <constraint firstItem="d8U-vX-QsG" firstAttribute="top" secondItem="0C8-ch-91P" secondAttribute="bottom" constant="8" symbolic="YES" id="rGy-08-ggt"/>
+                            <constraint firstItem="6Fv-gG-746" firstAttribute="centerX" secondItem="Z5U-PV-D3G" secondAttribute="centerX" id="vVw-tR-vkT"/>
+                            <constraint firstItem="hiG-gl-3Q8" firstAttribute="top" secondItem="6Fv-gG-746" secondAttribute="bottom" constant="15" id="wdE-Pk-dH0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="בית" id="Q9i-G8-KsF"/>
                     <connections>
                         <outlet property="currentClassLabel" destination="hiG-gl-3Q8" id="rE9-uM-47y"/>
+                        <outlet property="madHashiur" destination="6Fv-gG-746" id="IHT-5g-W24"/>
                         <outlet property="mainTextView" destination="d8U-vX-QsG" id="yV8-vw-6A7"/>
                         <outlet property="progressOfCurrentClass" destination="Z5U-PV-D3G" id="gjc-Ls-mjR"/>
                         <outlet property="timeToEndCurrentClassLabel" destination="0C8-ch-91P" id="lKX-kW-4c3"/>
