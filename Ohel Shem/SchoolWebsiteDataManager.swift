@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 private let _SchoolWebsiteDataManager = SchoolWebsiteDataManager()
 
@@ -97,11 +98,11 @@ class SchoolWebsiteDataManager {
     }
 
     /**
-    Sends a request to Ohel-Shem's website to get a test list, using the user's settings of class and layer
+    Gets the local file of tests- parses and returns Array of Array Of String- each sub-array has 2 elements- date and subject.
 
-    - returns: A string array of tests for the user
+    - returns: An Array of Array Of String of tests for the user
     */
-    func GetTests() -> [String] {
+    func GetTests() throws -> [[String]] {
         /*let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
 
         // Parse a string and find an element.
@@ -119,8 +120,16 @@ class SchoolWebsiteDataManager {
                 testsArr.append("מבחן ב" + String(inner[0].textContent) + " ב" + String(inner[2].textContent))
             }
         }*/
-        let testsArr = ["לוח המבחנים מושבת עד לעליית הגרסה החדשה"]
-        return testsArr
+        let classNum = NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue
+        let layer = NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue
+        let path = NSBundle.mainBundle().pathForResource("tests\(layer)", ofType: "json")
+        let jsonData = try NSData(contentsOfFile: path!, options: [NSDataReadingOptions.DataReadingMappedIfSafe])
+        let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions()) as! NSArray
+        if let tests = jsonResult[classNum-1] as? [[String]] {
+            return tests
+        } else {
+            return [[""]]
+        }
     }
 
     /**

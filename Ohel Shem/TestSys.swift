@@ -20,7 +20,7 @@ class TestSys: UITableViewController {
 
     @IBOutlet weak var refresherControl: UIRefreshControl?
 
-    var testsArr  = [""]
+    var testsArray = [[String]]()
     var isRefreshing = false
 
     let hebrewMonthToNumber = ["בינואר":1, "בפברואר":2, "במרץ":3, "באפריל":4, "במאי":5, "ביוני":6, "ביולי":7, "באוגוסט":8, "בספטמבר":9, "באוקטובר":10, "בנובמבר":11, "בדצמבר":12]
@@ -51,46 +51,50 @@ class TestSys: UITableViewController {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // do some task
-            self.testsArr = SchoolWebsiteDataManager.sharedInstance.GetTests()
-            dispatch_async(dispatch_get_main_queue()) {
-                // update some UI
-                //let i = 0
-                self.isRefreshing = false
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
-                //self.theTextView?.attributedText = textToDisplay
-                //self.theTextView?.textAlignment = NSTextAlignment.Right
+            do {
+                self.testsArray = try SchoolWebsiteDataManager.sharedInstance.GetTests()
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    //let i = 0
+                    self.isRefreshing = false
+                    self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+                    //self.theTextView?.attributedText = textToDisplay
+                    //self.theTextView?.textAlignment = NSTextAlignment.Right
+                }
+            } catch {
+                print(error)
             }
         }
     }
 
     @IBAction func willRefresh(sender: UIRefreshControl){
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק מבחנים")
+        defer{
+            refreshControl!.endRefreshing()
+        }
+        do {
+            testsArray = try SchoolWebsiteDataManager.sharedInstance.GetTests()
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
-        testsArr = SchoolWebsiteDataManager.sharedInstance.GetTests()
-        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
-
-        //formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
-        //NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
-        refreshControl!.attributedTitle! = NSAttributedString(string: lastUpdated)
-
-        refreshControl!.endRefreshing()
+            //formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
+            //NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+            let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
+            refreshControl!.attributedTitle! = NSAttributedString(string: lastUpdated)
+        }
+        catch {
+            print(error)
+        }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-        let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let subtitleSpaceSeperated = ((selectedCell! as! CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        //let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        //let subtitleSpaceSeperated = ((selectedCell! as! CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
             var saveAlert: UIAlertController
 
             //If it's a moed b we display moed b
-            if (String(titleSpaceSeperated[1] as NSString) == "במועד") {
-                saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString) + " " + String(titleSpaceSeperated[2] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
-
-            } else {
-                saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן " + String(titleSpaceSeperated[1] as NSString)), preferredStyle: UIAlertControllerStyle.Alert)
-            }
+            saveAlert = UIAlertController(title: "רוצה שאזכיר לך לפני?", message: ("על המבחן ב" + (selectedCell! as! CustomTestCell).titleText!.text!), preferredStyle: UIAlertControllerStyle.Alert)
 
             let cancelAction = UIAlertAction(title: "לא", style: .Cancel) { (action) in
                 selectedCell!.setSelected(false, animated: false)
@@ -102,7 +106,7 @@ class TestSys: UITableViewController {
                 let num = Int(daysTextField.text!)
                 selectedCell?.setSelected(false, animated: false)
                 do {
-                    try self.haveAReminder(subtitleSpaceSeperated , subject: titleSpaceSeperated , numberOfDaysBefore: num!)
+                    try self.haveAReminder(date: (selectedCell! as! CustomTestCell).subtitleText!.text! , subject: (selectedCell! as! CustomTestCell).titleText!.text! , numberOfDaysBefore: num!)
                 } catch {
                     print(error)
                 }
@@ -125,17 +129,16 @@ class TestSys: UITableViewController {
             }
     }
 
-    func haveAReminder(date: [String], subject: [String], numberOfDaysBefore days: Int) throws {
-        let dateComponenta = NSDateComponents()
-        let year = date[4] as NSString
-        let month = self.hebrewMonthToNumber[date[3].stringByReplacingOccurrencesOfString(",", withString: "") as String]
-        let day = date[2].stringByReplacingOccurrencesOfString("ה", withString: "").stringByReplacingOccurrencesOfString("-", withString: "")
-        //let month = self.hebrewMonthToNumber[(date[3].stripCharactersInSet([","]) as NSString) as String]
-        //let day = date[2].stripCharactersInSet(["ה", "-"]) as NSString
+    func haveAReminder(date date: String, subject: String, numberOfDaysBefore days: Int) throws {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let testDate = dateFormatter.dateFromString(date)
 
-        dateComponenta.day = Int(day)! - days
-        dateComponenta.month = month!
-        dateComponenta.year = year.integerValue
+        let dateComponenta = NSDateComponents()
+
+        dateComponenta.day = NSCalendar.currentCalendar().component(NSCalendarUnit.Day, fromDate: testDate!) - days
+        dateComponenta.month = NSCalendar.currentCalendar().component(NSCalendarUnit.Month, fromDate: testDate!)
+        dateComponenta.year = NSCalendar.currentCalendar().component(NSCalendarUnit.Year, fromDate: testDate!)
 
         //let dateOfReminder = NSCalendar.currentCalendar().dateFromComponents(dateComponenta)
 
@@ -146,8 +149,30 @@ class TestSys: UITableViewController {
             if (granted) && (error == nil) {
 
                 let reminder = EKReminder(eventStore: eventStore)
+                let random = arc4random_uniform(6)
+                let randomSmiley: String
+                switch (random) {
+                case 1:
+                    randomSmiley = "😅"
+                    break;
+                case 2:
+                    randomSmiley = "😕"
+                    break;
+                case 3:
+                    randomSmiley = "😵"
+                    break;
+                case 4:
+                    randomSmiley = "💩"
+                    break;
+                case 5:
+                    randomSmiley = "😢"
+                    break;
+                default:
+                    randomSmiley = "💀"
+                    break;
+                }
 
-                reminder.title = "מבחן " + (String(subject[1] as NSString) == "במועד" ? (String(subject[1] as NSString) + " " + String(subject[2] as NSString)) : (String(subject[1] as NSString)))
+                reminder.title = "מבחן ב" + subject + " " + randomSmiley
                 reminder.notes = "צריך ללמוד כדי להצליח!"
                 reminder.calendar = eventStore.defaultCalendarForNewReminders()
                 reminder.startDateComponents = dateComponenta
@@ -187,37 +212,17 @@ class TestSys: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !isRefreshing {
-            do {
-                let numOfTests = try SchoolWebsiteDataManager.sharedInstance.NumberOfTests()
-                return numOfTests
-            } catch {
-                print(error)
-                return 1
-            }
+            return self.testsArray.count
         } else {
             return 1
         }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
         if !isRefreshing {
             let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! CustomTestCell
-            let words = (testsArr[indexPath.row] as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            //If it's a moed b we display moed b
-            var subtitle : String = ""
-            if (String(words[1] as NSString) == "במועד") {
-                for (var i = 3; i < 8; i++){
-                    subtitle += String(words[i] as NSString) + " "
-                }
-                cell.titleText!.text = String(words[0] as NSString) + " " + String(words[1] as NSString) + " " + String(words[2] as NSString)
-            } else {
-                for (var i = 2; i < 7; i++){
-                    subtitle += String(words[i] as NSString) + " "
-                }
-                cell.titleText!.text = String(words[0] as NSString) + " " + String(words[1] as NSString)
-            }
-            cell.subtitleText!.text = subtitle
+            cell.titleText?.text = self.testsArray[indexPath.row][1] //Subject
+            cell.subtitleText!.text = self.testsArray[indexPath.row][0] //Date
             cell.titleText!.textAlignment = NSTextAlignment.Right
             cell.subtitleText!.textAlignment = NSTextAlignment.Right
             cell.titleText!.font = UIFont(name: "Alef-Bold", size: 18)

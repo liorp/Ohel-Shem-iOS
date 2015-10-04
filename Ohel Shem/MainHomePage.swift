@@ -154,7 +154,7 @@ class MainHomePage: UIViewController {
         //Now begins the fun
         //Checking for Sabbath
 
-        let todayDate = NSDate(timeIntervalSinceNow: 10800)//Check if 3 hours from now is Saturday, since changes are in 9 pm
+        let todayDate = NSDate(timeIntervalSinceNow: 10800) //Check if 3 hours from now is Saturday, since changes are in 9 pm
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         let myComponents = myCalendar!.components(NSCalendarUnit.Weekday, fromDate: todayDate)
         var weekDay: Int
@@ -216,7 +216,7 @@ class MainHomePage: UIViewController {
         var returnString = NSMutableAttributedString(string: "")
         let attrBody = [NSFontAttributeName : fontBody! , NSForegroundColorAttributeName: UIColor.blackColor()]
         //let testFont: UIFont? = UIFont(name: "Alef-Regular", size: 20.0)
-        let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
+        //let tests = SchoolWebsiteDataManager.sharedInstance.GetTests()
         // FIX: This should be updated to match the latest version of test system
         /*for (var i = 0, j = 0; i < tests.count && j < num; i++) {
         let currentTest = tests[i].componentsSeparatedByString(" ")
@@ -236,7 +236,7 @@ class MainHomePage: UIViewController {
         j++
         }
         }*/
-        returnString = NSMutableAttributedString(string: "\(tests[0])\n", attributes: attrBody)
+        returnString = NSMutableAttributedString(string: "\n", attributes: attrBody)
         return returnString
     }
 
@@ -274,6 +274,8 @@ class MainHomePage: UIViewController {
     }
 
     func BeginInit(notification: NSNotification) {
+        UpdateProgressView(NSTimer())
+
         self.mainTextView?.userInteractionEnabled = false
         self.mainTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
         self.mainTextView?.textAlignment = NSTextAlignment.Center
@@ -337,10 +339,19 @@ class MainHomePage: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     // update some UI
                     self.timer?.invalidate()
-                    self.mainTextView?.text = textToDisplay
+                    self.mainTextView?.attributedText = NSAttributedString(string: textToDisplay, attributes: [NSFontAttributeName : self.fontSubHead! , NSForegroundColorAttributeName: UIColor.blackColor()])
+                    self.mainTextView?.textAlignment = NSTextAlignment.Right
+                    self.addCornersToView(self.mainTextView!)
 
                     self.rotateAnimationForView(self.mainTextView!)
                     self.mainTextView?.userInteractionEnabled = true
+                    if (self.mainTextView?.alpha == 0) {
+                        UIView.animateWithDuration(0.5, delay: 0, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
+                            self.mainTextView?.alpha = 1
+                            }) { (completed) -> Void in
+                                print("wow")
+                        }
+                    }
                 }
             }
         }
@@ -576,6 +587,14 @@ class MainHomePage: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //self.theTextView?.font = UIFont(name: "Alef-Regular", size: 18)
+        self.mainTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
+        self.mainTextView?.addMotionEffect(UIMotionEffect.twoAxesShift(20))
+        self.mainTextView?.backgroundColor = UIColor(red: 137/255, green: 207/255, blue: 240/255, alpha: 0.5)
+
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapMainTextView:")
+        gestureRecognizer.numberOfTapsRequired = 1
+
+        self.mainTextView?.addGestureRecognizer(gestureRecognizer)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -597,17 +616,6 @@ class MainHomePage: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "BeginInit:", name: "finishedTutorial", object: nil)
-
-        UpdateProgressView(NSTimer())
-
-        self.mainTextView?.contentOffset = CGPointMake(0, -self.navigationController!.navigationBar.frame.height)
-        self.mainTextView?.addMotionEffect(UIMotionEffect.twoAxesShift(20))
-        self.mainTextView?.backgroundColor = UIColor(red: 137/255, green: 207/255, blue: 240/255, alpha: 0.5)
-
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapMainTextView:")
-        gestureRecognizer.numberOfTapsRequired = 1
-
-        self.mainTextView?.addGestureRecognizer(gestureRecognizer)
         
         let seen: Bool = NSUserDefaults.standardUserDefaults().boolForKey("seenTutorial")
         if seen {
@@ -623,70 +631,6 @@ class MainHomePage: UIViewController {
 
     func singleTapMainTextView(gestureRecognizer: UIGestureRecognizer) {
         self.BeginInit(NSNotification(name: "Begin", object: nil))
-
-        /*if (self.mainTextView?.text == "מעדכן...") {
-            return
-        } else if (self.mainTextView?.text == "מעדכן..") {
-            return
-        } else if (self.mainTextView?.text == "מעדכן."){
-            return
-        } else if (self.mainTextView?.text == "מעדכן"){
-            return
-        }
-
-        self.mainTextView?.userInteractionEnabled = false
-        self.mainTextView?.attributedText = NSAttributedString(string: "מעדכן", attributes: [NSFontAttributeName : fontHead!, NSForegroundColorAttributeName: UIColor.blackColor()])
-        self.mainTextView?.textAlignment = NSTextAlignment.Center
-
-        self.rotateAnimationForView(self.mainTextView!)
-
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        let atimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "animateLoading:", userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(atimer, forMode: NSRunLoopCommonModes)
-
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
-            // do some task
-            do {
-                let greetingText = self.GetGreeting()
-                let newsText = try self.GetNews()
-                let begadolText = try self.GetTodaysFormattedChanges()
-                let dateText = try self.GetChangesHours()
-
-                let sharedDefaults = NSUserDefaults(suiteName: "group.LiorPollak.OhelShemExtensionSharingDefaults")
-                let changesToExt = begadolText.string + dateText.string
-                sharedDefaults?.setValue(changesToExt, forKey: "todayViewText")
-                sharedDefaults?.synchronize()
-
-                let mutableAttrString = NSMutableAttributedString(attributedString: greetingText)
-                mutableAttrString.appendAttributedString(newsText)
-                mutableAttrString.appendAttributedString(begadolText)
-                mutableAttrString.appendAttributedString(NSAttributedString(string: "\n"))
-                mutableAttrString.appendAttributedString(dateText)
-
-
-                dispatch_async(dispatch_get_main_queue()) {
-                    // update some UI
-                    atimer.invalidate()
-
-                    self.mainTextView?.attributedText = mutableAttrString
-                    self.mainTextView?.textAlignment = NSTextAlignment.Right
-
-                    self.rotateAnimationForView(self.mainTextView!)
-                    self.mainTextView?.userInteractionEnabled = true
-                }
-            } catch {
-                print(error)
-                let textToDisplay = "קרתה שגיאה בתהליך ההתחברות לשרת"
-                dispatch_async(dispatch_get_main_queue()) {
-                    // update some UI
-                    self.timer?.invalidate()
-                    self.mainTextView?.text = textToDisplay
-
-                    self.rotateAnimationForView(self.mainTextView!)
-                    self.mainTextView?.userInteractionEnabled = true
-                }
-            }
-        }*/
     }
 
     func rotateAnimationForView(view: UIView) {
@@ -702,7 +646,6 @@ class MainHomePage: UIViewController {
             UIView.animateWithDuration(0.5, delay: 0, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
                 self.mainTextView?.alpha = 1
                 }) { (completed) -> Void in
-
             }
         }
         if (self.mainTextView?.text == "מעדכן...") {
