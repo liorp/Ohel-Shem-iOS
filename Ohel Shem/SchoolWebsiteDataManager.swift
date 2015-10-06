@@ -133,6 +133,10 @@ class SchoolWebsiteDataManager {
     }
 
     /**
+    **Deprecated**: This method is deprecated since the Ohel Shem website of tests is not available anymore :(
+    
+    **Please use GetTests() instead**
+
     Sends a request to Ohel-Shem's website to get a test date list, using the user's settings of class and layer
 
     - returns: A string array of tests dates for the user
@@ -159,6 +163,10 @@ class SchoolWebsiteDataManager {
     }
 
     /**
+    **Deprecated**: This method is deprecated since the Ohel Shem website of tests is not available anymore :(
+
+    **Please use GetTests() instead**
+
     Sends a request to Ohel-Shem's website to get the numeber of tests, using the user's settings of class and layer. Used for numberOfRows in TestSys
 
     - returns: The number of tests for the user

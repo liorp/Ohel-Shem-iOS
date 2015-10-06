@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import Siren
+import Branch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self()])
+        let branch = Branch.getInstance()
+        branch.initSessionWithLaunchOptions(launchOptions) { (params, error) -> Void in
+            print("Deep link data: \(params.description)")
+        }
         //application.unregisterForRemoteNotifications()
         /*for family in UIFont.familyNames()
         {
@@ -179,6 +184,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        let ret = Branch.getInstance().handleDeepLink(url)
+        return ret
     }
 }
 

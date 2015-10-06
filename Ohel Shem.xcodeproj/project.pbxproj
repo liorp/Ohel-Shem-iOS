@@ -43,19 +43,19 @@
 		8D41A7E21A53341800168254 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D41A7E11A53341800168254 /* Images.xcassets */; };
 		8D41A7E51A53341800168254 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D41A7E31A53341800168254 /* LaunchScreen.xib */; };
 		8D41A7F11A53341800168254 /* Ohel_ShemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7F01A53341800168254 /* Ohel_ShemTests.swift */; };
-		8D41A80A1A53348200168254 /* AMSlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7FC1A53348200168254 /* AMSlideMenuContentSegue.m */; };
-		8D41A80B1A53348200168254 /* AMSlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7FE1A53348200168254 /* AMSlideMenuLeftMenuSegue.m */; };
-		8D41A80C1A53348200168254 /* AMSlideMenuLeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8001A53348200168254 /* AMSlideMenuLeftTableViewController.m */; };
-		8D41A80D1A53348200168254 /* AMSlideMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8021A53348200168254 /* AMSlideMenuMainViewController.m */; };
-		8D41A80E1A53348200168254 /* AMSlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8051A53348200168254 /* AMSlideMenuRightMenuSegue.m */; };
-		8D41A80F1A53348200168254 /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8071A53348200168254 /* AMSlideMenuRightTableViewController.m */; };
-		8D41A8101A53348200168254 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */; };
 		8D41A8131A5335CD00168254 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8121A5335CD00168254 /* SlideMenu.swift */; };
 		8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8141A5338C700168254 /* ChangesSys.swift */; };
 		8D65ABAF1BC0764900CE1442 /* tests9.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAB1BC0764900CE1442 /* tests9.json */; settings = {ASSET_TAGS = (); }; };
 		8D65ABB01BC0764900CE1442 /* tests10.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAC1BC0764900CE1442 /* tests10.json */; settings = {ASSET_TAGS = (); }; };
 		8D65ABB11BC0764900CE1442 /* tests11.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAD1BC0764900CE1442 /* tests11.json */; settings = {ASSET_TAGS = (); }; };
 		8D65ABB21BC0764900CE1442 /* tests12.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAE1BC0764900CE1442 /* tests12.json */; settings = {ASSET_TAGS = (); }; };
+		8D65ABC51BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABB71BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABC61BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABB91BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABC71BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABBB1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABC81BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABBD1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABC91BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC01BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABCA1BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC21BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABCB1BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC41BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m */; settings = {ASSET_TAGS = (); }; };
 		8D74886B1BA4432B0002E331 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886A1BA4432B0002E331 /* timetable.json */; };
 		8D74886D1BA6AFC60002E331 /* ohel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886C1BA6AFC60002E331 /* ohel.png */; };
 		8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */; };
@@ -224,21 +224,6 @@
 		8D41A7EA1A53341800168254 /* Ohel ShemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ohel ShemTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D41A7EF1A53341800168254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D41A7F01A53341800168254 /* Ohel_ShemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ohel_ShemTests.swift; sourceTree = "<group>"; };
-		8D41A7FB1A53348200168254 /* AMSlideMenuContentSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuContentSegue.h; sourceTree = "<group>"; };
-		8D41A7FC1A53348200168254 /* AMSlideMenuContentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuContentSegue.m; sourceTree = "<group>"; };
-		8D41A7FD1A53348200168254 /* AMSlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
-		8D41A7FE1A53348200168254 /* AMSlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
-		8D41A7FF1A53348200168254 /* AMSlideMenuLeftTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuLeftTableViewController.h; sourceTree = "<group>"; };
-		8D41A8001A53348200168254 /* AMSlideMenuLeftTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuLeftTableViewController.m; sourceTree = "<group>"; };
-		8D41A8011A53348200168254 /* AMSlideMenuMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuMainViewController.h; sourceTree = "<group>"; };
-		8D41A8021A53348200168254 /* AMSlideMenuMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuMainViewController.m; sourceTree = "<group>"; };
-		8D41A8031A53348200168254 /* AMSlideMenuProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuProtocols.h; sourceTree = "<group>"; };
-		8D41A8041A53348200168254 /* AMSlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
-		8D41A8051A53348200168254 /* AMSlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
-		8D41A8061A53348200168254 /* AMSlideMenuRightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuRightTableViewController.h; sourceTree = "<group>"; };
-		8D41A8071A53348200168254 /* AMSlideMenuRightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuRightTableViewController.m; sourceTree = "<group>"; };
-		8D41A8081A53348200168254 /* UIViewController+AMSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AMSlideMenu.h"; sourceTree = "<group>"; };
-		8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AMSlideMenu.m"; sourceTree = "<group>"; };
 		8D41A8111A53349900168254 /* Ohel-Shem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ohel-Shem-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D41A8121A5335CD00168254 /* SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
 		8D41A8141A5338C700168254 /* ChangesSys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangesSys.swift; sourceTree = "<group>"; };
@@ -247,6 +232,21 @@
 		8D65ABAC1BC0764900CE1442 /* tests10.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tests10.json; sourceTree = "<group>"; };
 		8D65ABAD1BC0764900CE1442 /* tests11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tests11.json; sourceTree = "<group>"; };
 		8D65ABAE1BC0764900CE1442 /* tests12.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tests12.json; sourceTree = "<group>"; };
+		8D65ABB61BC1CF9D00CE1442 /* AMSlideMenuContentSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuContentSegue.h; sourceTree = "<group>"; };
+		8D65ABB71BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuContentSegue.m; sourceTree = "<group>"; };
+		8D65ABB81BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
+		8D65ABB91BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
+		8D65ABBA1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuLeftTableViewController.h; sourceTree = "<group>"; };
+		8D65ABBB1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuLeftTableViewController.m; sourceTree = "<group>"; };
+		8D65ABBC1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuMainViewController.h; sourceTree = "<group>"; };
+		8D65ABBD1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuMainViewController.m; sourceTree = "<group>"; };
+		8D65ABBE1BC1CF9D00CE1442 /* AMSlideMenuProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuProtocols.h; sourceTree = "<group>"; };
+		8D65ABBF1BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
+		8D65ABC01BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
+		8D65ABC11BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSlideMenuRightTableViewController.h; sourceTree = "<group>"; };
+		8D65ABC21BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideMenuRightTableViewController.m; sourceTree = "<group>"; };
+		8D65ABC31BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AMSlideMenu.h"; sourceTree = "<group>"; };
+		8D65ABC41BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AMSlideMenu.m"; sourceTree = "<group>"; };
 		8D74886A1BA4432B0002E331 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
 		8D74886C1BA6AFC60002E331 /* ohel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ohel.png; path = ../ohel.png; sourceTree = "<group>"; };
 		8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolWebsiteDataManager.swift; sourceTree = "<group>"; };
@@ -560,21 +560,21 @@
 			isa = PBXGroup;
 			children = (
 				8D3FAF481A542D490008EB99 /* list23.png */,
-				8D41A7FB1A53348200168254 /* AMSlideMenuContentSegue.h */,
-				8D41A7FC1A53348200168254 /* AMSlideMenuContentSegue.m */,
-				8D41A7FD1A53348200168254 /* AMSlideMenuLeftMenuSegue.h */,
-				8D41A7FE1A53348200168254 /* AMSlideMenuLeftMenuSegue.m */,
-				8D41A7FF1A53348200168254 /* AMSlideMenuLeftTableViewController.h */,
-				8D41A8001A53348200168254 /* AMSlideMenuLeftTableViewController.m */,
-				8D41A8011A53348200168254 /* AMSlideMenuMainViewController.h */,
-				8D41A8021A53348200168254 /* AMSlideMenuMainViewController.m */,
-				8D41A8031A53348200168254 /* AMSlideMenuProtocols.h */,
-				8D41A8041A53348200168254 /* AMSlideMenuRightMenuSegue.h */,
-				8D41A8051A53348200168254 /* AMSlideMenuRightMenuSegue.m */,
-				8D41A8061A53348200168254 /* AMSlideMenuRightTableViewController.h */,
-				8D41A8071A53348200168254 /* AMSlideMenuRightTableViewController.m */,
-				8D41A8081A53348200168254 /* UIViewController+AMSlideMenu.h */,
-				8D41A8091A53348200168254 /* UIViewController+AMSlideMenu.m */,
+				8D65ABB61BC1CF9D00CE1442 /* AMSlideMenuContentSegue.h */,
+				8D65ABB71BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m */,
+				8D65ABB81BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.h */,
+				8D65ABB91BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m */,
+				8D65ABBA1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.h */,
+				8D65ABBB1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m */,
+				8D65ABBC1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.h */,
+				8D65ABBD1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m */,
+				8D65ABBE1BC1CF9D00CE1442 /* AMSlideMenuProtocols.h */,
+				8D65ABBF1BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.h */,
+				8D65ABC01BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m */,
+				8D65ABC11BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.h */,
+				8D65ABC21BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m */,
+				8D65ABC31BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.h */,
+				8D65ABC41BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m */,
 			);
 			path = AMSlideMenu;
 			sourceTree = "<group>";
@@ -1082,48 +1082,48 @@
 			files = (
 				8DE507A11A6007D80015C96D /* HTMLNode.m in Sources */,
 				8DE507A91A6007D80015C96D /* HTMLTokenizer.m in Sources */,
+				8D65ABC91BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m in Sources */,
 				8DE7C98A1A5AB4DE00190B79 /* CFSSpringTableView.m in Sources */,
 				8DE507AA1A6007D80015C96D /* HTMLTreeEnumerator.m in Sources */,
 				8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */,
+				8D65ABC61BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m in Sources */,
 				8DE507A21A6007D80015C96D /* HTMLOrderedDictionary.m in Sources */,
 				8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */,
-				8D41A80C1A53348200168254 /* AMSlideMenuLeftTableViewController.m in Sources */,
 				8DE507A51A6007D80015C96D /* HTMLSelector.m in Sources */,
 				8D3FAF471A542B680008EB99 /* SettingsController.swift in Sources */,
-				8D41A80F1A53348200168254 /* AMSlideMenuRightTableViewController.m in Sources */,
 				8DE5079F1A6007D80015C96D /* HTMLElement.m in Sources */,
 				8D3FAF2C1A535AF40008EB99 /* TestSys.swift in Sources */,
 				8D3FAF2E1A535BB10008EB99 /* HourSys.swift in Sources */,
-				8D41A80E1A53348200168254 /* AMSlideMenuRightMenuSegue.m in Sources */,
 				8D861FEA1A6D363B005EEA7A /* HourSystemViewControllerManager.swift in Sources */,
 				8DE507A71A6007D80015C96D /* HTMLString.m in Sources */,
-				8D41A80A1A53348200168254 /* AMSlideMenuContentSegue.m in Sources */,
 				8DE7C9401A55FE0000190B79 /* CustomMenuCell.swift in Sources */,
 				8DE7C92D1A549AC200190B79 /* iRate.m in Sources */,
+				8D65ABC81BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m in Sources */,
 				8D41A8131A5335CD00168254 /* SlideMenu.swift in Sources */,
 				8DE5079C1A6007D80015C96D /* HTMLComment.m in Sources */,
 				8DE507A81A6007D80015C96D /* HTMLTextNode.m in Sources */,
 				8DE7C9421A56CBDF00190B79 /* FirstTimeHere.swift in Sources */,
+				8D65ABC51BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m in Sources */,
 				8D41A7DD1A53341800168254 /* MainViewController.swift in Sources */,
 				8DE7C94F1A56D54000190B79 /* NewsSys.swift in Sources */,
 				8DE5079E1A6007D80015C96D /* HTMLDocumentType.m in Sources */,
 				8DE507A01A6007D80015C96D /* HTMLEntities.m in Sources */,
+				8D65ABCA1BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m in Sources */,
+				8D65ABCB1BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m in Sources */,
 				8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */,
 				8DE5079D1A6007D80015C96D /* HTMLDocument.m in Sources */,
-				8D41A80B1A53348200168254 /* AMSlideMenuLeftMenuSegue.m in Sources */,
 				8D00BFC61A6166AB0098A608 /* FBShimmeringLayer.m in Sources */,
-				8D41A8101A53348200168254 /* UIViewController+AMSlideMenu.m in Sources */,
 				8D3FAF5D1A5480B30008EB99 /* SchoolTerms.swift in Sources */,
 				8DF695361A606514008851E0 /* FirstTimeHereViewControllerManager.swift in Sources */,
 				8DE507A61A6007D80015C96D /* HTMLSerialization.m in Sources */,
 				8DE507AB1A6007D80015C96D /* NSString+HTMLEntities.m in Sources */,
 				8DE507A41A6007D80015C96D /* HTMLPreprocessedInputStream.m in Sources */,
 				8DE507A31A6007D80015C96D /* HTMLParser.m in Sources */,
-				8D41A80D1A53348200168254 /* AMSlideMenuMainViewController.m in Sources */,
 				8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */,
 				8D861FF21A724A8D005EEA7A /* CustomTestCell.swift in Sources */,
 				8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */,
 				8D05A7711BADC09E007C01E0 /* UIExtensions.swift in Sources */,
+				8D65ABC71BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m in Sources */,
 				8D1169CD1A72EE0400B59241 /* WSCoachMarksView.m in Sources */,
 				8D41A7DB1A53341800168254 /* AppDelegate.swift in Sources */,
 			);

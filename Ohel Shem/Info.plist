@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1598</string>
+	<string>1616</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -78,5 +78,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>branch_key</key>
+	<string>key_live_kljGC6ZQ3sfck5kshmtQpjceqwl3NPTU</string>
 </dict>
 </plist>

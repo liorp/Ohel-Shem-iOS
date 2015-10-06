@@ -24,5 +24,6 @@
 #import "FBShimmering/FBShimmeringView.h"
 #import "WSCoachMarksView-master/WSCoachMarksView.h"
 #import "MBProgressHUD/MBProgressHUD.h"
+#import "Branch/Branch.h"
 
 #endif

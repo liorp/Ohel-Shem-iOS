@@ -88,7 +88,7 @@ class TestSys: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-        //let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        //let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         //let subtitleSpaceSeperated = ((selectedCell! as! CustomTestCell).subtitleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
             var saveAlert: UIAlertController
