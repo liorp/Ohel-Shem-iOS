@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class CustomTestCell: UITableViewCell {
+    //MARK: IBOutlets
     @IBOutlet var titleText: UILabel?
     @IBOutlet var subtitleText: UILabel?
 }

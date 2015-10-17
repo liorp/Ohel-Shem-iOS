@@ -10,7 +10,26 @@ import Foundation
 import UIKit
 
 class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    //MARK: IBOutlets
+    @IBOutlet var userField: UITextField?
+    @IBOutlet var classField: UITextField?
+    @IBOutlet var userLabel: UILabel?
+    @IBOutlet var classLabel: UILabel?
 
+    @IBOutlet var goToApp: UIButton?
+    @IBOutlet var imageView: UIImageView?
+    @IBOutlet var textView: UITextView?
+    @IBOutlet var shimmeringView: FBShimmeringView?
+
+    @IBOutlet var classAndLayerInput: UIPickerView? = UIPickerView()
+
+    //MARK: Instance properties
+    var classNum: String = "4"
+    var layerNum: String = "י\"ב"
+
+    let classes = ["1","2","3","4","5","6","7","8","9","10","11","12"]
+    let layers = [9:"ט׳",10:"י׳",11:"י״א", 12:"י״ב"]
+    let oppositeLayers = ["ט׳":9, "י׳":10, "י״א":11, "י״ב":12]
     var itemIndex: Int = 0
 
     var currentText: String = "" {
@@ -31,29 +50,11 @@ class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             if let imageView1 = imageView {
                 imageView1.image = UIImage(named: imageName)
             }
-
+            
         }
     }
 
-    @IBOutlet var userField: UITextField?
-    @IBOutlet var classField: UITextField?
-    @IBOutlet var userLabel: UILabel?
-    @IBOutlet var classLabel: UILabel?
-
-    @IBOutlet var goToApp: UIButton?
-    @IBOutlet var imageView: UIImageView?
-    @IBOutlet var textView: UITextView?
-    @IBOutlet var shimmeringView: FBShimmeringView?
-
-    @IBOutlet var classAndLayerInput: UIPickerView? = UIPickerView()
-
-    var classNum: String = "4"
-    var layerNum: String = "י\"ב"
-
-    let classes = ["1","2","3","4","5","6","7","8","9","10","11","12"]
-    let layers = [9:"ט׳",10:"י׳",11:"י״א", 12:"י״ב"]
-    let oppositeLayers = ["ט׳":9, "י׳":10, "י״א":11, "י״ב":12]
-
+    //MARK: UITextFieldDelegate Methods
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if (textField.text == classField?.text) {
             return false
@@ -74,6 +75,29 @@ class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         if (textField.text == classField?.text) {
             //self.updateClassandLayer(textField)
         }
+    }
+
+    func hideKeyboard(){
+        self.userField?.resignFirstResponder()
+        self.userLabel?.resignFirstResponder()
+        self.classField?.resignFirstResponder()
+        self.classLabel?.resignFirstResponder()
+
+        self.userField?.endEditing(true)
+        self.userLabel?.endEditing(true)
+        self.classField?.endEditing(true)
+        self.classLabel?.endEditing(true)
+
+        if (classField?.text?.characters.count > 2 && userField?.text?.characters.count > 0) {
+            self.goToApp?.enabled = true
+        } else {
+            self.goToApp?.enabled = false
+        }
+    }
+
+    //MARK: UIView methods
+    override func shouldAutorotate() -> Bool {
+        return false
     }
 
     override func didReceiveMemoryWarning() {
@@ -159,6 +183,17 @@ class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
 
+    func animateViewsIntoView() {
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 6.0, options: [UIViewAnimationOptions()], animations: { () -> Void in
+            //let i = 0
+            self.goToApp?.frame = CGRectMake(self.goToApp!.frame.origin.x, self.goToApp!.frame.origin.y, self.goToApp!.frame.size.width * 1.5, self.goToApp!.frame.size.height * 1.5)
+            }) { (completed) -> Void in
+                //let i = 1
+        }
+    }
+
+    //MARK: UIPickerViewDataSource Protocol methods
+
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -189,36 +224,11 @@ class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
 
     }
 
+    //MARK: IBActions
+
     @IBAction func setPreselectedPicker(sender: UITextField){
         self.classAndLayerInput?.selectRow(4 - 1, inComponent: 0, animated: true)
         self.classAndLayerInput?.selectRow(12 - 9, inComponent: 1, animated: true)
-    }
-
-    func hideKeyboard(){
-        self.userField?.resignFirstResponder()
-        self.userLabel?.resignFirstResponder()
-        self.classField?.resignFirstResponder()
-        self.classLabel?.resignFirstResponder()
-
-        self.userField?.endEditing(true)
-        self.userLabel?.endEditing(true)
-        self.classField?.endEditing(true)
-        self.classLabel?.endEditing(true)
-
-        if (classField?.text?.characters.count > 2 && userField?.text?.characters.count > 0) {
-            self.goToApp?.enabled = true
-        } else {
-            self.goToApp?.enabled = false
-        }
-    }
-
-    func animateViewsIntoView() {
-        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 6.0, options: [UIViewAnimationOptions()], animations: { () -> Void in
-            //let i = 0
-            self.goToApp?.frame = CGRectMake(self.goToApp!.frame.origin.x, self.goToApp!.frame.origin.y, self.goToApp!.frame.size.width * 1.5, self.goToApp!.frame.size.height * 1.5)
-            }) { (completed) -> Void in
-                //let i = 1
-        }
     }
 
     @IBAction func updateClassandLayer(sender: UITextField){
@@ -254,10 +264,6 @@ class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
 
             NSNotificationCenter.defaultCenter().postNotificationName("finishedTutorial", object: nil)
         })
-    }
-
-    override func shouldAutorotate() -> Bool {
-        return false
     }
     
     /*override func supportedInterfaceOrientations() -> Int {

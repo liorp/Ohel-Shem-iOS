@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var j = 0
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Fabric.with([Crashlytics.self()])
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        Fabric.with([Crashlytics.self()])
         let branch = Branch.getInstance()
         branch.initSessionWithLaunchOptions(launchOptions) { (params, error) -> Void in
             print("Deep link data: \(params.description)")
@@ -55,19 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*if let _: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("studentName") {
 
         } else {
-            NSUserDefaults.standardUserDefaults().setValue("ליאור", forKey: "studentName")
+        NSUserDefaults.standardUserDefaults().setValue("ליאור", forKey: "studentName")
         }
 
         if let _: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("classNum") {
 
         } else {
-            NSUserDefaults.standardUserDefaults().setValue("4", forKey: "classNum")
+        NSUserDefaults.standardUserDefaults().setValue("4", forKey: "classNum")
         }
 
         if let _: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("layerNum") {
 
         } else {
-            NSUserDefaults.standardUserDefaults().setValue("12", forKey: "layerNum")
+        NSUserDefaults.standardUserDefaults().setValue("12", forKey: "layerNum")
         }*/
 
         // Siren code should go below window?.makeKeyAndVisible()
@@ -89,76 +88,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checks.
         */
         siren.checkVersion(.Weekly)
-        
+
         return true
     }
 
     /*func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        NSUserDefaults.standardUserDefaults().setValue(deviceToken, forKey: "deviceToken")
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://google.com")!)
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
+    NSUserDefaults.standardUserDefaults().setValue(deviceToken, forKey: "deviceToken")
+    let request = NSMutableURLRequest(URL: NSURL(string: "https://google.com")!)
+    let session = NSURLSession.sharedSession()
+    request.HTTPMethod = "POST"
 
-        var token = NSString(format: "%@", deviceToken)
+    var token = NSString(format: "%@", deviceToken)
 
-        token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
-        token = token.stringByReplacingOccurrencesOfString(">", withString: "")
-        token = token.stringByReplacingOccurrencesOfString("<", withString: "")
+    token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
+    token = token.stringByReplacingOccurrencesOfString(">", withString: "")
+    token = token.stringByReplacingOccurrencesOfString("<", withString: "")
 
-        let params = ["deviceToken":String(token)] as Dictionary<String, String>
+    let params = ["deviceToken":String(token)] as Dictionary<String, String>
 
-        do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
-        } catch {
-            print(error)
-        }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+    do {
+    request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+    } catch {
+    print(error)
+    }
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
 
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            print("Response: \(response)")
-            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Body: \(strData)")
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
-                // The JSONObjectWithData constructor didn't return an error. But, we should still
-                // check and make sure that json has a value using optional binding.
-                if let parseJSON = json {
-                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                    let success = parseJSON["success"] as? Int
-                    print("Succes: \(success)")
-                } else {
-                    // Woa, okay the json object was nil, something went wrong. Maybe the server isn't running?
-                    let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    print("Error could not parse JSON: \(jsonStr)")
-                }
-            } catch {
-                print(error)
-            }
-        })
+    let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+    print("Response: \(response)")
+    let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+    print("Body: \(strData)")
+    do {
+    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+    // The JSONObjectWithData constructor didn't return an error. But, we should still
+    // check and make sure that json has a value using optional binding.
+    if let parseJSON = json {
+    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+    let success = parseJSON["success"] as? Int
+    print("Succes: \(success)")
+    } else {
+    // Woa, okay the json object was nil, something went wrong. Maybe the server isn't running?
+    let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+    print("Error could not parse JSON: \(jsonStr)")
+    }
+    } catch {
+    print(error)
+    }
+    })
 
-        task.resume()
+    task.resume()
 
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print(error)
+    print(error)
     }*/
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        let localNotification = UILocalNotification()
+        print(UIApplication.sharedApplication().scheduledLocalNotifications?.count)
 
-        let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
+        if UIApplication.sharedApplication().scheduledLocalNotifications?.count > 1 {
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+        } else if UIApplication.sharedApplication().scheduledLocalNotifications?.count == 0 {
 
-        localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.applicationIconBadgeNumber = 1
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        localNotification.alertAction = "כן!"
-        localNotification.repeatInterval = NSCalendarUnit.Day
-        localNotification.fireDate = date
+            let localNotification = UILocalNotification()
 
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+            let date = NSCalendar.currentCalendar().dateBySettingHour(21, minute: 03, second: 00, ofDate: NSDate(timeIntervalSinceNow: 0), options: NSCalendarOptions.MatchFirst)
+
+            localNotification.alertBody = "השינויים התעדכנו. רוצה לבדוק?"
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.applicationIconBadgeNumber = 1
+            localNotification.soundName = UILocalNotificationDefaultSoundName;
+            localNotification.alertAction = "כן!"
+            localNotification.repeatInterval = NSCalendarUnit.Day
+            localNotification.fireDate = date
+
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -181,7 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         //Siren.sharedInstance.checkVersion(.Daily)
     }
-    
+
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }

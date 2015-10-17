@@ -11,14 +11,16 @@ import UIKit
 //import Alamofire
 
 class ChangesSys: UITableViewController {
-
-    @IBOutlet weak var refresherControl: UIRefreshControl?
-
+    //MARK: Instance variables
     var changes = [""]
     let numberToHebrewNumbers = [1:"ראשונה", 2:"שנייה", 3:"שלישית", 4:"רביעית", 5:"חמישית", 6:"שישית", 7:"שביעית", 8:"שמינית", 9:"תשיעית", 10:"עשירית", 11:"אחת-עשרה"]
     var isRefreshing = false
     var dateOfChanges = ""
 
+    //MARK: IBOutlets
+    @IBOutlet weak var refresherControl: UIRefreshControl?
+
+    //MARK: UIView methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,6 +33,43 @@ class ChangesSys: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
 
+    override func viewWillAppear(animated: Bool) {
+
+        super.viewWillAppear(animated)
+
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
+        /*let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //tableView.backgroundView = blurEffectView
+
+        tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)*/
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        isRefreshing = true
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            do {
+                self.changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
+                self.dateOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    //let i = 0
+                    self.isRefreshing = false
+                    self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+                    //self.theTextView?.attributedText = textToDisplay
+                    //self.theTextView?.textAlignment = NSTextAlignment.Right
+                }
+            } catch{
+                print(error)
+            }
+        }
+    }
+
+    //MARK: IBActions
     @IBAction func willRefresh(sender: UIRefreshControl){
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק שינויים")
 
@@ -50,6 +89,7 @@ class ChangesSys: UITableViewController {
         refreshControl!.endRefreshing()
     }
 
+    //MARK: UITableViewDataSource methods
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -118,41 +158,5 @@ class ChangesSys: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    override func viewWillAppear(animated: Bool) {
-
-        super.viewWillAppear(animated)
-
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-
-        /*let blurEffect = UIBlurEffect(style: .Light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        //tableView.backgroundView = blurEffectView
-
-        tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)*/
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        isRefreshing = true
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            // do some task
-            do {
-            self.changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
-            self.dateOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
-            dispatch_async(dispatch_get_main_queue()) {
-                // update some UI
-                //let i = 0
-                self.isRefreshing = false
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
-                //self.theTextView?.attributedText = textToDisplay
-                //self.theTextView?.textAlignment = NSTextAlignment.Right
-            }
-            } catch{
-                print(error)
-            }
-        }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class CustomMenuCell: UITableViewCell {
+    //MARK: UITableViewCell Methods
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         if (highlighted) {
