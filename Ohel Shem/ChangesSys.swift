@@ -69,6 +69,11 @@ class ChangesSys: UITableViewController {
         }
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     //MARK: IBActions
     @IBAction func willRefresh(sender: UIRefreshControl){
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק שינויים")
@@ -153,10 +158,5 @@ class ChangesSys: UITableViewController {
 
             return cell
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

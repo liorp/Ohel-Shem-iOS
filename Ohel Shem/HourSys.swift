@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class HourSys: UITableViewController {
-
+    //MARK: Instance properties
     var jsonResult: NSArray?
     var weekDay: Int?
     var hours: [String]?
@@ -18,7 +18,7 @@ class HourSys: UITableViewController {
     let numberToHebrewNumbersMale = [1:"ראשון", 2:"שני", 3:"שלישי", 4:"רביעי", 5:"חמישי", 6:"שישי", 7:"שבת"]
     var itemIndex: Int?
 
-    func getNextHoliday(month: Int, day: Int) -> NSDate! {
+    /*func getNextHoliday(month: Int, day: Int) -> NSDate! {
         let hebrew = NSCalendar(calendarIdentifier: NSCalendarIdentifierHebrew)
         let unitFlags: NSCalendarUnit = [NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year]
 
@@ -36,8 +36,26 @@ class HourSys: UITableViewController {
         }
 
         return hebrew?.dateFromComponents(componentsOfFutureDate)
+    }*/
+
+    //MARK: UITableViewDataSourceProtocol methods
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("hourCell", forIndexPath: indexPath) 
+        let display = hours![indexPath.row]
+
+        cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": \(display)"
+        cell.textLabel!.textAlignment = NSTextAlignment.Right
+        cell.textLabel!.backgroundColor = UIColor.clearColor()
+        cell.textLabel!.numberOfLines = 0
+        cell.backgroundColor = UIColor.clearColor()
+        return cell
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 11
+    }
+
+    //MARK: UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -59,22 +77,6 @@ class HourSys: UITableViewController {
         self.tableView.estimatedRowHeight = 44
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("hourCell", forIndexPath: indexPath) 
-        let display = hours![indexPath.row]
-
-        cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": \(display)"
-        cell.textLabel!.textAlignment = NSTextAlignment.Right
-        cell.textLabel!.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.numberOfLines = 0
-        cell.backgroundColor = UIColor.clearColor()
-        return cell
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,11 +101,5 @@ class HourSys: UITableViewController {
         tableView.backgroundView = blurEffectView
 
         tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)*/
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //self.automaticallyAdjustsScrollViewInsets = false
-
-        //self.tableView.contentOffset = CGPointMake(0, -(self.parentViewController!.parentViewController!.navigationController!.navigationBar.frame.height + 20))
     }
 }

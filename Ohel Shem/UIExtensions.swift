@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 extension UIMotionEffect {
+    /**
+    Creates a UIMotionEffect of an axial movement.
+
+    - Parameters:
+        - strength:    The amount of max/min relative offset value of the UIMotionEffect
+
+    - returns: UIMotionEffectGroup with the required effect
+    */
     class func twoAxesShift(strength: Float) -> UIMotionEffect {
         // internal method that creates motion effect
         func motion(type: UIInterpolatingMotionEffectType) -> UIInterpolatingMotionEffect {
@@ -30,6 +38,14 @@ extension UIMotionEffect {
     }
 }
 
+/**
+Creates a background thread.
+
+- Parameters:
+    - delay:    The delay before the completion block is called
+    - background:    The background block
+    - completion:    The completion block
+*/
 func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
     dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
         if(background != nil){ background!(); }

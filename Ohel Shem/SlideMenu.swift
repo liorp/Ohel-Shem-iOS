@@ -11,10 +11,16 @@ import UIKit
 import ImageIO
 
 class SlideMenu: AMSlideMenuLeftTableViewController {
-
+    //MARK: IBOutlets
     @IBOutlet weak var hello: UILabel?
     @IBOutlet weak var logo: UIImageView?
 
+    func changeInfo(notification: NSNotification){
+        hello!.text = "שלום, " + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as! String)
+        hello!.font = UIFont(name: "Alef-Bold", size: 25)
+    }
+    
+    //MARK: UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,16 +35,17 @@ class SlideMenu: AMSlideMenuLeftTableViewController {
         self.tableView.estimatedRowHeight = 44
     }
 
-    func changeInfo(notification: NSNotification){
-        hello!.text = "שלום, " + (NSUserDefaults.standardUserDefaults().valueForKey("studentName") as! String)
-        hello!.font = UIFont(name: "Alef-Bold", size: 25)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+    }
+
+    //MARK: UITableViewDataSourceProtocol methods
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone{
             cell.textLabel!.font = UIFont(name: "Alef-Bold", size: 8 * UIScreen.mainScreen().scale)
@@ -102,14 +109,12 @@ class SlideMenu: AMSlideMenuLeftTableViewController {
         cell?.textLabel?.textColor = UIColor.blackColor()
         return indexPath
     }
+
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UIScreen.mainScreen().bounds.height/9
     }
+
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UIScreen.mainScreen().bounds.height/9
-    }
-    override func viewWillAppear(animated: Bool) {
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
     }
 }

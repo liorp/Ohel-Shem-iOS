@@ -10,21 +10,17 @@ import Foundation
 import UIKit
 import EventKit
 
-/*extension String {
-    func stripCharactersInSet(chars: [Character]) -> String {
-        return String(filter(self) {find(chars, $0) == nil})
-    }
-}*/
-
 class TestSys: UITableViewController {
-
+    //MARK: IBOutlets
     @IBOutlet weak var refresherControl: UIRefreshControl?
 
+    //MARK: Instance properties
     var testsArray = [[String]]()
     var isRefreshing = false
 
     let hebrewMonthToNumber = ["בינואר":1, "בפברואר":2, "במרץ":3, "באפריל":4, "במאי":5, "ביוני":6, "ביולי":7, "באוגוסט":8, "בספטמבר":9, "באוקטובר":10, "בנובמבר":11, "בדצמבר":12]
 
+    //MARK: UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -67,6 +63,7 @@ class TestSys: UITableViewController {
         }
     }
 
+    //MARK: IBActions
     @IBAction func willRefresh(sender: UIRefreshControl){
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק מבחנים")
         defer{
@@ -86,6 +83,7 @@ class TestSys: UITableViewController {
         }
     }
 
+    //MARK: UITableViewDataSourceProtocol methods
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         //let titleSpaceSeperated = ((selectedCell! as! CustomTestCell).titleText!.text! as NSString).componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -139,8 +137,6 @@ class TestSys: UITableViewController {
         dateComponenta.day = NSCalendar.currentCalendar().component(NSCalendarUnit.Day, fromDate: testDate!) - days
         dateComponenta.month = NSCalendar.currentCalendar().component(NSCalendarUnit.Month, fromDate: testDate!)
         dateComponenta.year = NSCalendar.currentCalendar().component(NSCalendarUnit.Year, fromDate: testDate!)
-
-        //let dateOfReminder = NSCalendar.currentCalendar().dateFromComponents(dateComponenta)
 
         let eventStore : EKEventStore = EKEventStore()
         // 'EKEntityTypeReminder' or 'EKEntityTypeEvent'

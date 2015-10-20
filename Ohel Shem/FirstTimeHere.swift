@@ -255,7 +255,6 @@ class FirstTimeHere: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
 
 
     @IBAction func showApp() {
-        //let theAppVC = self.storyboard!.instantiateViewControllerWithIdentifier("StartTheApp") as UINavigationController
         updateClassandLayer(UITextField())
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "seenTutorial")
         NSUserDefaults.standardUserDefaults().synchronize()

@@ -11,9 +11,10 @@ import UIKit
 import WebKit
 
 class SchoolTerms: UIViewController {
-
+    //MARK: IBOutlets
     @IBOutlet weak var terms: UIView?
 
+    //MARK: UIResponder methods
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         //It seems that you've discovered an easter egg!
         if (motion == UIEventSubtype.MotionShake || event!.subtype == UIEventSubtype.MotionShake){
@@ -32,6 +33,11 @@ class SchoolTerms: UIViewController {
         }
     }
 
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+
+    //MARK: UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,20 +52,14 @@ class SchoolTerms: UIViewController {
         self.addLeftMenuButton()
     }
 
-    override func canBecomeFirstResponder() -> Bool {
-        return true
-    }
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         self.navigationController?.navigationBar.translucent = false
-        //terms! = SchoolWebsiteDataManager.sharedInstance.GetTerms()
 
-        let termsURL = NSURL(string: "https://docs.google.com/uc?export=download&id=0BwfXa-58WjvESWdjM1NYWFdHazEzV2tUNG02WGdzRzI5MDl3")//"https://app.box.com/s/eh7b3mri36di3o8a1jv4l3u2xakiafuz")//"http://www.ohel-shem.com/portal4/files/files/Ohel_Shem_Yedion_2014_Hagaha3.pdf")
+        let termsURL = NSURL(string: "https://docs.google.com/uc?export=download&id=0BwfXa-58WjvESWdjM1NYWFdHazEzV2tUNG02WGdzRzI5MDl3")
         let theRequest = NSURLRequest(URL: termsURL!)
         //theRequest.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
-
 
         if (NSClassFromString("WKWebView") != nil) {
             let config = WKWebViewConfiguration()

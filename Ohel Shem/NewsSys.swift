@@ -12,7 +12,7 @@ import SafariServices
 import WebKit
 
 class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDelegate {
-
+    //MARK: IBOutlets
     @IBOutlet weak var theWebView: UIView?
 
     /*func getNews() {
@@ -27,9 +27,9 @@ class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDel
             self.theTextView!.text = self.theTextView!.text + (node.firstNodeMatchingSelector("div").textContent! as NSString).substringToIndex((node.firstNodeMatchingSelector("div").textContent! as NSString).length - 15) + "\n \n"
             //Hack because I should remove the פרטים נוספים
         }
-    }*/
-
-    /*func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == UIWebViewNavigationType.LinkClicked {
             if #available(iOS 9.0, *) {
                 let vc = SFSafariViewController(URL: request.URL!)
@@ -45,6 +45,7 @@ class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDel
         return true
     }*/
 
+    //MARK: WKNavigationDelegate methods (iOS 8)
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         defer {
             if navigationAction.request.URL?.path != "/portal4" {
@@ -65,11 +66,13 @@ class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDel
         }
     }
 
+    //MARK: SFSafariViewControllerDelegate methods (iOS 9)
     @available(iOS 9.0, *)
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    //MARK: UIViewController methods
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         defer {

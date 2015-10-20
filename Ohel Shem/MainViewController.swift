@@ -9,13 +9,10 @@
 import UIKit
 
 class MainViewController: AMSlideMenuMainViewController {
+    //MARK: UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        /*let store = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateKVStoreItems:"), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: store)
-        store.synchronize()*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,38 +20,11 @@ class MainViewController: AMSlideMenuMainViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*func updateKVStoreItems(notification: NSNotification) {
-        // Get the list of keys that changed.
-        let userInfo: NSDictionary = notification.userInfo!
-        let reasonForChange: NSNumber = userInfo.objectForKey(NSUbiquitousKeyValueStoreChangeReasonKey) as NSNumber
-        var reason:NSInteger = -1
-
-        // If a reason could not be determined, do not update anything.
-        if (reasonForChange.stringValue.isEmpty) {return}
-
-        // Update only for changes from the server.
-        reason = reasonForChange.integerValue
-        if ((reason == NSUbiquitousKeyValueStoreServerChange) ||
-            (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
-                // If something is changing externally, get the changes
-                // and update the corresponding keys locally.
-                var changedKeys: NSArray = userInfo.objectForKey(NSUbiquitousKeyValueStoreChangedKeysKey) as NSArray
-                let store = NSUbiquitousKeyValueStore.defaultStore
-                var userDefaults = NSUserDefaults.standardUserDefaults
-
-                // This loop assumes you are using the same key names in both
-                // the user defaults database and the iCloud key-value store
-                for key in changedKeys {
-                    var value: AnyObject? = store().objectForKey(key as String)
-                    userDefaults().setObject(value, forKey: key as String)
-                }
-        }
-    }*/
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
 
+    //MARK: AMSlideMenuMainViewController methods
     override func configureLeftMenuButton(button: UIButton!) {
         var frame = button.frame
         frame = CGRectMake(0, 0, 25, 20)
@@ -78,7 +48,6 @@ class MainViewController: AMSlideMenuMainViewController {
         case 3:
             theSegue = "toBell"
             break
-        // FIX: This should be updated to match the latest version of test system
         case 4:
             theSegue = "toTest"
             break

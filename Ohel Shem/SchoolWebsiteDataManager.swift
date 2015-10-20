@@ -100,7 +100,7 @@ class SchoolWebsiteDataManager {
     /**
     Gets the local file of tests- parses and returns Array of Array Of String- each sub-array has 2 elements- date and subject.
 
-    - returns: An Array of Array Of String of tests for the user
+    - returns: An Array of Array of String of tests for the user
     */
     func GetTests() throws -> [[String]] {
         /*let data = NSString(contentsOfURL: NSURL(string: "http://www.ohel-shem.com/php/exams/?request=exams&layer=" + String(NSUserDefaults.standardUserDefaults().valueForKey("layerNum")!.integerValue) + "&classn=" + String(NSUserDefaults.standardUserDefaults().valueForKey("classNum")!.integerValue))!, encoding:CFStringConvertEncodingToNSStringEncoding(0x0208) , error: nil)
