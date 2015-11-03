@@ -101,7 +101,7 @@ class NewsSys: UIViewController, WKNavigationDelegate, SFSafariViewControllerDel
                 }
             } catch {
                 print(error)
-                let stringToShow = "קרתה שגיאה בתהליך ההתחברות לשרת"
+                let stringToShow = "<html> <head> </head> " + "<body> <div style=\"text-align:right; text-decoration : none;\">" + "קרתה שגיאה בתהליך ההתחברות לשרת" + "</div> </body> </html>"
                 // do some task
                 dispatch_async(dispatch_get_main_queue()) {
                     // update some UI

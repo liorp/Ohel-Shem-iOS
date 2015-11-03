@@ -12,7 +12,7 @@
 		8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */; };
 		8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFD61A6458FC0098A608 /* MainHomePage.swift */; };
 		8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D00BFD81A6469A10098A608 /* 0slidecell.png */; };
-		8D05A7711BADC09E007C01E0 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05A7701BADC09E007C01E0 /* UIExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		8D05A7711BADC09E007C01E0 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05A7701BADC09E007C01E0 /* UIExtensions.swift */; };
 		8D0800F01A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D0800EF1A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license */; };
 		8D1157211A7679C00073CB5F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157201A7679C00073CB5F /* Settings.bundle */; };
 		8D1157281A767BDE0073CB5F /* iRate.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157271A767BDE0073CB5F /* iRate.license */; };
@@ -45,19 +45,30 @@
 		8D41A7F11A53341800168254 /* Ohel_ShemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A7F01A53341800168254 /* Ohel_ShemTests.swift */; };
 		8D41A8131A5335CD00168254 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8121A5335CD00168254 /* SlideMenu.swift */; };
 		8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D41A8141A5338C700168254 /* ChangesSys.swift */; };
-		8D65ABAF1BC0764900CE1442 /* tests9.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAB1BC0764900CE1442 /* tests9.json */; settings = {ASSET_TAGS = (); }; };
-		8D65ABB01BC0764900CE1442 /* tests10.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAC1BC0764900CE1442 /* tests10.json */; settings = {ASSET_TAGS = (); }; };
-		8D65ABB11BC0764900CE1442 /* tests11.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAD1BC0764900CE1442 /* tests11.json */; settings = {ASSET_TAGS = (); }; };
-		8D65ABB21BC0764900CE1442 /* tests12.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAE1BC0764900CE1442 /* tests12.json */; settings = {ASSET_TAGS = (); }; };
-		8D65ABC51BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABB71BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m */; settings = {ASSET_TAGS = (); }; };
-		8D65ABC61BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABB91BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m */; settings = {ASSET_TAGS = (); }; };
-		8D65ABC71BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABBB1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8D65ABC81BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABBD1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8D65ABC91BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC01BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m */; settings = {ASSET_TAGS = (); }; };
-		8D65ABCA1BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC21BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8D65ABCB1BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC41BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m */; settings = {ASSET_TAGS = (); }; };
+		8D65ABAF1BC0764900CE1442 /* tests9.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAB1BC0764900CE1442 /* tests9.json */; };
+		8D65ABB01BC0764900CE1442 /* tests10.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAC1BC0764900CE1442 /* tests10.json */; };
+		8D65ABB11BC0764900CE1442 /* tests11.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAD1BC0764900CE1442 /* tests11.json */; };
+		8D65ABB21BC0764900CE1442 /* tests12.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D65ABAE1BC0764900CE1442 /* tests12.json */; };
+		8D65ABC51BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABB71BC1CF9D00CE1442 /* AMSlideMenuContentSegue.m */; };
+		8D65ABC61BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABB91BC1CF9D00CE1442 /* AMSlideMenuLeftMenuSegue.m */; };
+		8D65ABC71BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABBB1BC1CF9D00CE1442 /* AMSlideMenuLeftTableViewController.m */; };
+		8D65ABC81BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABBD1BC1CF9D00CE1442 /* AMSlideMenuMainViewController.m */; };
+		8D65ABC91BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC01BC1CF9D00CE1442 /* AMSlideMenuRightMenuSegue.m */; };
+		8D65ABCA1BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC21BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m */; };
+		8D65ABCB1BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D65ABC41BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m */; };
 		8D74886B1BA4432B0002E331 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886A1BA4432B0002E331 /* timetable.json */; };
 		8D74886D1BA6AFC60002E331 /* ohel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D74886C1BA6AFC60002E331 /* ohel.png */; };
+		8D79378E1BD8C1C600C71741 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D79378C1BD8C1C600C71741 /* Bolts.framework */; };
+		8D79378F1BD8C1C600C71741 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D79378D1BD8C1C600C71741 /* Parse.framework */; };
+		8D7937911BD8C23C00C71741 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7937901BD8C23C00C71741 /* AudioToolbox.framework */; };
+		8D7937931BD8C24400C71741 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7937921BD8C24400C71741 /* CFNetwork.framework */; };
+		8D7937951BD8C24C00C71741 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7937941BD8C24C00C71741 /* CoreGraphics.framework */; };
+		8D7937971BD8C25200C71741 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7937961BD8C25200C71741 /* CoreLocation.framework */; };
+		8D7937991BD8C25A00C71741 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7937981BD8C25A00C71741 /* QuartzCore.framework */; };
+		8D79379B1BD8C26600C71741 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D79379A1BD8C26600C71741 /* StoreKit.framework */; };
+		8D79379D1BD8C27D00C71741 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D79379C1BD8C27D00C71741 /* libsqlite3.tbd */; };
+		8D79379F1BD8C28600C71741 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D79379E1BD8C28600C71741 /* Accounts.framework */; };
+		8D7937A11BD8C28D00C71741 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7937A01BD8C28D00C71741 /* Social.framework */; };
 		8D8133111A73F61B0021F959 /* SchoolWebsiteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */; };
 		8D861FEA1A6D363B005EEA7A /* HourSystemViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FE91A6D363B005EEA7A /* HourSystemViewControllerManager.swift */; };
 		8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */; };
@@ -249,6 +260,17 @@
 		8D65ABC41BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AMSlideMenu.m"; sourceTree = "<group>"; };
 		8D74886A1BA4432B0002E331 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
 		8D74886C1BA6AFC60002E331 /* ohel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ohel.png; path = ../ohel.png; sourceTree = "<group>"; };
+		8D79378C1BD8C1C600C71741 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		8D79378D1BD8C1C600C71741 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		8D7937901BD8C23C00C71741 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8D7937921BD8C24400C71741 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8D7937941BD8C24C00C71741 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8D7937961BD8C25200C71741 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8D7937981BD8C25A00C71741 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8D79379A1BD8C26600C71741 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8D79379C1BD8C27D00C71741 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		8D79379E1BD8C28600C71741 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8D7937A01BD8C28D00C71741 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolWebsiteDataManager.swift; sourceTree = "<group>"; };
 		8D861FE91A6D363B005EEA7A /* HourSystemViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HourSystemViewControllerManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Regular.ttf"; sourceTree = "<group>"; };
@@ -362,12 +384,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DE4C87A1BA3817C00AAFF9F /* SystemConfiguration.framework in Frameworks */,
-				8DE4C8781BA3817600AAFF9F /* Security.framework in Frameworks */,
+				8D7937A11BD8C28D00C71741 /* Social.framework in Frameworks */,
+				8D79379F1BD8C28600C71741 /* Accounts.framework in Frameworks */,
+				8D79379D1BD8C27D00C71741 /* libsqlite3.tbd in Frameworks */,
 				8DE4C8761BA3815A00AAFF9F /* libz.tbd in Frameworks */,
+				8DE4C87A1BA3817C00AAFF9F /* SystemConfiguration.framework in Frameworks */,
+				8D79379B1BD8C26600C71741 /* StoreKit.framework in Frameworks */,
+				8DE4C8781BA3817600AAFF9F /* Security.framework in Frameworks */,
+				8D7937991BD8C25A00C71741 /* QuartzCore.framework in Frameworks */,
+				8D7937971BD8C25200C71741 /* CoreLocation.framework in Frameworks */,
+				8D7937951BD8C24C00C71741 /* CoreGraphics.framework in Frameworks */,
+				8D7937931BD8C24400C71741 /* CFNetwork.framework in Frameworks */,
+				8D7937911BD8C23C00C71741 /* AudioToolbox.framework in Frameworks */,
 				8DE4C8741BA3815200AAFF9F /* libc++.tbd in Frameworks */,
+				8D79378F1BD8C1C600C71741 /* Parse.framework in Frameworks */,
 				8DC8971A1AA769E9009C2D7C /* WebKit.framework in Frameworks */,
 				8D1DD7E11A613B3D000B9C9A /* EventKit.framework in Frameworks */,
+				8D79378E1BD8C1C600C71741 /* Bolts.framework in Frameworks */,
 				8D3FAF1A1A5352BA0008EB99 /* libxml2.dylib in Frameworks */,
 				0F6C6FD494D37E5EC5C72DAD /* Pods_Ohel_Shem.framework in Frameworks */,
 			);
@@ -429,6 +462,17 @@
 		8D3FAF341A53BDF60008EB99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D7937A01BD8C28D00C71741 /* Social.framework */,
+				8D79379E1BD8C28600C71741 /* Accounts.framework */,
+				8D79379C1BD8C27D00C71741 /* libsqlite3.tbd */,
+				8D79379A1BD8C26600C71741 /* StoreKit.framework */,
+				8D7937981BD8C25A00C71741 /* QuartzCore.framework */,
+				8D7937961BD8C25200C71741 /* CoreLocation.framework */,
+				8D7937941BD8C24C00C71741 /* CoreGraphics.framework */,
+				8D7937921BD8C24400C71741 /* CFNetwork.framework */,
+				8D7937901BD8C23C00C71741 /* AudioToolbox.framework */,
+				8D79378C1BD8C1C600C71741 /* Bolts.framework */,
+				8D79378D1BD8C1C600C71741 /* Parse.framework */,
 				8DE4C8791BA3817C00AAFF9F /* SystemConfiguration.framework */,
 				8DE4C8771BA3817600AAFF9F /* Security.framework */,
 				8DE4C8751BA3815A00AAFF9F /* libz.tbd */,
@@ -1199,8 +1243,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Ohel-Shem Ext/Ohel-Shem Ext.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Ohel-Shem Ext/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

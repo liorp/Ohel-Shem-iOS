@@ -16,6 +16,7 @@ class ChangesSys: UITableViewController {
     let numberToHebrewNumbers = [1:"ראשונה", 2:"שנייה", 3:"שלישית", 4:"רביעית", 5:"חמישית", 6:"שישית", 7:"שביעית", 8:"שמינית", 9:"תשיעית", 10:"עשירית", 11:"אחת-עשרה"]
     var isRefreshing = false
     var dateOfChanges = ""
+    var errorOccured = false
 
     //MARK: IBOutlets
     @IBOutlet weak var refresherControl: UIRefreshControl?
@@ -58,6 +59,7 @@ class ChangesSys: UITableViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     // update some UI
                     //let i = 0
+                    self.errorOccured = false
                     self.isRefreshing = false
                     self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                     //self.theTextView?.attributedText = textToDisplay
@@ -65,6 +67,9 @@ class ChangesSys: UITableViewController {
                 }
             } catch{
                 print(error)
+                self.isRefreshing = false
+                self.errorOccured = true
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
             }
         }
     }
@@ -76,22 +81,35 @@ class ChangesSys: UITableViewController {
 
     //MARK: IBActions
     @IBAction func willRefresh(sender: UIRefreshControl){
+        defer {
+            refreshControl!.endRefreshing()
+        }
         refreshControl!.attributedTitle! = NSAttributedString(string: "בודק שינויים")
 
-        do{
-            changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
-        } catch{
-            print(error)
+        isRefreshing = true
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            do {
+                self.changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
+                self.dateOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                    //let i = 0
+                    self.errorOccured = false
+                    self.isRefreshing = false
+                    self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+                    let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
+                    self.refreshControl!.attributedTitle! = NSAttributedString(string: lastUpdated)
+                }
+            } catch{
+                print(error)
+                self.isRefreshing = false
+                self.errorOccured = true
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+            }
         }
-        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
 
-        //let formatter = NSDateFormatter()
-        //formatter.setLocalizedDateFormatFromTemplate("MMM d, h:mm a")
-        //NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        let lastUpdated = "התעדכן לאחרונה ב: " + NSDateFormatter.localizedStringFromDate(NSDate(timeIntervalSinceNow: 0), dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.ShortStyle)//formatter.stringFromDate(NSDate(timeIntervalSinceNow: 0))
-        refreshControl!.attributedTitle! = NSAttributedString(string: lastUpdated)
-
-        refreshControl!.endRefreshing()
     }
 
     //MARK: UITableViewDataSource methods
@@ -101,6 +119,9 @@ class ChangesSys: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (!isRefreshing) {
+            if (errorOccured) {
+                return 1
+            }
             return changes.count == 0 ? 2 : changes.count + 1
         } else {
             return 1
@@ -109,7 +130,14 @@ class ChangesSys: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (!isRefreshing) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath) 
+            let cell = tableView.dequeueReusableCellWithIdentifier("changeCell", forIndexPath: indexPath)
+            if (errorOccured) {
+                cell.textLabel!.text = "קרתה שגיאה בתהליך ההתחברות לשרת"
+                cell.textLabel?.textColor = UIColor.redColor()
+                cell.textLabel?.font = UIFont(name:"Alef-Bold", size: 14)
+                cell.textLabel!.textAlignment = NSTextAlignment.Center
+                return cell
+            }
             if ((indexPath.row <= changes.count && changes.count == 0) || (indexPath.row < changes.count && changes.count != 0)) {
                 if (changes.count > 1) {
                     cell.textLabel!.text = "שעה " + numberToHebrewNumbers[indexPath.row + 1]! + ": " + (changes[indexPath.row] == "-" ? "אין שינויים!" : changes[indexPath.row])

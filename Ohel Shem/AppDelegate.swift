@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import Siren
 import Branch
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var j = 0
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        Fabric.with([Crashlytics.self()])
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //Initializing external API's
+        Parse.setApplicationId("RFk1b4QYvI4rE8cMbx7An8UrWjthPV7yGMXSjTot",
+            clientKey: "i82y2MiTNVt4PKTEjgO5QCQK1n5Mw379RhzFkPUC")
+        Fabric.with([Crashlytics.self()])
         let branch = Branch.getInstance()
         branch.initSessionWithLaunchOptions(launchOptions) { (params, error) -> Void in
-            print("Deep link data: \(params.description)")
+            if (error != nil) {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Deep link data: \(params.description)")
+            }
         }
-        //application.unregisterForRemoteNotifications()
+        if application.isRegisteredForRemoteNotifications() {
+            application.unregisterForRemoteNotifications()
+        }
         /*for family in UIFont.familyNames()
         {
         print(family)
@@ -40,9 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (application.applicationIconBadgeNumber > 0) {
             application.applicationIconBadgeNumber = 0
         }
-
-
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
 
         let font : UIFont? = UIFont(name: "Alef-Bold", size: 22)
 
@@ -89,59 +97,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         siren.checkVersion(.Weekly)
 
+        /*
+        // Register for Push Notitications- Parse
+        if application.applicationState != UIApplicationState.Background {
+            // Track an app open here if we launch with a push, unless
+            // "content_available" was used to trigger a background push (introduced in iOS 7).
+            // In that case, we skip tracking here to avoid double counting the app-open.
+
+            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
+            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
+            var pushPayload = false
+            if let options = launchOptions {
+                pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
+            }
+            if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
+                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+            }
+        }
+        application.registerForRemoteNotifications()
+        */
+
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
+
         return true
     }
-
-    /*func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-    NSUserDefaults.standardUserDefaults().setValue(deviceToken, forKey: "deviceToken")
-    let request = NSMutableURLRequest(URL: NSURL(string: "https://google.com")!)
-    let session = NSURLSession.sharedSession()
-    request.HTTPMethod = "POST"
-
-    var token = NSString(format: "%@", deviceToken)
-
-    token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
-    token = token.stringByReplacingOccurrencesOfString(">", withString: "")
-    token = token.stringByReplacingOccurrencesOfString("<", withString: "")
-
-    let params = ["deviceToken":String(token)] as Dictionary<String, String>
-
-    do {
-    request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
-    } catch {
-    print(error)
-    }
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("application/json", forHTTPHeaderField: "Accept")
-
-    let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-    print("Response: \(response)")
-    let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-    print("Body: \(strData)")
-    do {
-    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
-    // The JSONObjectWithData constructor didn't return an error. But, we should still
-    // check and make sure that json has a value using optional binding.
-    if let parseJSON = json {
-    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-    let success = parseJSON["success"] as? Int
-    print("Succes: \(success)")
-    } else {
-    // Woa, okay the json object was nil, something went wrong. Maybe the server isn't running?
-    let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
-    print("Error could not parse JSON: \(jsonStr)")
-    }
-    } catch {
-    print(error)
-    }
-    })
-
-    task.resume()
-
+    /*
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+        print("Success in activating Parse")
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    print(error)
+        if error.code == 3010 {
+            print("Push notifications are not supported in the iOS Simulator.")
+        } else {
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+        }
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
+        if application.applicationState == UIApplicationState.Inactive {
+            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        }
     }*/
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
