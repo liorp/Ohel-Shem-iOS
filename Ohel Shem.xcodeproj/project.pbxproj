@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F6C6FD494D37E5EC5C72DAD /* Pods_Ohel_Shem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496241EA08DAEDC57EB7A8D4 /* Pods_Ohel_Shem.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0F6C6FD494D37E5EC5C72DAD /* Pods_Ohel_Shem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496241EA08DAEDC57EB7A8D4 /* Pods_Ohel_Shem.framework */; };
 		8D00BFC61A6166AB0098A608 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC31A6166AB0098A608 /* FBShimmeringLayer.m */; };
 		8D00BFC71A6166AB0098A608 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFC51A6166AB0098A608 /* FBShimmeringView.m */; };
 		8D00BFD71A6458FC0098A608 /* MainHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00BFD61A6458FC0098A608 /* MainHomePage.swift */; };
 		8D00BFD91A6469A10098A608 /* 0slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D00BFD81A6469A10098A608 /* 0slidecell.png */; };
 		8D05A7711BADC09E007C01E0 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05A7701BADC09E007C01E0 /* UIExtensions.swift */; };
 		8D0800F01A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D0800EF1A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license */; };
+		8D10C67B1C554B3F00060B05 /* NSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D10C67A1C554B3F00060B05 /* NSExtensions.swift */; };
 		8D1157211A7679C00073CB5F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157201A7679C00073CB5F /* Settings.bundle */; };
 		8D1157281A767BDE0073CB5F /* iRate.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157271A767BDE0073CB5F /* iRate.license */; };
 		8D11572A1A767C0E0073CB5F /* Siren.license in Resources */ = {isa = PBXBuildFile; fileRef = 8D1157291A767C0E0073CB5F /* Siren.license */; };
@@ -74,6 +75,7 @@
 		8D861FED1A6F896E005EEA7A /* Alef-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */; };
 		8D861FEF1A6F8976005EEA7A /* Alef-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D861FEE1A6F8976005EEA7A /* Alef-Bold.ttf */; };
 		8D861FF21A724A8D005EEA7A /* CustomTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D861FF11A724A8C005EEA7A /* CustomTestCell.swift */; };
+		8D8FD6971C54EFE00012C45E /* SchoolWebsiteDataManagerPortal6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8FD6961C54EFE00012C45E /* SchoolWebsiteDataManagerPortal6.swift */; };
 		8DB35B3C1A87B64A00F028EA /* 4slidecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3B1A87B64A00F028EA /* 4slidecell.png */; };
 		8DB35B3E1A87B6AA00F028EA /* MBProgressHUD.license in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */; };
 		8DB35B6A1A89415000F028EA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8DB35B411A89415000F028EA /* .travis.yml */; };
@@ -196,6 +198,7 @@
 		8D00BFD81A6469A10098A608 /* 0slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0slidecell.png; sourceTree = "<group>"; };
 		8D05A7701BADC09E007C01E0 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		8D0800EF1A7E40D0001A92D4 /* Loading-Animation-iOS-Samsel.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Loading-Animation-iOS-Samsel.license"; sourceTree = "<group>"; };
+		8D10C67A1C554B3F00060B05 /* NSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSExtensions.swift; sourceTree = "<group>"; };
 		8D1157201A7679C00073CB5F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1157271A767BDE0073CB5F /* iRate.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iRate.license; sourceTree = "<group>"; };
 		8D1157291A767C0E0073CB5F /* Siren.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Siren.license; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 		8D861FEC1A6F896E005EEA7A /* Alef-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Regular.ttf"; sourceTree = "<group>"; };
 		8D861FEE1A6F8976005EEA7A /* Alef-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alef-Bold.ttf"; sourceTree = "<group>"; };
 		8D861FF11A724A8C005EEA7A /* CustomTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTestCell.swift; sourceTree = "<group>"; };
+		8D8FD6961C54EFE00012C45E /* SchoolWebsiteDataManagerPortal6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolWebsiteDataManagerPortal6.swift; sourceTree = "<group>"; };
 		8DB35B3B1A87B64A00F028EA /* 4slidecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4slidecell.png; sourceTree = "<group>"; };
 		8DB35B3D1A87B6AA00F028EA /* MBProgressHUD.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBProgressHUD.license; sourceTree = "<group>"; };
 		8DB35B401A89415000F028EA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -549,8 +553,10 @@
 				8D00BFD61A6458FC0098A608 /* MainHomePage.swift */,
 				8D41A7DC1A53341800168254 /* MainViewController.swift */,
 				8DE7C94E1A56D54000190B79 /* NewsSys.swift */,
+				8D10C67A1C554B3F00060B05 /* NSExtensions.swift */,
 				8D3FAF5C1A5480B30008EB99 /* SchoolTerms.swift */,
 				8D8133101A73F61B0021F959 /* SchoolWebsiteDataManager.swift */,
+				8D8FD6961C54EFE00012C45E /* SchoolWebsiteDataManagerPortal6.swift */,
 				8D3FAF461A542B680008EB99 /* SettingsController.swift */,
 				8D41A8121A5335CD00168254 /* SlideMenu.swift */,
 				8D05A7701BADC09E007C01E0 /* UIExtensions.swift */,
@@ -1038,7 +1044,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/python /Users/liorpollak/Documents/Development/Experimental/Ohel\\ Shem/Ohel\\ Shem/Licenses/Acknowledgements.py";
+			shellScript = "/usr/bin/python /Users/liorpollak/Documents/Development/Ohel\\ Shem/Ohel\\ Shem/Licenses/Acknowledgements.py";
 		};
 		8D3FAF451A54289F0008EB99 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1064,7 +1070,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 9e4dce43dfba49a9386ebed039ab07d466d9596d 8827d3d8b50d289dc30615e09acd8041a2cea11804deba09e8075ca3067a2163";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 9e4dce43dfba49a9386ebed039ab07d466d9596d 8827d3d8b50d289dc30615e09acd8041a2cea11804deba09e8075ca3067a2163";
 		};
 		8DE7C93E1A55F91D00190B79 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1134,6 +1140,7 @@
 				8DE507A21A6007D80015C96D /* HTMLOrderedDictionary.m in Sources */,
 				8DB35B7E1A89415000F028EA /* MBProgressHUD.m in Sources */,
 				8DE507A51A6007D80015C96D /* HTMLSelector.m in Sources */,
+				8D8FD6971C54EFE00012C45E /* SchoolWebsiteDataManagerPortal6.swift in Sources */,
 				8D3FAF471A542B680008EB99 /* SettingsController.swift in Sources */,
 				8DE5079F1A6007D80015C96D /* HTMLElement.m in Sources */,
 				8D3FAF2C1A535AF40008EB99 /* TestSys.swift in Sources */,
@@ -1153,6 +1160,7 @@
 				8DE5079E1A6007D80015C96D /* HTMLDocumentType.m in Sources */,
 				8DE507A01A6007D80015C96D /* HTMLEntities.m in Sources */,
 				8D65ABCA1BC1CF9D00CE1442 /* AMSlideMenuRightTableViewController.m in Sources */,
+				8D10C67B1C554B3F00060B05 /* NSExtensions.swift in Sources */,
 				8D65ABCB1BC1CF9D00CE1442 /* UIViewController+AMSlideMenu.m in Sources */,
 				8D41A8151A5338C700168254 /* ChangesSys.swift in Sources */,
 				8DE5079D1A6007D80015C96D /* HTMLDocument.m in Sources */,
@@ -1370,7 +1378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Experimental/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1405,7 +1413,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "liorpollak.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Experimental/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/liorpollak/Documents/Development/Ohel Shem/Ohel Shem/Ohel-Shem-Bridging-Header.h";
 			};
 			name = Release;
 		};

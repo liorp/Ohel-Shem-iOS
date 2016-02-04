@@ -86,13 +86,13 @@ class MainHomePage: UIViewController {
         weekDay = myComponents.weekday
 
         //This checks if we should get tommorow's hours or today's hours
-        let day = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")
+        let day = try SchoolWebsiteDataManagerPortal6.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")
         if day[day.count - 2] == numberToHebrewNumbersMale[weekDay]{
-            let hours = try SchoolWebsiteDataManager.sharedInstance.GetHours(weekDay)
+            let hours = try SchoolWebsiteDataManagerPortal6.sharedInstance.GetHours(weekDay)
             return hours
 
         } else {
-            let hours = try SchoolWebsiteDataManager.sharedInstance.GetHours((weekDay == 7 ? 1 : weekDay + 1))
+            let hours = try SchoolWebsiteDataManagerPortal6.sharedInstance.GetHours((weekDay == 7 ? 1 : weekDay + 1))
             return hours
         }
     }
@@ -103,7 +103,7 @@ class MainHomePage: UIViewController {
 
         //Getting the changes
 
-        var changesString = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
+        var changesString = try SchoolWebsiteDataManagerPortal6.sharedInstance.GetChanges()
         //First, check for no changes at all
         if let noChanges = changesString.first where noChanges == "אין שינויים" {
             changesString = []
@@ -119,7 +119,7 @@ class MainHomePage: UIViewController {
         weekDay = myComponents.weekday
 
         var stillSabbath = true
-        if try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
+        if try SchoolWebsiteDataManagerPortal6.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManagerPortal6.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
             stillSabbath = false
         }
         let hours = try GetTodaysHours()
@@ -132,7 +132,7 @@ class MainHomePage: UIViewController {
                 let appendedString = NSMutableAttributedString()
                 if hours[i-1] != "שעה חופשית!" && hours[i-1] != "אין לימודים בשבת!" {
                     //If we don't, we show the corresponding hour
-                    var theHourWith = hours[i - 1].componentsSeparatedByString(" ")
+                    var theHourWith = hours[i - 1].componentsSeparatedByString("\n")
                     theHourWith.insert("עם", atIndex: 1)
                     let display = theHourWith.joinWithSeparator(" ") as String
                     let theHourName = display.componentsSeparatedByString(" ").first!
@@ -153,7 +153,7 @@ class MainHomePage: UIViewController {
                 return appendedString
             }
 
-            for (var i = 1; i < 12; i++) {
+            for (var i = 1; i < 11; i++) {
                 if i - 1 < changesString.count {
                     if (changesString[i - 1] != "-"){
                         //If we have a change, we show it
@@ -203,7 +203,7 @@ class MainHomePage: UIViewController {
 
     func GetChangesHours() throws -> NSAttributedString {
         //Append the date of validity of system
-        let dayOfChanges = try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges()
+        let dayOfChanges = try SchoolWebsiteDataManagerPortal6.sharedInstance.GetDayOfChanges()
 
         let today = NSDate(timeIntervalSinceNow: 0)
 
@@ -297,8 +297,7 @@ class MainHomePage: UIViewController {
                     }
                 }
             } catch {
-                print(error)
-                let textToDisplay = "קרתה שגיאה בתהליך ההתחברות לשרת"
+                let textToDisplay = "קרתה שגיאה בתהליך ההתחברות לשרת. תיאור השגיאה: " + (error as NSError).localizedDescription
                 dispatch_async(dispatch_get_main_queue()) {
                     // update some UI
                     self.timer?.invalidate()
@@ -570,7 +569,7 @@ class MainHomePage: UIViewController {
             weekDay = myComponents.weekday
 
             var stillSabbath = true
-            if try SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManager.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
+            if try SchoolWebsiteDataManagerPortal6.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ")[SchoolWebsiteDataManagerPortal6.sharedInstance.GetDayOfChanges().componentsSeparatedByString(" ").count - 2] != numberToHebrewNumbersMale[7] {
                 stillSabbath = false
             }
             if weekDay == 7 || stillSabbath {
@@ -578,7 +577,7 @@ class MainHomePage: UIViewController {
             }
 
             let hours = try self.GetTodaysHours()
-            let changes = try SchoolWebsiteDataManager.sharedInstance.GetChanges()
+            let changes = try SchoolWebsiteDataManagerPortal6.sharedInstance.GetChanges()
             if let noChanges = changes.first where noChanges == "אין שינויים" {
                 return "יש עכשיו " + hours[number-1].componentsSeparatedByString(" ").first!
             } else {
